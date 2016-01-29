@@ -13,7 +13,6 @@
         padding: 5px;
         text-align: center;
     }
-
 </style>
 <body>
     <h1>LAB 3</h1>
@@ -69,7 +68,7 @@
         <p>
             <?php
                 for ($i=1; $i <= 12; $i++) {
-                    echo "$i * $i = " . $i * $i . "<br>";
+                    echo "$i * $i = " . ($i * $i) . "<br>";
                 }
             ?>
         </p>
@@ -87,6 +86,36 @@
                 }
             ?>
         </table>
+    </div>
+    <div>
+        <h2>TASK 5</h2>
+        <p>
+            <?php
+                $cities = array
+                    (
+                        array("Istanbul",14000000,5461),
+                        array("Oslo",634463,8900),
+                        array("Ghent",284242,156.18),
+                        array("Paris",2273305,17174.4)
+                    );
+
+                    for ($row = 0; $row <= 3; $row++) {
+                        static $minDen = 100000;
+                        $density = (int)($cities[$row][1] / $cities[$row][2]);
+
+                        echo $cities[$row][0] . "<br>";
+                        echo "Population: " . $cities[$row][1] . "<br>";
+                        echo "Area: " . $cities[$row][2] . "<br>";
+                        echo "Density: " . $density . "<br>";
+                        echo "<br>";
+
+                        if ($density < $minDen) {
+                            $minDen = $density;
+                        }
+                    }
+                    echo "The minimum density is: $minDen " ;
+            ?>
+        </p>
     </div>
 </body>
 </html>
