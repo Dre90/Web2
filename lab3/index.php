@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <title>Lab 3</title>
 </head>
+<style>
+    table {
+        border: solid 1px black;
+    }
+    td {
+        border: solid 1px black;
+        padding: 5px;
+        text-align: center;
+    }
+
+</style>
 <body>
     <h1>LAB 3</h1>
     <div>
@@ -60,9 +71,22 @@
                 for ($i=1; $i <= 12; $i++) {
                     echo "$i * $i = " . $i * $i . "<br>";
                 }
-
             ?>
         </p>
+    </div>
+    <div>
+        <h2>TASK 4</h2>
+        <table>
+            <?php
+                for ($x=1; $x <= 7 ; $x++) {
+                    echo "<tr>";
+                    for ($y=1; $y <= 7 ; $y++) {
+                        echo "<td>" . $x * $y . "</td>";
+                    }
+                    echo "</tr>";
+                }
+            ?>
+        </table>
     </div>
 </body>
 </html>
