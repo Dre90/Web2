@@ -53,5 +53,16 @@
             ?>
         </p>
     </div>
+    <div>
+        <h2>TASK 3</h2>
+        <p>
+            <?php
+                for ($i=1; $i <= 12; $i++) {
+                    echo "$i * $i = " . $i * $i . "<br>";
+                }
+
+            ?>
+        </p>
+    </div>
 </body>
 </html>
