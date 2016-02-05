@@ -1,0 +1,10 @@
+PROGRAMMING FOR WEB II
+LAB 4 / TASK 1
+
+Functions in PHP can help automate repetitive tasks and enable you to reuse code with a simple function call.
+
+For your first function, we'll keep it really simple.
+
+For this PHP exercise, create a function called "hello" that outputs that phrase we all know and love, "Hello, World!" to the browser.
+
+Call the function.

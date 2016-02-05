@@ -1,0 +1,10 @@
+PROGRAMMING FOR WEB II
+LAB 4 / TASK 2
+
+This PHP exercise has two parts.
+
+For the first, you will create a function to accept two arguments, perform a calculation using them, then return a sentence with the result to the browser.
+
+The function will calculate the area of a rectangle, with the two arguments being width and height. (Reminder: area = width * height.)
+
+The sentence to be returned is "A rectangle of length $l and width $w has an area of $area.", where $l and $w are the arguments and $area is the result.
