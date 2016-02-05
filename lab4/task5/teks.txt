@@ -1,0 +1,39 @@
+PROGRAMMING FOR WEB II
+LAB 4 / TASK 5
+
+In one file, create a Shape class and two subclasses, namely Rectangle and Circle.
+
+Shape class should have an area property, area calculation function, and setter and getter methods for area property.
+
+The area calculation method of Shape class should always set area to 0.
+
+Area property of Shape should be accessible only to the objectâ€™s methods itself and not to the those of subclasses.
+
+Methods of Shape class should be accessible only to objectâ€™s methods itself and those of subclasses.
+
+Rectangle and Circle classes should override the area function accordingly and have necessary properties.
+
+Rectangle and Circle classes should have constructors (no parameters), which should call the Shape classâ€™s area calculation method.
+
+Properties of Rectangle and Circle classes should not be accessible to outside, but should be modifiable with a public interface.
+
+Shape class should be able to keep track of the number of objects created for each subclass.
+
+Create an Rectangle object, set its properties and calculate its area.
+Create a Circle object, set its properties and calculate its area.
+Create a Circle object, set its properties and calculate its area.
+Print objects and their areas.
+Print the number of rectangle and circle objects.
+
+Destroy one of the Circle objects.
+Print the number of rectangle and circle objects.
+
+The output should be like:
+
+	This object is a Rectangle and has an area of 20
+	This object is a Circle and has an area of 6.28
+	This object is a Circle and has an area of 9.42
+	We now have 1 rectangles and 2 circles!
+	We now have 1 rectangles and 1 circles!
+
+Hint: You can use built-in get_class method to check the type of an object.

@@ -1,0 +1,35 @@
+PROGRAMMING FOR WEB II
+LAB 4 / TASK 4
+
+Create two classes, namely Person and Car, in two different PHP files.
+
+Person class should have name, and owned_car attributes, which should be referenced only by the methods of the current object.
+
+Car class should have plate_number and owner attributes, which should referenced only by the methods of the current object.
+
+For each class define a public interface to set and get attributes of the current object.
+
+For each class also define a construct method.
+
+The construct method of Person class should only accept the name property.
+
+The construct method of Car class should accept both plate_number and owner properties.
+
+Create another PHP file, which first requires all the class files.
+
+Create a person object with a name.
+
+Create a car object with a plate number and the person object (as owner), which you just created.
+
+Set owned_car property of your person object to the car object, which you just created.
+
+Print all the objects with print_r command.
+
+Then print the following text:
+
+	Mike has a car with plate number 1234
+	The car with plate number 1234 belongs to Mike
+
+To print first line, you should ONLY and ONLY use the person object to access required data!
+
+To print second line, you should ONLY and ONLY use the car object to access required data!
