@@ -1,0 +1,56 @@
+PROGRAMMING FOR WEB II
+LAB 4 / TASK 3
+
+Create an array that includes months and number of days in each month and write two functions.
+
+The first function, printMonths, should take months array as input and print it.
+
+The second function, modifyMonths, should take months array as input and modify its elements.
+
+If a month has 31 days the last character of the month should be upper case and the rest should be lower case.
+
+Months having less than 31 days should stay untouched.
+
+The second function should modify the original array without returning it.
+
+Call the first function.
+Call the second function.
+Call the first function again.
+
+The output should be:
+
+    I am the first function â€” printing months array!
+
+    'January'=>31 days,
+    'February'=> 28 days,
+    'March'=>31 days,
+    'April'=>30 days,
+    'May'=>31 days,
+    'June'=>30 days,
+    'July'=>31 days,
+    'August'=>31 days,
+    'September'=>30 days,
+    'October'=>31 days,
+    'November'=>30 days,
+    'December'=>31 days.
+
+
+    I am the second function â€” just modifying months array!
+    I am the first function â€” printing months array!
+
+    'januarY'=>31 days,
+    'February'=> 28 days,
+    'marcH'=>31 days,
+    'April'=>30 days,
+    â€˜maY'=>31 days,
+    'June'=>30 days,
+    'julY'=>31 days,
+    'augusT'=>31 days,
+    'September'=>30 days,
+    'octobeR'=>31 days,
+    'November'=>30 days,
+    'decembeR'=>31 days.
+
+
+Hint: You can pass values to functions by reference.
+Hint: Recall string functions strrev (reverse a string), ucfirst (capitalise first character of a string) and strtolower (lowercase all the characters of a string).
