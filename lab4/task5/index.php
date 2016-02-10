@@ -2,8 +2,16 @@
 
 class shape {
     private $area;
+    static $shapes = [
+        'rectangle' => 0,
+        'circle' => 0
+    ];
     // protected $countRek = 0;
     // protected $countCir = 0;
+
+    function __construct() {
+        self::$shapes[get_class($this)]++;
+    }
 
     protected function set_area($area) {
         $this->$area = $area;
@@ -13,8 +21,16 @@ class shape {
         return $this->$area;
     }
 
+    public function getShapes(){
+        return "We have " . self::$shapes['rectangle'] . " rectangles and " . self::$shapes['circle'] . ' circles!';
+    }
+
     protected function areacalc() {
         $this->set_area(0);
+    }
+
+    function __destruct() {
+        self::$shapes[get_class($this)]--;
     }
 }
 
@@ -24,6 +40,11 @@ class shape {
 class rectangle extends shape {
     private $length, $width;
 
+    function __construct($w, $h){
+        $this->width = $w;
+        $this->length = $h;
+        parent::__construct();
+    }
     public function set_lenght($x) {
         $this->length = $x;
     }
@@ -40,19 +61,13 @@ class rectangle extends shape {
         return $this->width;
     }
 
-    public function areacalc() {
+    public final function areacalc() {
         $area = $this->get_lenght() * $this->get_width();
         return $area;
     }
 
-    function __construct() {
-        parent::areacalc();
         //parent::$countRek++;
-    }
 
-    function __destruct() {
-        //parent::$countRek--;
-    }
 }
 
 /**
@@ -64,10 +79,9 @@ class rectangle extends shape {
 //     }
 // }
 
-$rek1 = new rectangle;
-$rek1->set_lenght(10);
-$rek1->set_width(10);
+$rek1 = new rectangle(10, 10);
 $rek1->areacalc();
+$rect2 = new rectangle(20, 5);
 print($rek1->areacalc());
-//print($rek1->area);
+echo $rek1->getShapes();
 ?>
