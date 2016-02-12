@@ -1,9 +1,7 @@
 <?php
 require 'person_class.php';
-
-
-//$test = new student("Mark", "Weiser", 21, 120.65);
-//print_r($test);
+require 'overwrite_file_function.php';
+require 'open_file_function.php';
 
 $people = array(
     new student("Mark", "Weiser", 21, 120.65),
@@ -13,21 +11,20 @@ $people = array(
     new employee("June", "Greed", 18, 70)
 );
 
+overwrite_file();
+
 $arrlength = count($people);
 for($x = 0; $x < $arrlength; $x++) {
-    echo $people[$x]->get_title() . ", ";
-    echo $people[$x]->get_name() . ", ";
-    echo $people[$x]->get_surname() . ", ";
-    echo $people[$x]->get_age() . ", ";
-    echo $people[$x]->get_balance();
-    echo "<br>";
+    $text = $people[$x]->get_title() . ", " .
+    $people[$x]->get_name() . ", " .
+    $people[$x]->get_surname() . ", " .
+    $people[$x]->get_age() . ", " .
+    $people[$x]->get_balance() . "\n";
+    open_file($text);
 }
 
-if(file_exists("data.txt"))
-    $fh = fopen("data.txt", 'w') or die ('Failed!');
-    $text = "First line!\nSecond line\nThird line!";
+echo "<pre>";
+echo file_get_contents("data.txt");
+echo "<pre>";
 
-    fwrite($fh, $text) or die ("Failed!");
-
-    echo "File successfully written!";
- ?>
+?>
