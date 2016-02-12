@@ -1,0 +1,4 @@
+PROGRAMMING FOR WEB II
+LAB 5 / TASK 2
+
+Create a simple 'birthday countdown' script, the script will count the number of days between current day and birth day.

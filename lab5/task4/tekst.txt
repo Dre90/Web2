@@ -1,0 +1,16 @@
+PROGRAMMING FOR WEB II
+LAB 5 / TASK 4
+
+Create a Person class and two subclasses namely Employee and Student.
+
+Person object should have name, surname, age and balance properties, which could be referenced only by object's class methods and those of any subclasses.  
+
+Initiate 5 objects from these classes and keep them in an object array, then write the content of the object array to a file named 'data.txt'.
+
+The text file should look like the following:
+
+student, Mark, Weiser, 21, 120.65
+student, Alice, Karl, 20, 200.122
+employee, Jony, White, 25, 12.522
+student, Ida, Red, 22, 40.98
+employee, June, Green, 18, 70
