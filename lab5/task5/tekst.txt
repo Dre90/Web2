@@ -1,0 +1,74 @@
+PROGRAMMING FOR WEB II
+LAB 5 / TASK 5
+
+Read the data file named 'data.txt', which has the following data:
+
+student, Mark, Weiser, 21, 120.65
+student, Alice, Karl, 20, 200.122
+employee, Jony, White, 25, 12.522
+student, Ida, Red, 22, 40.98
+employee, June, Green, 18, 70
+
+Write a php script that reads this file and creates the array structure below.
+
+Then iterate over this array structure and present the data in a HTML table.
+
+You should output a proper HTML page.
+
+The last column indicating the balance should have floating point precision 1.
+
+Array
+(
+    [student] => Array
+        (
+            [0] => Array
+                (
+                    [name] =>  Mark
+                    [surname] =>  Weiser
+                    [age] =>  21
+                    [balance] =>  120.65
+
+                )
+
+            [1] => Array
+                (
+                    [name] =>  Alice
+                    [surname] =>  Karl
+                    [age] =>  20
+                    [balance] =>  200.122
+
+                )
+
+            [2] => Array
+                (
+                    [name] =>  Ida
+                    [surname] =>  Red
+                    [age] =>  22
+                    [balance] =>  40.98
+
+                )
+
+        )
+
+    [employee] => Array
+        (
+            [0] => Array
+                (
+                    [name] =>  Jony
+                    [surname] =>  White
+                    [age] =>  25
+                    [balance] =>  12.522
+
+                )
+
+            [1] => Array
+                (
+                    [name] =>  June
+                    [surname] =>  Green
+                    [age] =>  18
+                    [balance] =>  70
+                )
+
+        )
+
+)
