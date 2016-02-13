@@ -1,3 +1,4 @@
+
 Student, Mark, Weiser, 21, 120.65
 Student, Alice, Karl, 20, 200.122
 Employee, Jony, White, 25, 12.522

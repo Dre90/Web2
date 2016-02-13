@@ -1,30 +1,11 @@
 <?php
-function multiexplode ($delimiters,$string) {
-    $ary = explode($delimiters[0],$string);
-    array_shift($delimiters);
-    if($delimiters != NULL) {
-        foreach($ary as $key => $val) {
-             $ary[$key] = multiexplode($delimiters, $val);
-        }
-    }
-    return  $ary;
-}
+$data = file_get_contents("data.txt");
 
-// Example of use
-$string = file_get_contents("data.txt");
-$delimiters = Array("Employee", "Student", ", ");
-
-$res = multiexplode($delimiters,$string);
-
+$ret = array_map (
+  function ($_) {return explode (',', $_);},
+  explode ('\n', $data)
+);
 echo '<pre>';
-print_r($res);
+print_r ($ret);
 echo '</pre>';
-
-
-
-// $res = explode(",", $string);
-//
-// echo '<pre>';
-// print_r($res);
-// echo '</pre>';
  ?>
