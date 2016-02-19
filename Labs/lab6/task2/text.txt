@@ -1,0 +1,22 @@
+PROGRAMMING FOR WEB II
+LAB 6 / TASK 2
+
+Create a table under IMT3851_db, named 'Books'.
+
+Books table should have the following columns:
+
+isbn,
+title,
+publisher,
+pages,
+and abstract.
+
+Decide on the types of attributes.
+
+Once table is created, describe the table.
+
+Then, alter the table and add indexes, as necessary, and a FULLTEXT index.
+
+Describe the table.
+
+Insert some dummy records to your table. 

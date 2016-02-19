@@ -1,0 +1,14 @@
+PROGRAMMING FOR WEB II
+LAB 6 / TASK 1
+
+Access your mysql instance from the command line as root.
+
+List all the databases.
+
+Create a new user IMT3851 with a password.
+
+Create a new database named IMT3851_db.
+
+Assign all the credentials for IMT3851_db database to user IMT3851.
+
+Logout and login again as user IMT3851.

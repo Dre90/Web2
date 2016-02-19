@@ -1,0 +1,6 @@
+PROGRAMMING FOR WEB II
+LAB 6 / TASK 3
+
+Alter the Book table and add a new column named category, which is always identified with three letters and should never be NULL.
+
+Add an index for the new column.

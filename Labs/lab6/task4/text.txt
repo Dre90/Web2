@@ -1,0 +1,16 @@
+PROGRAMMING FOR WEB II
+LAB 6 / TASK 4
+
+Select all the date from your table.
+
+Execute a boolean FULLTEXT search on abstract column.
+
+Drop index on the category.
+
+Drop pages column.
+
+Drop your the Books table.
+
+Drop IMT3851_db database.
+
+Drop the  IMT3851 user.
