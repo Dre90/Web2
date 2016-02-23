@@ -3,40 +3,62 @@ number of customers and accounts first, then a table of customers. The table sho
 at least the basic information, the number of accounts, associated account information, and
 total amount of assets (i.e., the total amount of money in different accounts) for each customer. -->
 <?php
-require 'classes/customer_class.php';
+require 'functions/get_costumers_function.php';
+require 'functions/get_accounts_function.php';
+//require 'classes/customer_class.php';
 
-$csv_data = file_get_contents('data/customers.csv'); // Get the file content
-$lines = explode("\n", $csv_data);
-$head = str_getcsv(array_shift($lines));
-
-// $array = array();
+// $csv_data = file_get_contents('data/customers.csv'); // Get the file content
+// $lines = explode("\n", $csv_data); // Get the lines
+// $head = str_getcsv(array_shift($lines)); // Get the head
+//
 // foreach ($lines as $line) {
-//     $array[] = array_combine($head, str_getcsv($line));
+//     $row = array_pad(str_getcsv($line), count($head), '');
+//     $array[] = array_combine($head, $row);
 // }
-foreach ($lines as $line) {
-    $row = array_pad(str_getcsv($line), count($head), '');
-    $array[] = array_combine($head, $row);
-}
-
-array_pop($array);
-
-$costumersArray = array();
-$tall = 0;
-foreach ($array as $value) {
-    $costumer = new customer($array[$tall]["name"], $array[$tall]["surname"], $array[$tall]["birthdate"], $array[$tall]["address"], $array[$tall]["totalAssets"]);
-
-    array_push($costumersArray, $costumer);
-
-    $tall++;
-}
+//
+// array_pop($array); //removes the last empty element of the array
+//
+// $costumersArray = array();
+// $tall = 0;
+// foreach ($array as $value) {
+//     $costumer = new customer($array[$tall]["name"], $array[$tall]["surname"], $array[$tall]["birthdate"], $array[$tall]["address"], $array[$tall]["totalAssets"]);
+//
+//     array_push($costumersArray, $costumer);
+//
+//     $tall++;
+// }
 
 
-// $person = new customer($array[0]["name"], $array[0]["surname"], $array[0]["birthdate"], $array[0]["address"], $array[0]["totalAssets"]);
+// require 'classes/account_class.php';
+// $csv_data = file_get_contents('data/accounts.csv'); // Get the file content
+// $lines = explode("\n", $csv_data); // Get the lines
+// $head = str_getcsv(array_shift($lines)); // Get the head
+//
+// foreach ($lines as $line) {
+//     $row = array_pad(str_getcsv($line), count($head), '');
+//     $array[] = array_combine($head, $row);
+// }
+//
+// array_pop($array); //removes the last empty element of the array
+//
+// $accountArray = array();
+// $tall = 0;
+// foreach ($array as $value) {
+//     $account = new account($array[$tall]["accountHolder"], $array[$tall]["accountNumber"], $array[$tall]["currencyType"], $array[$tall]["balance"], $array[$tall]["withdrawals"], $array[$tall]["deposits"]);
+//
+//     array_push($accountArray, $account);
+//
+//     $tall++;
+// }
 
-// $person = new customer("Dag-Roger", "Eriksen", "26.10.1990", "Kauffeldts veg 7 2819 Gjøvik", 10000);
+
+$costumersArray = get_costumers();
+$accountArray = get_accounts();
+
 echo "<br>";echo "<br>";
+
 $tall1 = 0;
-foreach ($array as $value) {
+foreach ($costumersArray as $value) {
     echo $costumersArray[$tall1]->get_name();
     echo "<br>";
 
@@ -45,11 +67,19 @@ foreach ($array as $value) {
 //echo $costumersArray[0]->get_name();
 echo "<br>";echo "<br>";
 echo customer::$customerCount;
-
-
 echo "<br>";echo "<br>";
-print_r($array);
 
-?>
+$tall2 = 0;
+foreach ($accountArray as $value) {
+    echo $accountArray[$tall2]->get_deposits();
+    echo "<br>";
+
+    $tall2++;
+}
+//echo $costumersArray[0]->get_name();
+echo "<br>";echo "<br>";
+echo account::$accountCount;
+
+
 
  ?>

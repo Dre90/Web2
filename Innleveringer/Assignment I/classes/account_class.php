@@ -6,19 +6,22 @@ class account  {
     protected $accountHolder;
 	protected $currencyType;
 	protected $balance;
+    protected $accountNumber;
+    protected $withdrawals = 0;
+    protected $deposits = 0;
 
-    static $accountNumber = 10000;
     static $accountCount = 0;
-    static $withdrawals = 0;
-    static $deposits = 0;
+
 
 	// constructor
-	function __construct($ah, $ct, $b) {
+	function __construct($ah, $an, $ct, $b, $w, $d) {
 		$this -> accountHolder = $ah;
+        $this -> accountNumber = $an;
 		$this -> currencyType = $ct;
 		$this -> balance = $b;
+        $this -> withdrawals = $w;
+        $this -> deposits = $d;
 
-        self::$accountNumber++;
         self::$accountCount++;
 	}
 
@@ -58,6 +61,22 @@ class account  {
 
 	public function get_balance() {
 		return $this -> balance;
+	}
+
+    public function set_withdrawals($w) {
+		return $this -> withdrawals = $w;
+	}
+
+	public function get_withdrawals() {
+		return $this -> withdrawals;
+	}
+
+    public function set_deposits($d) {
+		return $this -> deposits = $d;
+	}
+
+	public function get_deposits() {
+		return $this -> deposits;
 	}
 
 
