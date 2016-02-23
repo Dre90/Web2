@@ -3,6 +3,7 @@
  * The customer class
  */
 class customer {
+    protected $id;
     protected $name;
 	protected $surname;
 	protected $birthdate;
@@ -26,6 +27,14 @@ class customer {
 	}
 
 	// setter and getter methods
+    public function set_id($id) {
+        $this -> id = $id;
+    }
+
+	public function get_id() {
+		return $this -> id;
+	}
+
 	public function set_name($n) {
         $this -> name = $n;
     }

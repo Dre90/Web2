@@ -2,15 +2,15 @@
 /**
  * The account class
  */
-class account {
+class account extends customers  {
     protected $accountHolder;
 	protected $currencyType;
 	protected $balance;
-    
+
     static $accountNumber = 10000;
+    static $accountCount = 0;
     static $withdrawals = 0;
     static $deposits = 0;
-    static $accountCount = 0;
 
 	// constructor
 	function __construct($ah, $ct, $b) {
@@ -65,14 +65,13 @@ class account {
     public function transaction($type, $value, $associatedAccount, $date) {
 
 
-        // if type = $withdrawals, $withdrawals ++
+        // if type = $withdrawal, $withdrawals ++
         //     balance + $value
         //
-        // if type = $deposits, $deposits ++
+        // if type = $deposit, $deposits ++
         //     balance - $value
 
         // Skriv til file
     }
 }
-
- ?>
+?>
