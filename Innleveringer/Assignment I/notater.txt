@@ -1,0 +1,24 @@
+Todo list
+
+lage form
+Validate form
+hente data fra form
+legge det inn i et objekt
+skrive det til fil
+
+
+hente fra fil
+legge det i objecter
+
+
+1 fil er en person med sine kontoer
+
+viss fil ikke finnes lag ny
+viss den finnes legg til data
+
+
+Bruker laster opp fil
+validate at det er en tekst fil
+lagre filen
+åpne filen
+ - lagre texten i et 

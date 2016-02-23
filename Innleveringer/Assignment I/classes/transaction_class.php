@@ -2,7 +2,7 @@
 /**
  *
  */
-class transaction extends account {
+class transaction {
     protected $type;
     protected $value;
     protected $associatedAccount;

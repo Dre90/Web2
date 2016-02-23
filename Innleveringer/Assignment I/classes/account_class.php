@@ -2,7 +2,7 @@
 /**
  * The account class
  */
-class account extends customers  {
+class account  {
     protected $accountHolder;
 	protected $currencyType;
 	protected $balance;
