@@ -2,7 +2,7 @@
 /**
  *
  */
-class transaction {
+class transaction extends account {
     protected $type;
     protected $value;
     protected $associatedAccount;
@@ -14,15 +14,17 @@ class transaction {
 		$this -> value = $v;
 		$this -> associatedAccount = $a;
         $this -> date = $d;
-
-        parent::$withdrawals++;
-        parent::$deposits++;
+        // if ($t == "withdrawal" ) {
+        //     parent::$withdrawals++;
+        // } else {
+        //     parent::$deposits++;
+        // }
 	}
 
     // destructor
     function __destruct() {
-		parent::$withdrawals--;
-        parent::$deposits--;
+		// parent::$withdrawals--;
+        // parent::$deposits--;
 	}
 
     // setter and getter methods
@@ -56,6 +58,13 @@ class transaction {
 
 	public function get_date() {
 		return $this -> date;
+	}
+
+    public function get_transaction() {
+        return $this -> type;
+        return $this -> value;
+		return $this -> associatedAccount;
+        return $this -> date;
 	}
 }
 

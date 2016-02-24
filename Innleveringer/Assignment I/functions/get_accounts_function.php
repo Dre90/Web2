@@ -23,7 +23,5 @@ function get_accounts() {
         $tall++;
     }
     return $accountArray;
-
 }
-
- ?>
+?>
