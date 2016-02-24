@@ -70,7 +70,7 @@ $accountArrayLength = count($accountArray);
 echo "<table>";
 for($x = 0; $x < $costumersArrayLength; $x++) {
     echo "<tr>";
-        echo "<th colspan='3'>";
+        echo "<th colspan='5'>";
             echo "Costumer";
         echo "</th>";
     echo "</tr>";
@@ -80,6 +80,9 @@ for($x = 0; $x < $costumersArrayLength; $x++) {
         echo "</td>";
         echo "<td>";
             echo "Surname";
+        echo "</td>";
+        echo "<td>";
+            echo "Birthdate";
         echo "</td>";
         echo "<td>";
             echo "Number of accounts";
@@ -94,6 +97,9 @@ for($x = 0; $x < $costumersArrayLength; $x++) {
         echo "</td>";
         echo "<td>";
             echo $costumersArray[$x]->get_surname() ;
+        echo "</td>";
+        echo "<td>";
+            echo $costumersArray[$x]->get_birthdate() ;
         echo "</td>";
         echo "<td>";
             $nrAccounts = array();
@@ -120,7 +126,7 @@ for($x = 0; $x < $costumersArrayLength; $x++) {
     echo "</tr>";
 
     echo "<tr>";
-        echo "<th class='test' colspan='3'>";
+        echo "<th class='test' colspan='4'>";
             echo "Accounts";
         echo "</th>";
     echo "</tr>";
