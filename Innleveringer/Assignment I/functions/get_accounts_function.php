@@ -16,7 +16,7 @@ function get_accounts() {
     $accountArray = array();
     $tall = 0;
     foreach ($array as $value) {
-        $account = new account($array[$tall]["accountHolder"], $array[$tall]["accountNumber"], $array[$tall]["currencyType"], $array[$tall]["balance"], $array[$tall]["withdrawals"], $array[$tall]["deposits"]);
+        $account = new account($array[$tall]["id"], $array[$tall]["accountHolder"], $array[$tall]["accountNumber"], $array[$tall]["currencyType"], $array[$tall]["balance"], $array[$tall]["withdrawals"], $array[$tall]["deposits"]);
 
         array_push($accountArray, $account);
 

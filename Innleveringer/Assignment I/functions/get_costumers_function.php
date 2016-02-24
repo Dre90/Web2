@@ -16,7 +16,7 @@ function get_costumers() {
     $costumersArray = array();
     $tall = 0;
     foreach ($array as $value) {
-        $costumer = new customer($array[$tall]["name"], $array[$tall]["surname"], $array[$tall]["birthdate"], $array[$tall]["address"], $array[$tall]["totalAssets"]);
+        $costumer = new customer($array[$tall]["id"],$array[$tall]["name"], $array[$tall]["surname"], $array[$tall]["birthdate"], $array[$tall]["address"], $array[$tall]["totalAssets"]);
 
         array_push($costumersArray, $costumer);
         $tall++;

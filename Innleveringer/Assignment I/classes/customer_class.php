@@ -3,6 +3,7 @@
  * The customer class
  */
 class customer {
+    protected $id;
     protected $name;
 	protected $surname;
 	protected $birthdate;
@@ -11,7 +12,8 @@ class customer {
     static $customerCount = 0;
 
 	// constructor
-	function __construct($n, $s, $b, $a, $t) {
+	function __construct($id, $n, $s, $b, $a, $t) {
+        $this -> id = $id;
 		$this -> name = $n;
 		$this -> surname = $s;
 		$this -> birthdate = $b;

@@ -3,6 +3,7 @@
  * The account class
  */
 class account  {
+    protected $id;
     protected $accountHolder;
 	protected $currencyType;
 	protected $balance;
@@ -14,7 +15,8 @@ class account  {
 
 
 	// constructor
-	function __construct($ah, $an, $ct, $b, $w, $d) {
+	function __construct($id, $ah, $an, $ct, $b, $w, $d) {
+        $this -> id = $id;
 		$this -> accountHolder = $ah;
         $this -> accountNumber = $an;
 		$this -> currencyType = $ct;
@@ -31,6 +33,13 @@ class account  {
 	}
 
 	// setter and getter methods
+    public function set_id($id) {
+        $this -> id = $id;
+    }
+
+	public function get_id() {
+		return $this -> id;
+	}
 	public function set_accountHolder($ah) {
         $this -> accountHolder = $ah;
     }

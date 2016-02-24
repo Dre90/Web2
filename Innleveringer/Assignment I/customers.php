@@ -5,8 +5,32 @@ total amount of assets (i.e., the total amount of money in different accounts) f
 <html>
 <head>
 <style>
-table tr td {
+table, th, td {
     border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+
+th {
+    padding-top: 20px;
+
+}
+
+th.test {
+    padding-top: 7px;
+}
+tr:nth-child(even) {
+    background-color: #eee;
+}
+
+tr:nth-child(odd) {
+   background-color:#fff;
+}
+th	{
+    background-color: white;
+
 }
 </style>
 
@@ -20,25 +44,146 @@ $costumersArray = get_costumers();
 $accountArray = get_accounts();
 $transactionArray = get_transactions();
 
+// echo "<pre>";
+// echo "<br>";echo "<br>";
+// print_r($costumersArray);
+// echo "<br>";echo "<br>";
+// echo "<br>";echo "<br>";
+// print_r($accountArray);
+// echo "<br>";echo "<br>";
+// echo "<br>";echo "<br>";
+// print_r($transactionArray);
+// echo "<br>";echo "<br>";
+// echo "</pre>";
+
 echo "Total of customers: " . customer::$customerCount;
 echo "<br>";
 echo "Total of accounts: " . account::$accountCount;
 echo "<br>";
 
 
-$tall1 = 0;
+$costumersArrayLength = count($costumersArray);
+$accountArrayLength = count($accountArray);
+
+
+
 echo "<table>";
-
-foreach ($costumersArray as $value) {
+for($x = 0; $x < $costumersArrayLength; $x++) {
     echo "<tr>";
-        echo "<td>" . $costumersArray[$tall1]->get_name() . "<td>";
-
-        echo "<td>" . $costumersArray[$tall1]->get_surname() . "<td>";
-
+        echo "<th colspan='3'>";
+            echo "Costumer";
+        echo "</th>";
     echo "</tr>";
-    $tall1++;
-}
-echo "</table>";
+    echo "<tr>";
+        echo "<td>";
+            echo "Name";
+        echo "</td>";
+        echo "<td>";
+            echo "Surname";
+        echo "</td>";
+        echo "<td>";
+            echo "Number of accounts";
+        echo "</td>";
+        echo "<td>";
+            echo "Total amount of assets";
+        echo "</td>";
+    echo "</tr>";
+    echo "<tr>";
+        echo "<td>";
+            echo $costumersArray[$x]->get_name() ;
+        echo "</td>";
+        echo "<td>";
+            echo $costumersArray[$x]->get_surname() ;
+        echo "</td>";
+        echo "<td>";
+            $nrAccounts = array();
+            for($y = 0; $y < $accountArrayLength; $y++) {
+
+                if($accountArray[$y]->get_id() ===  $costumersArray[$x]->get_id()) {
+                    $var = $accountArray[$y]->get_id();
+                    $nrAccounts[] = $var;
+                }
+            }
+            $occurences = array_count_values($nrAccounts);
+            echo $occurences[$costumersArray[$x]->get_id()];
+        echo "</td>";
+        echo "<td>";
+        $totalAssets = 0;
+        for($y = 0; $y < $accountArrayLength; $y++) {
+
+            if($accountArray[$y]->get_id() ===  $costumersArray[$x]->get_id()) {
+                $totalAssets += $accountArray[$y]->get_balance();
+            }
+        }
+        echo $totalAssets;
+        echo "</td>";
+    echo "</tr>";
+
+    echo "<tr>";
+        echo "<th class='test' colspan='3'>";
+            echo "Accounts";
+        echo "</th>";
+    echo "</tr>";
+    echo "<tr>";
+        echo "<td>";
+            echo "Account Holder";
+        echo "</td>";
+        echo "<td>";
+            echo "Account Number";
+        echo "</td>";
+        echo "<td>";
+            echo "Balance";
+        echo "</td>";
+        echo "<td>";
+            echo "Currency Type";
+        echo "</td>";
+    echo "</tr>";
+
+        for($y = 0; $y < $accountArrayLength; $y++) {
+            if($accountArray[$y]->get_id() ===  $costumersArray[$x]->get_id()) {
+                echo "<tr>";
+                    echo "<td>";
+                    echo $accountArray[$y]->get_accountHolder();
+                    echo "</td>";
+                    echo "<td>";
+                    echo $accountArray[$y]->get_accountNumber();
+                    echo "</td>";
+                    echo "<td>";
+                    echo $accountArray[$y]->get_balance();
+                    echo "</td>";
+                    echo "<td>";
+                    echo $accountArray[$y]->get_currencyType();
+                    echo "</td>";
+                echo "</tr>";
+            }
+        }
+    }
+    echo "</table>";
+echo "<br>";
+echo "<br>";
+
+
+// $arrlength = count($nrAccounts);
+//
+// for($x = 0; $x < $arrlength; $x++) {
+//     echo $nrAccounts[$x];
+//     echo "<br>";
+// }
+
+
+// $tall1 = 0;
+// echo "<table>";
+//
+// foreach ($costumersArray as $value) {
+//     echo "<tr>";
+//         echo "<td>" . $costumersArray[$tall1]->get_name() . "<td>";
+//
+//         echo "<td>" . $costumersArray[$tall1]->get_surname() . "<td>";
+//
+//     echo "</tr>";
+//     $tall1++;
+// }
+// echo "</table>";
 
 // $tall1 = 0;
 // foreach ($costumersArray as $value => $x_value) {

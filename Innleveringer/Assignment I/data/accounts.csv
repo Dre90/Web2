@@ -1,3 +1,7 @@
-accountHolder,accountNumber,currencyType,balance,withdrawals,deposits
-Dag-Roger Eriksen,10001,NOK,100000,0,1
-Tove Ugseth,10002,NOK,200000,0,0
+id,accountHolder,accountNumber,currencyType,balance,withdrawals,deposits
+1,Dag-Roger	Eriksen,10001,NOK,100000,0,1
+3,Odd-Are Eriksen,10002,NOK,200000,0,0
+1,Dag-Roger Eriksen,10003,NOK,900000,0,1
+2,Tove Ugseth,10004,NOK,40000,0,1
+2,Tove Ugseth,10005,NOK,40000,0,1
+2,Tove Ugseth,10006,SEK,1000,0,1
