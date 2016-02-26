@@ -1,0 +1,12 @@
+PROGRAMMING FOR WEB II
+LAB 7 / TASK 1
+
+Connect to your database system via PHP as root user.
+
+Try connecting with a wrong password.
+
+Try connecting with the correct password.
+
+Print whether the connection was successful or not.
+
+Write the same code both with mysql and mysqli APIs.

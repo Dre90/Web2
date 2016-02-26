@@ -1,0 +1,28 @@
+PROGRAMMING FOR WEB II
+LAB 7 / TASK 2
+
+Write a PHP script executing the following tasks via mysqli API.
+
+Connect to database as root user.
+
+Create a database named imt3851_db.
+
+Create a user named imt3851 with password imt3851.
+
+Grant all database privileges for imt3851_db database to imt3851 user.
+
+Select imt3851_db database for use and create the following tables:
+
+A table named books with:
+
+isbn, title, publisher, and pages.
+
+A table named customers with:
+
+personal_id, name, surname, and address.
+
+An table named orders with:
+
+order_id, isbn, personal_id, and quantity.
+
+Insert some dummy data to books table.

@@ -1,0 +1,28 @@
+PROGRAMMING FOR WEB II
+LAB 7 / TASK 3
+
+For this task you need to use mysqli API in a non-procedural form.
+
+Create a PHP file displaying all the orders with data read from books, customers, and orders tables:
+
+order id, customer id, customer name, customer surname, customer address, isbn, book title (ordered), publisher, and quantity.
+
+Right after the table, provide a form that allows creating a new order.
+
+Table should ask for customer details, book details and order quantity information, which are: personal id, name, surname, address, isbn, and quantity.
+
+If a given user does not exist in the database, add it to the corresponding table.
+
+If the user exists update his details.
+
+If there is no book corresponding to given isbn, do not add the order.
+
+All the fields has to be filled in.
+
+Once order is added update the HTML table.
+
+It should be possible to delete an order from the table.
+
+When an order is added or deleted, display a message stating success along with the order number.
+
+Do not forget to sanitise input data!
