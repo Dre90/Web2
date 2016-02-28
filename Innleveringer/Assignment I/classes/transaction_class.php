@@ -9,16 +9,13 @@ class transaction extends account {
     protected $date;
 
     // constructor
-    function __construct($t, $v, $a, $d) {
+    function __construct($t, $v,$ct, $a, $d) {
 		$this -> type = $t;
 		$this -> value = $v;
+        $this -> currencyType = $ct;
 		$this -> associatedAccount = $a;
         $this -> date = $d;
-        // if ($t == "withdrawal" ) {
-        //     parent::$withdrawals++;
-        // } else {
-        //     parent::$deposits++;
-        // }
+
 	}
 
     // destructor
@@ -44,6 +41,14 @@ class transaction extends account {
 		return $this -> value;
 	}
 
+    public function set_currencyType($ct) {
+		return $this -> currencyType = $ct;
+	}
+
+	public function get_currencyType() {
+		return $this -> currencyType;
+	}
+
     public function set_associatedAccount($a) {
 		return $this -> associatedAccount = $a;
 	}
@@ -58,13 +63,6 @@ class transaction extends account {
 
 	public function get_date() {
 		return $this -> date;
-	}
-
-    public function get_transaction() {
-        return $this -> type;
-        return $this -> value;
-		return $this -> associatedAccount;
-        return $this -> date;
 	}
 }
 

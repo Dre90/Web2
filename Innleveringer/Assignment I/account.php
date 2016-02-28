@@ -56,86 +56,146 @@ $customerNR = 0;
     echo "<table>";
     echo "<tr>";
         echo "<th colspan='5'>";
-            echo $accountArray[$customerNR]->get_accountHolder() ;
+            echo $costumersArray[$customerNR]->get_name() . " " . $costumersArray[$customerNR]->get_surname() ;
         echo "</th>";
     echo "</tr>";
     echo "<tr>";
-        echo "<th class='test' colspan='4'>";
-            echo $accountArray[$customerNR]->get_accountNumber();
+        echo "<th colspan='5'>";
+        echo "Overview";
         echo "</th>";
     echo "</tr>";
+
     echo "<tr>";
         echo "<td>";
-            echo "Account Holder";
+            echo "Number of deposits";
         echo "</td>";
         echo "<td>";
-            echo "Account Number";
+            echo "Number of withdrawals";
         echo "</td>";
         echo "<td>";
-            echo "Balance";
-        echo "</td>";
-        echo "<td>";
-            echo "Currency Type";
+            echo "Total Balance";
         echo "</td>";
     echo "</tr>";
+    echo "<tr>";
+
+        $nrDeposits = array();
+        $nrWithdrawals = array();
         for($y = 0; $y < $accountArrayLength; $y++) {
-            // if($accountArray[$y]->get_id() ===  $costumersArray[$x]->get_id()) {
-                echo "<tr>";
-                    echo "<td>";
-                    echo $accountArray[$customerNR]->get_accountHolder();
-                    echo "</td>";
-                    echo "<td>";
-                    echo $accountArray[$customerNR]->get_accountNumber();
-                    echo "</td>";
-                    echo "<td>";
-                    echo $accountArray[$customerNR]->get_balance();
-                    echo "</td>";
-                    echo "<td>";
-                    echo $accountArray[$customerNR]->get_currencyType();
-                    echo "</td>";
-                echo "</tr>";
-             }
+            if($accountArray[$y]->get_id() ===  $costumersArray[$customerNR]->get_id()) {
+                for ($z = 0; $z < $transactionArrayLength; $z++) {
+                    if($transactionArray[$z]->get_associatedAccount() ===  $accountArray[$y]->get_accountNumber()) {
+                        if ($transactionArray[$z]->get_type() === "deposit") {
+                            $var = $transactionArray[$z]->get_type();
+                            $nrDeposits[] = $var;
+                        } else {
+                            $var2 = $transactionArray[$z]->get_type();
+                            $nrWithdrawals[] = $var2;
+                        }
+                    }
+                }
+            }
+        }
+        echo "<td>";
+        $DepositsOccurences = array_count_values($nrDeposits);
+
+        if (count($nrDeposits) == 0) {
+            echo "0";
+        }else {
+            echo $DepositsOccurences["deposit"];
+        }
+        echo "</td>";
+        echo "<td>";
+        $WithdrawalsOccurences = array_count_values($nrWithdrawals);
+        if (count($nrWithdrawals) == 0) {
+            echo "0";
+        }else {
+            echo $WithdrawalsOccurences["withdrawal"];
+        }
+
+        echo "</td>";
+    echo "</tr>";
+    echo "<tr>";
+        echo "<th colspan='5'>";
+        echo "Transactions";
+        echo "</th>";
+    echo "</tr>";
+
+    echo "<tr>";
+        echo "<td>";
+            echo "Transaction date";
+        echo "</td>";
+        echo "<td>";
+            echo "Transaction type";
+        echo "</td>";
+        echo "<td>";
+            echo "Transaction value";
+        echo "</td>";
+        echo "<td>";
+            echo "Currency type";
+        echo "</td>";
+    echo "</tr>";
+
+    for($y = 0; $y < $accountArrayLength; $y++) {
+        if($accountArray[$y]->get_id() ==  $costumersArray[$customerNR]->get_id()) {
+            for ($z = 0; $z < $transactionArrayLength; $z++) {
+                if($transactionArray[$z]->get_associatedAccount() ===  $accountArray[$y]->get_accountNumber()) {
+                    echo "<tr>";
+                        echo "<td>";
+                            $transactionDato = $transactionArray[$z]->get_date();
+                            echo date("d.m.Y", $transactionDato);
+                        echo "</td>";
+                        echo "<td>";
+                            echo $transactionArray[$z]->get_type();
+                        echo "</td>";
+                        echo "<td>";
+                            echo $transactionArray[$z]->get_value();
+                        echo "</td>";
+                        echo "<td>";
+                            echo $transactionArray[$z]->get_currencyType();
+                        echo "</td>";
+                    echo "</tr>";
+                }
+            }
+        }
+    }
+    // echo "<tr>";
+    //     echo "<td>";
+    //         echo "Account Holder";
+    //     echo "</td>";
+    //     echo "<td>";
+    //         echo "Account Number";
+    //     echo "</td>";
+    //     echo "<td>";
+    //         echo "Balance";
+    //     echo "</td>";
+    //     echo "<td>";
+    //         echo "Currency Type";
+    //     echo "</td>";
+    // echo "</tr>";
+    //     for($y = 0; $y < $accountArrayLength; $y++) {
+    //         if($accountArray[$y]->get_id() ==  $costumersArray[$customerNR]->get_id()) {
+    //             echo "<tr>";
+    //                 echo "<td>";
+    //                 echo $accountArray[$customerNR]->get_accountHolder();
+    //                 echo "</td>";
+    //                 echo "<td>";
+    //                 echo $accountArray[$customerNR]->get_accountNumber();
+    //                 echo "</td>";
+    //                 echo "<td>";
+    //                 echo $accountArray[$customerNR]->get_balance();
+    //                 echo "</td>";
+    //                 echo "<td>";
+    //                 echo $accountArray[$customerNR]->get_currencyType();
+    //                 echo "</td>";
+    //             echo "</tr>";
+    //         }
+    //          }
 echo "</table>";
 
 
         // }
         echo "<table>";
-        echo "<tr>";
-            echo "<th colspan='5'>";
-            echo "Transactions";
-            echo "</th>";
-        echo "</tr>";
 
-        echo "<tr>";
-            echo "<td>";
-                echo "Transaction date";
-            echo "</td>";
-            echo "<td>";
-                echo "Transaction type";
-            echo "</td>";
-            echo "<td>";
-                echo "Transaction value";
-            echo "</td>";
-
-        echo "</tr>";
-        // for($y = 0; $y < $accountArrayLength; $y++) {
-        for ($z = 0; $z < $transactionArrayLength; $z++) {
-            if($transactionArray[$z]->get_associatedAccount() ===  $accountArray[$y]->get_accountNumber()) {
-                echo "<tr>";
-                    echo "<td>";
-                        $transactionDato = $transactionArray[$z]->get_date();
-                        echo date("d.m.Y", $transactionDato);
-                    echo "</td>";
-                    echo "<td>";
-                        echo $transactionArray[$z]->get_type();
-                    echo "</td>";
-                    echo "<td>";
-                        echo $transactionArray[$z]->get_value();
-                    echo "</td>";
-
-                echo "</tr>";
-            }
-        }
     // }
         echo "</table>";
     // }

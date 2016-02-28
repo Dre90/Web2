@@ -17,8 +17,8 @@ if ($_FILES["fileToUpload"]["size"] > 20000) {
 }
 
 // Allow certain file formats
-if($FileType != "txt") {
-    echo "Sorry, only .txt text files are allowed. ";
+if($FileType != "csv") {
+    echo "Sorry, only .csv text files are allowed. ";
     $uploadOk = 0;
 }
 

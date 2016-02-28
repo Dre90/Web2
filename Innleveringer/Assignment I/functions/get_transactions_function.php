@@ -16,7 +16,7 @@ function get_transactions() {
     $transactionArray = array();
     $tall = 0;
     foreach ($array as $value) {
-        $account = new transaction($array[$tall]["type"], $array[$tall]["value"], $array[$tall]["associatedAccount"], $array[$tall]["date"]);
+        $account = new transaction($array[$tall]["type"], $array[$tall]["value"], $array[$tall]["currencyType"], $array[$tall]["associatedAccount"], $array[$tall]["date"]);
 
         array_push($transactionArray, $account);
 
