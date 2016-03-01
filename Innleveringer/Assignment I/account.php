@@ -37,20 +37,20 @@ th	{
 </head>
 <body>
 <?php
-require 'functions/get_costumers_function.php';
+require 'functions/get_customers_function.php';
 require 'functions/get_accounts_function.php';
 require 'functions/get_transactions_function.php';
 
 /* ---------------------------------------------------------------------------
-Getting all the costumers, accounts and transactions and puts them in arrays
+Getting all the customers, accounts and transactions and puts them in arrays
 ----------------------------------------------------------------------------*/
-$costumersArray = get_costumers();
+$customersArray = get_customers();
 $accountArray = get_accounts();
 $transactionArray = get_transactions();
 /* ---------------------------------------------------------------------------
 Counting the arrays
 ----------------------------------------------------------------------------*/
-$costumersArrayLength = count($costumersArray);
+$customersArrayLength = count($customersArray);
 $accountArrayLength = count($accountArray);
 $transactionArrayLength = count($transactionArray);
 /* ---------------------------------------------------------------------------
@@ -68,12 +68,12 @@ $customerNR = 2;
 echo "<table>";
     echo "<tr>";
         echo "<th colspan='4'>";
-            echo $costumersArray[$customerNR]->get_name() . " " . $costumersArray[$customerNR]->get_surname() ;
+            echo $customersArray[$customerNR]->get_name() . " " . $customersArray[$customerNR]->get_surname() ;
         echo "</th>";
     echo "</tr>";
 
     for($y = 0; $y < $accountArrayLength; $y++) {
-        if($accountArray[$y]->get_id() ===  $costumersArray[$customerNR]->get_id()) {
+        if($accountArray[$y]->get_id() ===  $customersArray[$customerNR]->get_id()) {
             echo "<tr>";
                 echo "<th colspan='4'>";
                 echo "Overview of accunt" . " " . $accountArray[$y]->get_accountNumber();
@@ -143,7 +143,7 @@ echo "<table>";
                         echo "</td>";
                     echo "</tr>";
 
-                }    
+                }
             }
         }
     }
@@ -152,7 +152,7 @@ echo "</table>";
         // $nrDeposits = array();
         // $nrWithdrawals = array();
         // for($y = 0; $y < $accountArrayLength; $y++) {
-        //     if($accountArray[$y]->get_id() ===  $costumersArray[$customerNR]->get_id()) {
+        //     if($accountArray[$y]->get_id() ===  $customersArray[$customerNR]->get_id()) {
         //         for ($z = 0; $z < $transactionArrayLength; $z++) {
         //             if($transactionArray[$z]->get_associatedAccount() ===  $accountArray[$y]->get_accountNumber()) {
         //                 if ($transactionArray[$z]->get_type() === "deposit") {

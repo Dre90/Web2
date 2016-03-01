@@ -9,13 +9,13 @@
 <?php
 require 'functions/get_uploaded_account_function.php';
 require 'functions/get_accounts_function.php';
-require 'functions/open_file_function.php';
-require 'functions/get_costumers_function.php';
+require_once 'functions/open_file_function.php';
+require 'functions/get_customers_function.php';
 
-$costumersArray = get_costumers();
+$customersArray = get_customers();
 $accountsArray = get_accounts();
 
-$costumersArrayLength = count($costumersArray);
+$customersArrayLength = count($customersArray);
 $accountsArrayLength = count($accountsArray);
 
 $target_dir = "uploads/";
@@ -55,32 +55,46 @@ if ($uploadOk == 0) {
 
         $accountArrayLength = count($account);
 
-        for($x = 0; $x < $costumersArrayLength; $x++) {
+        for($x = 0; $x < $customersArrayLength; $x++) {
             for($y = 0; $y < $accountArrayLength; $y++) {
-                if (!$costumersArray[$x]->get_id() == $account[$y]->get_id() ) {
+                if (!$customersArray[$x]->get_id() == $account[$y]->get_id() ) {
                     echo $account[0]->get_accountHolder() ." is not a customer in our system.";
                 } else {
                     $arrlength = count($accountsArray);
                     $text = "id,accountHolder,accountNumber,currencyType,balance,withdrawals,deposits" . "\n";
-                    for($x = 0; $x < $arrlength; $x++) {
-                        $text .=  $accountsArray[$x]->get_id() . "," .
-                        $accountsArray[$x]->get_accountHolder() . "," .
-                        $accountsArray[$x]->get_accountNumber() . "," .
-                        $accountsArray[$x]->get_currencyType() . "," .
-                        $accountsArray[$x]->get_balance() . "," .
-                        $accountsArray[$x]->get_withdrawals() . "," .
-                        $accountsArray[$x]->get_deposits() . "\n";
+                    for($z = 0; $z < $arrlength; $z++) {
+                        $text .=  $accountsArray[$z]->get_id() . "," .
+                        $accountsArray[$z]->get_accountHolder() . "," .
+                        $accountsArray[$z]->get_accountNumber() . "," .
+                        $accountsArray[$z]->get_currencyType() . "," .
+                        $accountsArray[$z]->get_balance() . "," .
+                        $accountsArray[$z]->get_withdrawals() . "," .
+                        $accountsArray[$z]->get_deposits() . "\n";
                     }
                     open_file("data/accounts.csv", $text);
 
-                    $totalAssets = $costumersArray[$x]->get_totalAssets(); 
-                    $totalAssets += $account[0]->get_balance();
-                    echo $totalAssets;
 
-                    echo "The account was added to " . $account[0]->get_accountHolder();
+                }
+                if ($customersArray[$x]->get_id() == $account[0]->get_id() ) {
+                    $totalAssets = $customersArray[$x]->get_totalAssets() + $account[0]->get_balance();
+                    $customersArray[$x]->set_totalAssets($totalAssets);
+
+                    $arrlength = count($customersArray);
+                    $text = "id,name,surname,birthdate,address,totalAssets" . "\n";
+                    for($a = 0; $a < $arrlength; $a++) {
+                        $text .=  $customersArray[$a]->get_id() . "," .
+                        $customersArray[$a]->get_name() . "," .
+                        $customersArray[$a]->get_surname() . "," .
+                        $customersArray[$a]->get_birthdate() . "," .
+                        $customersArray[$a]->get_address() . "," .
+                        $customersArray[$a]->get_totalAssets() . "\n";
+                    }
+                    open_file("data/customers.csv", $text);
                 }
             }
         }
+        echo "<br><br>";
+        echo "The account was added to " . $account[0]->get_accountHolder();
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

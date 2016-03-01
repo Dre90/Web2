@@ -42,20 +42,20 @@ th	{
 </head>
 <body>
 <?php
-require 'functions/get_costumers_function.php';
+require 'functions/get_customers_function.php';
 require 'functions/get_accounts_function.php';
 //require 'functions/get_transactions_function.php';
 
-$costumersArray = get_costumers();
+$customersArray = get_customers();
 $accountArray = get_accounts();
 //$transactionArray = get_transactions();
 
-$costumersArrayLength = count($costumersArray);
+$customersArrayLength = count($customersArray);
 $accountArrayLength = count($accountArray);
 
 // echo "<pre>";
 // echo "<br>";echo "<br>";
-// print_r($costumersArray);
+// print_r($customersArray);
 // echo "<br>";echo "<br>";
 // echo "<br>";echo "<br>";
 // print_r($accountArray);
@@ -63,7 +63,7 @@ $accountArrayLength = count($accountArray);
 // echo "<br>";echo "<br>";
 // print_r($transactionArray);
 // echo "<br>";echo "<br>";
-// echo "</pre>";
+//echo "</pre>";
 
 echo "Total of customers: " . customer::$customerCount;
 echo "<br>";
@@ -72,7 +72,7 @@ echo "<br>";
 
 
 echo "<table>";
-for($x = 0; $x < $costumersArrayLength; $x++) {
+for($x = 0; $x < $customersArrayLength; $x++) {
     echo "<tr>";
         echo "<th colspan='5'>";
             echo "Costumer";
@@ -97,19 +97,19 @@ for($x = 0; $x < $costumersArrayLength; $x++) {
     echo "</tr>";
     echo "<tr>";
         echo "<td>";
-            echo $costumersArray[$x]->get_name();
+            echo $customersArray[$x]->get_name();
         echo "</td>";
         echo "<td>";
-            echo $costumersArray[$x]->get_surname();
+            echo $customersArray[$x]->get_surname();
         echo "</td>";
         echo "<td>";
-            echo $costumersArray[$x]->get_birthdate();
+            echo $customersArray[$x]->get_birthdate();
         echo "</td>";
         echo "<td>";
             $nrAccounts = array();
             for($y = 0; $y < $accountArrayLength; $y++) {
 
-                if($accountArray[$y]->get_id() ===  $costumersArray[$x]->get_id()) {
+                if($accountArray[$y]->get_id() ===  $customersArray[$x]->get_id()) {
                     $var = $accountArray[$y]->get_id();
                     $nrAccounts[] = $var;
                 }
@@ -118,20 +118,20 @@ for($x = 0; $x < $costumersArrayLength; $x++) {
             if (count($occurences) == 0) {
                 echo "0";
             }else {
-                echo $occurences[$costumersArray[$x]->get_id()];
+                echo $occurences[$customersArray[$x]->get_id()];
             }
 
         echo "</td>";
         echo "<td>";
-
-        $totalAssets = 0;
-        for($y = 0; $y < $accountArrayLength; $y++) {
-
-            if($accountArray[$y]->get_id() ===  $costumersArray[$x]->get_id()) {
-                $totalAssets += $accountArray[$y]->get_balance();
-            }
-        }
-        echo $totalAssets;
+        echo $customersArray[$x]->get_totalAssets() ;
+        // $totalAssets = 0;
+        // for($y = 0; $y < $accountArrayLength; $y++) {
+        //
+        //     if($accountArray[$y]->get_id() ===  $customersArray[$x]->get_id()) {
+        //         $totalAssets += $accountArray[$y]->get_balance();
+        //     }
+        // }
+        // echo $totalAssets;
         echo "</td>";
     echo "</tr>";
     if (!count($occurences) == 0) {
@@ -156,7 +156,7 @@ for($x = 0; $x < $costumersArrayLength; $x++) {
         echo "</tr>";
 
             for($y = 0; $y < $accountArrayLength; $y++) {
-                if($accountArray[$y]->get_id() ===  $costumersArray[$x]->get_id()) {
+                if($accountArray[$y]->get_id() ===  $customersArray[$x]->get_id()) {
                     echo "<tr>";
                         echo "<td>";
                         echo $accountArray[$y]->get_accountHolder();

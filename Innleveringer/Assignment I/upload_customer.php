@@ -55,13 +55,13 @@ if ($uploadOk == 0) {
                 } else {
                     $arrlength = count($customersArray);
                     $text = "id,name,surname,birthdate,address,totalAssets" . "\n";
-                    for($x = 0; $x < $arrlength; $x++) {
-                        $text .=  $customersArray[$x]->get_id() . "," .
-                        $customersArray[$x]->get_name() . "," .
-                        $customersArray[$x]->get_surname() . "," .
-                        $customersArray[$x]->get_birthdate() . "," .
-                        $customersArray[$x]->get_address() . "," .
-                        $customersArray[$x]->get_totalAssets() . "\n";
+                    for($z = 0; $z < $arrlength; $z++) {
+                        $text .=  $customersArray[$z]->get_id() . "," .
+                        $customersArray[$z]->get_name() . "," .
+                        $customersArray[$z]->get_surname() . "," .
+                        $customersArray[$z]->get_birthdate() . "," .
+                        $customersArray[$z]->get_address() . "," .
+                        $customersArray[$z]->get_totalAssets() . "\n";
                     }
                     open_file("data/customers.csv", $text);
 
