@@ -59,6 +59,7 @@ Sort on transaction amount remove the comment
 ----------------------------------------------------------------------------*/
 //sort($transactionArray); //amount in ascending
 //rsort($transactionArray); //amount in descending
+
 /* ---------------------------------------------------------------------------
 Selecting customer
 To change customer switch out the number in $customerNR
@@ -141,7 +142,8 @@ echo "<table>";
                             echo $transactionArray[$z]->get_currencyType();
                         echo "</td>";
                     echo "</tr>";
-                }
+
+                }    
             }
         }
     }

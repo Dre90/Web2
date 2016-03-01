@@ -5,4 +5,3 @@ id,accountHolder,accountNumber,currencyType,balance,withdrawals,deposits
 2,Tove Ugseth,10004,NOK,40000,0,1
 2,Tove Ugseth,10005,NOK,40000,0,0
 3,Odd-Are Eriksen,10006,NOK,1000,1,1
-3,Odd-Are Eriksen,10007,NOK,10000,0,0

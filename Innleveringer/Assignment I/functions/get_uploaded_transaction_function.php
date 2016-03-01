@@ -1,8 +1,8 @@
 <?php
 require_once 'classes/customer_class.php';
 
-function get_costumers() {
-    $csv_data = file_get_contents('data/customers.csv'); // Get the file content
+function get_uploaded_costumer($path) {
+    $csv_data = file_get_contents($path); // Get the file content
     $lines = explode("\n", $csv_data); // Get the lines
     $head = str_getcsv(array_shift($lines)); // Get the head
 

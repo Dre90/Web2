@@ -1,5 +1,5 @@
 <?php
-require 'classes/transaction_class.php';
+require_once 'classes/transaction_class.php';
 
 function get_transactions() {
     $csv_data = file_get_contents('data/transactions.csv'); // Get the file content

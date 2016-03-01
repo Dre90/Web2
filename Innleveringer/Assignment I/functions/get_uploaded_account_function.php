@@ -1,8 +1,9 @@
+
 <?php
 require_once 'classes/account_class.php';
 
-function get_accounts() {
-    $csv_data = file_get_contents('data/accounts.csv'); // Get the file content
+function get_uploaded_account($path) {
+    $csv_data = file_get_contents($path); // Get the file content
     $lines = explode("\n", $csv_data); // Get the lines
     $head = str_getcsv(array_shift($lines)); // Get the head
 
@@ -16,10 +17,9 @@ function get_accounts() {
     $accountArray = array();
     $tall = 0;
     foreach ($array as $value) {
-        $account = new account($array[$tall]["id"], $array[$tall]["accountHolder"], $array[$tall]["accountNumber"], $array[$tall]["currencyType"], $array[$tall]["balance"], $array[$tall]["withdrawals"], $array[$tall]["deposits"]);
+        $account = new account($array[$tall]["id"],$array[$tall]["accountHolder"], $array[$tall]["accountNumber"], $array[$tall]["currencyType"], $array[$tall]["balance"], $array[$tall]["withdrawals"], $array[$tall]["deposits"]);
 
         array_push($accountArray, $account);
-
         $tall++;
     }
     return $accountArray;

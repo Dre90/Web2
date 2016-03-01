@@ -67,6 +67,14 @@ class customer {
 	public function get_address() {
 		return $this -> address;
 	}
+
+    public function set_totalAssets($ta) {
+		return $this -> totalAssets = $ta;
+	}
+
+	public function get_totalAssets() {
+		return $this -> totalAssets;
+	}
 }
 
  ?>
