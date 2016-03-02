@@ -4,38 +4,18 @@ table of transactions. Each transaction should include at least the date, type, 
 currency. One can define and change the customer by manipulating a parameter in the code. -->
 <html>
 <head>
-<style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 5px;
-}
-
-th {
-    padding-top: 20px;
-
-}
-
-th.test {
-    padding-top: 7px;
-}
-tr:nth-child(even) {
-    background-color: #eee;
-}
-
-tr:nth-child(odd) {
-   background-color:#fff;
-}
-th	{
-    background-color: white;
-
-}
-</style>
-
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="customers.php">Customers</a></li>
+        <li><a class="active" href="account.php">Account</a></li>
+        <li><a href="data.php">Upload data</a></li>
+    </ul>
+
 <?php
 require 'functions/get_customers_function.php';
 require 'functions/get_accounts_function.php';
@@ -64,7 +44,16 @@ Sort on transaction amount remove the comment
 Selecting customer
 To change customer switch out the number in $customerNR
 ----------------------------------------------------------------------------*/
-$customerNR = 2;
+// echo "<select name='per1' id='per1'>";
+// for($x = 0; $x < $customersArrayLength; $x++) {
+//   $name = $customersArray[$x]->get_name() . ' ' . $customersArray[$x]->get_surname();
+//
+//   $customerid = $customersArray[$x]->get_id();
+//   echo "<option value='$customerid'>$name</option>";
+//     }
+// echo "</select>";
+
+$customerNR = 1;
 echo "<table>";
     echo "<tr>";
         echo "<th colspan='4'>";
@@ -154,42 +143,19 @@ echo "<table>";
         }
     }
 echo "</table>";
-
-        // $nrDeposits = array();
-        // $nrWithdrawals = array();
-        // for($y = 0; $y < $accountArrayLength; $y++) {
-        //     if($accountArray[$y]->get_id() ===  $customersArray[$customerNR]->get_id()) {
-        //         for ($z = 0; $z < $transactionArrayLength; $z++) {
-        //             if($transactionArray[$z]->get_associatedAccount() ===  $accountArray[$y]->get_accountNumber()) {
-        //                 if ($transactionArray[$z]->get_type() === "deposit") {
-        //                     $var = $transactionArray[$z]->get_type();
-        //                     $nrDeposits[] = $var;
-        //                 } else {
-        //                     $var2 = $transactionArray[$z]->get_type();
-        //                     $nrWithdrawals[] = $var2;
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
-        // echo "<td>";
-        // $DepositsOccurences = array_count_values($nrDeposits);
-        //
-        // if (count($nrDeposits) == 0) {
-        //     echo "0";
-        // }else {
-        //     echo $DepositsOccurences["deposit"];
-        // }
-        // echo "</td>";
-        // echo "<td>";
-        // $WithdrawalsOccurences = array_count_values($nrWithdrawals);
-        // if (count($nrWithdrawals) == 0) {
-        //     echo "0";
-        // }else {
-        //     echo $WithdrawalsOccurences["withdrawal"];
-        // }
-
-        // echo "</td>";
 ?>
+<!-- <script>
+$( "select" )
+  .change(function () {
+    var str = "";
+    $( "select option:selected" ).each(function() {
+      str += $( this ).val() + " ";
+    });
+    $( "p" ).text( str );
+
+  })
+  .change();
+</script>
+<p></p> -->
 </body>
 </html>

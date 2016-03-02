@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <?php
@@ -135,24 +136,7 @@ if ($uploadOk == 0) {
                             $accountsArray[$a]->get_deposits() . "\n";
                         }
                         open_file("data/accounts.csv", $text);
-                        for($b = 0; $b < $customersArrayLength; $b++) {
-                            if ($customersArray[$b]->get_id() == $accountsArray[$x]->get_id() ) {
-                                $totalAssets = $accountsArray[$x]->get_balance();
-                                $customersArray[$b]->set_totalAssets($totalAssets);
 
-                                $arrlength = count($customersArray);
-                                $text = "id,name,surname,birthdate,address,totalAssets" . "\n";
-                                for($a = 0; $a < $arrlength; $a++) {
-                                    $text .=  $customersArray[$a]->get_id() . "," .
-                                    $customersArray[$a]->get_name() . "," .
-                                    $customersArray[$a]->get_surname() . "," .
-                                    $customersArray[$a]->get_birthdate() . "," .
-                                    $customersArray[$a]->get_address() . "," .
-                                    $customersArray[$a]->get_totalAssets() . "\n";
-                                }
-                                open_file("data/customers.csv", $text);
-                            }
-                        }
                     }
 
                 }
@@ -168,6 +152,7 @@ echo "<br><br>";
 echo "<a href='data.php' class='myButton'>Back</a>";
 
 $file = "uploads/" . basename( $_FILES["fileToUpload"]["name"]);
+unlink($file);
 ?>
 </body>
 </html>

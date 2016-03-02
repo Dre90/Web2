@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <?php
@@ -99,7 +100,8 @@ if ($uploadOk == 0) {
 }
 echo "<br><br>";
 echo "<a href='data.php' class='myButton'>Back</a>";
-
+$file = "uploads/" . basename( $_FILES["fileToUpload"]["name"]);
+unlink($file);
 ?>
 </body>
 </html>
