@@ -167,6 +167,7 @@ if ($uploadOk == 0) {
 echo "<br><br>";
 echo "<a href='data.php' class='myButton'>Back</a>";
 
+$file = "uploads/" . basename( $_FILES["fileToUpload"]["name"]);
 ?>
 </body>
 </html>

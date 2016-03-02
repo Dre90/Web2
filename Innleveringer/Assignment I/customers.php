@@ -123,15 +123,7 @@ for($x = 0; $x < $customersArrayLength; $x++) {
 
         echo "</td>";
         echo "<td>";
-        echo $customersArray[$x]->get_totalAssets() ;
-        // $totalAssets = 0;
-        // for($y = 0; $y < $accountArrayLength; $y++) {
-        //
-        //     if($accountArray[$y]->get_id() ===  $customersArray[$x]->get_id()) {
-        //         $totalAssets += $accountArray[$y]->get_balance();
-        //     }
-        // }
-        // echo $totalAssets;
+            echo $customersArray[$x]->get_totalAssets() ;
         echo "</td>";
     echo "</tr>";
     if (!count($occurences) == 0) {

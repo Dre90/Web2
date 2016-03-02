@@ -64,7 +64,7 @@ Sort on transaction amount remove the comment
 Selecting customer
 To change customer switch out the number in $customerNR
 ----------------------------------------------------------------------------*/
-$customerNR = 0;
+$customerNR = 2;
 echo "<table>";
     echo "<tr>";
         echo "<th colspan='4'>";
