@@ -1,7 +1,7 @@
 <?php
-require_once 'classes/customer_class.php';
+require_once 'classes/transaction_class.php';
 
-function get_uploaded_costumer($path) {
+function get_uploaded_transaction($path) {
     $csv_data = file_get_contents($path); // Get the file content
     $lines = explode("\n", $csv_data); // Get the lines
     $head = str_getcsv(array_shift($lines)); // Get the head
@@ -13,14 +13,14 @@ function get_uploaded_costumer($path) {
 
     array_pop($array); //removes the last empty element of the array
 
-    $costumersArray = array();
+    $transactionArray = array();
     $tall = 0;
     foreach ($array as $value) {
-        $costumer = new customer($array[$tall]["id"],$array[$tall]["name"], $array[$tall]["surname"], $array[$tall]["birthdate"], $array[$tall]["address"], $array[$tall]["totalAssets"]);
+        $transaction = new transaction($array[$tall]["type"],$array[$tall]["value"], $array[$tall]["currencyType"], $array[$tall]["associatedAccount"], $array[$tall]["date"]);
 
-        array_push($costumersArray, $costumer);
+        array_push($transactionArray, $transaction);
         $tall++;
     }
-    return $costumersArray;
+    return $transactionArray;
 }
 ?>

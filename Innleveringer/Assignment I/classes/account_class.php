@@ -73,7 +73,7 @@ class account  {
 	}
 
     public function set_withdrawals($w) {
-		return $this -> withdrawals = $w;
+		return $this -> withdrawals += $w;
 	}
 
 	public function get_withdrawals() {
@@ -81,7 +81,7 @@ class account  {
 	}
 
     public function set_deposits($d) {
-		return $this -> deposits = $d;
+		return $this -> deposits += $d;
 	}
 
 	public function get_deposits() {

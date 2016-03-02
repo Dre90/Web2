@@ -2,7 +2,7 @@
 /**
  *
  */
-class transaction extends account {
+class transaction{
     protected $type;
     protected $value;
     protected $associatedAccount;
@@ -16,12 +16,6 @@ class transaction extends account {
 		$this -> associatedAccount = $a;
         $this -> date = $d;
 
-	}
-
-    // destructor
-    function __destruct() {
-		// parent::$withdrawals--;
-        // parent::$deposits--;
 	}
 
     // setter and getter methods

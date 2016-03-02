@@ -72,8 +72,6 @@ if ($uploadOk == 0) {
                         $accountsArray[$z]->get_deposits() . "\n";
                     }
                     open_file("data/accounts.csv", $text);
-
-
                 }
                 if ($customersArray[$x]->get_id() == $account[0]->get_id() ) {
                     $totalAssets = $customersArray[$x]->get_totalAssets() + $account[0]->get_balance();
