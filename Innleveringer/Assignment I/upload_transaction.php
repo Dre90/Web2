@@ -18,13 +18,13 @@ Getting all the customers, accounts and transactions and puts them in arrays
 ----------------------------------------------------------------------------*/
 $customersArray = get_customers();
 $accountsArray = get_accounts();
-$transactionArray = get_transactions();
+$transactionsArray = get_transactions();
 /* ---------------------------------------------------------------------------
 Counting the arrays
 ----------------------------------------------------------------------------*/
 $customersArrayLength = count($customersArray);
 $accountsArrayLength = count($accountsArray);
-$transactionArrayLength = count($transactionArray);
+$transactionsArrayLength = count($transactionsArray);
 
 
 $target_dir = "uploads/";
@@ -70,7 +70,7 @@ if ($uploadOk == 0) {
                     echo $transaction[0]->get_associatedAccount() ." is not a account in our system.";
                 } else {
                     $arrlength = count($transactionsArray);
-                    $text = "id,accountHolder,accountNumber,currencyType,balance,withdrawals,deposits" . "\n";
+                    $text = "type,value,currencyType,associatedAccount,date" . "\n";
                     for($z = 0; $z < $arrlength; $z++) {
                         $text .=  $transactionsArray[$z]->get_type() . "," .
                         $transactionsArray[$z]->get_value() . "," .
@@ -79,48 +79,87 @@ if ($uploadOk == 0) {
                         $transactionsArray[$z]->get_date() . "\n";
                     }
                     open_file("data/transactions.csv", $text);
-                }
-                if ($accountsArray[$x]->get_accountNumber() == $transaction[0]->get_associatedAccount() && $transaction[0]->get_type() == "deposit" ) {
-                    $balance = $accountsArray[$x]->get_balance() + $transaction[0]->get_value();
-                    $accountsArray[$x]->set_balance($balance);
-                    $accountsArray[$x]->set_deposits(1);
 
-                    $arrlength = count($accountsArray);
-                    $text = "id,accountHolder,accountNumber,currencyType,balance,withdrawals,deposits" . "\n";
-                    for($a = 0; $a < $arrlength; $a++) {
-                        $text .=  $accountsArray[$a]->get_id() . "," .
-                        $accountsArray[$a]->get_accountHolder() . "," .
-                        $accountsArray[$a]->get_accountNumber() . "," .
-                        $accountsArray[$a]->get_currencyType() . "," .
-                        $accountsArray[$a]->get_balance() . "," .
-                        $accountsArray[$a]->get_withdrawals() . "," .
-                        $accountsArray[$a]->get_deposits() . "\n";
+                    if ($accountsArray[$x]->get_accountNumber() == $transaction[0]->get_associatedAccount() && $transaction[0]->get_type() == "deposit" ) {
+                        $balance = $accountsArray[$x]->get_balance() + $transaction[0]->get_value();
+                        $accountsArray[$x]->set_balance($balance);
+                        $accountsArray[$x]->set_deposits(1);
+
+                        $arrlength = count($accountsArray);
+                        $text = "id,accountHolder,accountNumber,currencyType,balance,withdrawals,deposits" . "\n";
+                        for($a = 0; $a < $arrlength; $a++) {
+                            $text .=  $accountsArray[$a]->get_id() . "," .
+                            $accountsArray[$a]->get_accountHolder() . "," .
+                            $accountsArray[$a]->get_accountNumber() . "," .
+                            $accountsArray[$a]->get_currencyType() . "," .
+                            $accountsArray[$a]->get_balance() . "," .
+                            $accountsArray[$a]->get_withdrawals() . "," .
+                            $accountsArray[$a]->get_deposits() . "\n";
+                        }
+                        open_file("data/accounts.csv", $text);
+
+                        for($b = 0; $b < $customersArrayLength; $b++) {
+                            if ($customersArray[$b]->get_id() == $accountsArray[$x]->get_id() ) {
+                                $totalAssets = $accountsArray[$x]->get_balance();
+                                $customersArray[$b]->set_totalAssets($totalAssets);
+
+                                $arrlength = count($customersArray);
+                                $text = "id,name,surname,birthdate,address,totalAssets" . "\n";
+                                for($a = 0; $a < $arrlength; $a++) {
+                                    $text .=  $customersArray[$a]->get_id() . "," .
+                                    $customersArray[$a]->get_name() . "," .
+                                    $customersArray[$a]->get_surname() . "," .
+                                    $customersArray[$a]->get_birthdate() . "," .
+                                    $customersArray[$a]->get_address() . "," .
+                                    $customersArray[$a]->get_totalAssets() . "\n";
+                                }
+                                open_file("data/customers.csv", $text);
+                            }
+                        }
+
+
+                    }elseif ($accountsArray[$x]->get_accountNumber() == $transaction[0]->get_associatedAccount() && $transaction[0]->get_type() ==  "withdrawal") {
+                        $balance = $accountsArray[$x]->get_balance() - $transaction[0]->get_value();
+                        $accountsArray[$x]->set_balance($balance);
+                        $accountsArray[$x]->set_withdrawals(1);
+
+                        $arrlength = count($accountsArray);
+                        $text = "id,accountHolder,accountNumber,currencyType,balance,withdrawals,deposits" . "\n";
+                        for($a = 0; $a < $arrlength; $a++) {
+                            $text .=  $accountsArray[$a]->get_id() . "," .
+                            $accountsArray[$a]->get_accountHolder() . "," .
+                            $accountsArray[$a]->get_accountNumber() . "," .
+                            $accountsArray[$a]->get_currencyType() . "," .
+                            $accountsArray[$a]->get_balance() . "," .
+                            $accountsArray[$a]->get_withdrawals() . "," .
+                            $accountsArray[$a]->get_deposits() . "\n";
+                        }
+                        open_file("data/accounts.csv", $text);
+                        for($b = 0; $b < $customersArrayLength; $b++) {
+                            if ($customersArray[$b]->get_id() == $accountsArray[$x]->get_id() ) {
+                                $totalAssets = $accountsArray[$x]->get_balance();
+                                $customersArray[$b]->set_totalAssets($totalAssets);
+
+                                $arrlength = count($customersArray);
+                                $text = "id,name,surname,birthdate,address,totalAssets" . "\n";
+                                for($a = 0; $a < $arrlength; $a++) {
+                                    $text .=  $customersArray[$a]->get_id() . "," .
+                                    $customersArray[$a]->get_name() . "," .
+                                    $customersArray[$a]->get_surname() . "," .
+                                    $customersArray[$a]->get_birthdate() . "," .
+                                    $customersArray[$a]->get_address() . "," .
+                                    $customersArray[$a]->get_totalAssets() . "\n";
+                                }
+                                open_file("data/customers.csv", $text);
+                            }
+                        }
                     }
-                    open_file("data/accounts.csv", $text);
 
-                }elseif ($accountsArray[$x]->get_accountNumber() == $transaction[0]->get_associatedAccount() && $transaction[0]->get_type() == "withdrawal") {
-                    $balance = $accountsArray[$x]->get_balance() - $transaction[0]->get_value();
-                    $accountsArray[$x]->set_balance($balance);
-                    $accountsArray[$x]->set_withdrawals(1);
-
-                    $arrlength = count($accountsArray);
-                    $text = "id,accountHolder,accountNumber,currencyType,balance,withdrawals,deposits" . "\n";
-                    for($a = 0; $a < $arrlength; $a++) {
-                        $text .=  $accountsArray[$a]->get_id() . "," .
-                        $accountsArray[$a]->get_accountHolder() . "," .
-                        $accountsArray[$a]->get_accountNumber() . "," .
-                        $accountsArray[$a]->get_currencyType() . "," .
-                        $accountsArray[$a]->get_balance() . "," .
-                        $accountsArray[$a]->get_withdrawals() . "," .
-                        $accountsArray[$a]->get_deposits() . "\n";
-                    }
-                    open_file("data/accounts.csv", $text);
                 }
-                
             }
         }
         echo "<br><br>";
-        echo "The account was added to " . $account[0]->get_accountHolder();
+        echo "The transaction was added to account " . $transaction[0]->get_associatedAccount();
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

@@ -64,7 +64,7 @@ Sort on transaction amount remove the comment
 Selecting customer
 To change customer switch out the number in $customerNR
 ----------------------------------------------------------------------------*/
-$customerNR = 2;
+$customerNR = 0;
 echo "<table>";
     echo "<tr>";
         echo "<th colspan='4'>";
@@ -82,6 +82,9 @@ echo "<table>";
 
             echo "<tr>";
                 echo "<td>";
+                    echo "Account number";
+                echo "</td>";
+                echo "<td>";
                     echo "Number of deposits";
                 echo "</td>";
                 echo "<td>";
@@ -93,6 +96,9 @@ echo "<table>";
             echo "</tr>";
 
             echo "<tr>";
+                echo "<td>";
+                    echo $accountArray[$y]->get_accountNumber();
+                echo "</td>";
                 echo "<td>";
                     echo $accountArray[$y]->get_deposits();
                 echo "</td>";
