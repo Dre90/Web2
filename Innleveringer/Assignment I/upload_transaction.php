@@ -119,7 +119,7 @@ if ($uploadOk == 0) {
                         }
 
 
-                    }elseif ($accountsArray[$x]->get_accountNumber() == $transaction[0]->get_associatedAccount() && $transaction[0]->get_type() ==  "withdrawal") {
+                    }elseif ($accountsArray[$x]->get_accountNumber() == $transaction[0]->get_associatedAccount() && $transaction[0]->get_type() ==  "withdrawal")    {
                         $balance = $accountsArray[$x]->get_balance() - $transaction[0]->get_value();
                         $accountsArray[$x]->set_balance($balance);
                         $accountsArray[$x]->set_withdrawals(1);
