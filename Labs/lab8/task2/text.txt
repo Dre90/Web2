@@ -1,0 +1,18 @@
+PROGRAMMING FOR WEB II
+LAB 8 / TASK 1
+
+Create a login page and a profile page.
+
+Once a user logs in successfully, provide a link the profile page.
+
+Profile page should greet the user with his name and surname, and then state his user name.
+
+Let the user to set a background colour for the profile page, save user preference in a cookie, and use preferred user colour next time he/she logs in.
+
+Provide a log out button in the profile page.
+
+When the user logs out, destroy the session.
+
+If user calls profile page without logging in direct his/her to login page.
+
+Take necessary cautions to protect the user session.

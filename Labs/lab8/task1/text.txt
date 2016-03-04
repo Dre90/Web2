@@ -1,0 +1,10 @@
+PROGRAMMING FOR WEB II
+LAB 8 / TASK 1
+
+Create registration form to register users.
+
+The form should ask for a username, name, surname, gender, password, and agree terms option.
+
+Store the user into a users table under a database named mysite.
+
+Sanitise the user input and has the user password.

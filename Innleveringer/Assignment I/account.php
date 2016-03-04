@@ -53,7 +53,7 @@ To change customer switch out the number in $customerNR
 //     }
 // echo "</select>";
 
-$customerNR = 1;
+$customerNR = 0;
 echo "<table>";
     echo "<tr>";
         echo "<th colspan='4'>";

@@ -1,0 +1,20 @@
+PROGRAMMING FOR WEB II
+LAB 8 / TASK 3
+
+Now create two php files.
+
+The first php file, named list_users.php, should list all the usernames.
+
+Each username should have link assigned over it or a text next to it (e.g., "Show profile").
+
+The links should point to another php page, named show_profile.php.
+
+You should send the username as a part of the URL like the following:
+
+<a href="show_profile.php?user=admin">See Profile</a>
+<a href="show_profile.php?user=arild">See Profile</a>
+etc.
+
+The show_profile.php file should get the user name from the URL and display all the user data, and if an invalid username is provided should state that the username is invalid.
+
+You are not allowed to use sessions or cookies.
