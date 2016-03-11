@@ -1,0 +1,4 @@
+PROGRAMMING FOR WEB II
+LAB 9 / TASK 1
+
+Write a JavaScript program to test the first character of a string is uppercase or not.

@@ -1,0 +1,4 @@
+PROGRAMMING FOR WEB II
+LAB 9 / TASK 4
+
+Write a JavaScript program to validate an international phone number in the following format +47 405 444 68.
