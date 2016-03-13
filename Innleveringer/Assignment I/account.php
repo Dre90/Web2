@@ -52,6 +52,7 @@
             To change customer switch out the number in $customerNR variable
             ----------------------------------------------------------------------------*/
             $customerNR = 0;
+            
             echo "<table>";
                 echo "<tr>";
                     echo "<th colspan='4'>";

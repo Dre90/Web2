@@ -57,8 +57,6 @@
             // if everything is ok, try to upload file
             } else {
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                    // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-                    // echo file_get_contents($target_file);
                     $transaction = get_uploaded_transaction("uploads/" . basename( $_FILES["fileToUpload"]["name"]));
 
                     array_push($transactionsArray, $transaction[0]);
@@ -153,8 +151,10 @@
             /* ---------------------------------------------------------------------------
             Deletes the file
             ----------------------------------------------------------------------------*/
-            $file = "uploads/" . basename( $_FILES["fileToUpload"]["name"]);
-            unlink($file);
+            if( file_exists("uploads/" . basename( $_FILES["fileToUpload"]["name"])) ) {
+                $file = "uploads/" . basename( $_FILES["fileToUpload"]["name"]);
+                unlink($file);
+            }
         ?>
     </body>
 </html>

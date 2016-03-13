@@ -75,12 +75,14 @@
             }
             echo "<br><br>";
             echo "<a href='data.php' class='myButton'>Back</a>";
-            
+
             /* ---------------------------------------------------------------------------
             Deletes the file
             ----------------------------------------------------------------------------*/
-            $file = "uploads/" . basename( $_FILES["fileToUpload"]["name"]);
-            unlink($file);
+            if( file_exists("uploads/" . basename( $_FILES["fileToUpload"]["name"])) ) {
+                $file = "uploads/" . basename( $_FILES["fileToUpload"]["name"]);
+                unlink($file);
+            }
         ?>
     </body>
 </html>

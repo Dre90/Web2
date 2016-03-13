@@ -111,8 +111,10 @@
             /* ---------------------------------------------------------------------------
             Deletes the file
             ----------------------------------------------------------------------------*/
-            $file = "uploads/" . basename( $_FILES["fileToUpload"]["name"]);
-            unlink($file);
+            if( file_exists("uploads/" . basename( $_FILES["fileToUpload"]["name"])) ) {
+                $file = "uploads/" . basename( $_FILES["fileToUpload"]["name"]);
+                unlink($file);
+            }
         ?>
     </body>
 </html>
