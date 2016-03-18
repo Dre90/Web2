@@ -1,0 +1,8 @@
+PROGRAMMING FOR WEB II
+LAB 10 / TASK 1
+
+Write a PHP program to add and display people into/from a database.
+
+You should have one php file, which first displays all the people on your database (names and surnames), then provides a basic form to add new people.
+
+You should use JQuery ajax methods and JSON to get and send data to your backend code.
