@@ -1,0 +1,63 @@
+Database
+sql bruker
+admin bruker
+user bruker
+
+Tabeller
+user
+ - userID
+ - username
+ - mail
+ - password
+ - First name
+ - Last name
+
+news
+ - newsID
+ - Tittel
+ - categorie
+ - date
+ - text
+ - Bilde
+ - forfatter(userID)
+ - rating
+
+
+
+Sider:
+index.php
+ - News artikkler
+  - Tittel
+  - Bilde
+  - Dato
+  - Ingress
+ - Sorting
+ - Rating
+ - Boolean search
+
+ registrer.php
+  - Username
+  - Mail
+  - Password
+  - Re password
+  - first name
+  - last name
+
+ profil.php
+  - Edit profile
+
+ upload_news.php
+  - Tittel
+  - Bilde
+  - Text
+
+ user_dashboard.php
+  - liste over alle artikkler den brukeren har laget
+
+ admin_dashboard.php
+   Edit delete:
+    - users
+    - categories
+    - news items
+    - Summery
+     - list presenting the number of news under each category
