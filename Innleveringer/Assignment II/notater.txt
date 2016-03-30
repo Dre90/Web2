@@ -12,15 +12,19 @@ user
  - First name
  - Last name
 
-news
- - newsID
+articles
+ - articleID
  - Tittel
- - categorie
+ - category
  - date
  - text
  - Bilde
  - forfatter(userID)
  - rating
+
+ category
+  -category_id
+  -category_name
 
 
 
