@@ -68,9 +68,16 @@ nav {
                 color: #696a6b;
 			}
 .content{
-	width: 95%;
+	width: 100%;
 	height: auto;
-    padding-left: 20px;
-	padding-bottom: 50px;
-	float: left;
+
+}
+
+article {
+    width: 30
+}
+
+.articleImg {
+    width: 100%;
+    height: auto;
 }

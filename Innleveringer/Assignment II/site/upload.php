@@ -31,7 +31,7 @@
             function saveimage($name,$image)
             {
                 $db_server=getDB();
-                $query = "INSERT INTO articles (title, category, date, text, image_name, image, author, rating) VALUES ('Fredric Aasbo and Ken Gushi Gets New Livery for Formula DRIFT 2016', '1', '2016-03-30', 'Last week we dropped a quick snippet of both Aasbo and Gushi’s liveries for 2016 but today we’re unleashing the full renderings for their SR by Toyota competition cars for the Formula Drift series. Both drivers have found amajor tire sponsor with Nexen Tire and are continuing respective partnerships with several companies, including GReddy/TRUST, Rockstar Energy Drink, Garrett, Rocket Bunny, Wisefab, OS Giken and many more.', '$name','$image', 1, 0)";
+                $query = "INSERT INTO articles (title, category, date, text, image_name, image, author, rating) VALUES ('FREDRIK ØKSNEVAD SATSER PÅ FLERE KONTINENT!', '1', '2016-03-30', 'En av Norges aller største talent innenfor drifting, skal kjøre MYE i år. Det blir full satsing på Rogalendingen i Drift Allstars, som kjører rundene sine over tre kontinenter denne sesongen. Første tur ut er Abu Dhabi i De forente arabiske emirater! Bilen ble sendt avgårde i container fra Rotterdam for noen uker siden, forhåpentligvis er den fremme i passe god tid til løpet som er 7-8.april.', '$name','$image', 1, 0)";
 
     			$result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
                 if($result)
@@ -50,7 +50,7 @@
                 $result=mysql_query($qry,$con);
                 while($row = mysql_fetch_array($result))
                 {
-                    echo '<img height="300" width="300" src="data:image;base64,'.$row[2].' "> ';
+                    echo '<img src="data:image;base64,'.$row[2].' "> ';
                 }
                 mysql_close($con);
             }

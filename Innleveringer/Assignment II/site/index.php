@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Online newspaper - Assignment II</title>
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/simplegrid.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -22,7 +23,7 @@
             </nav>
         </header>
         <div class="content">
-        <section>
+        <section class="grid grid-pad">
 
             <?php
             // fetch all the orders
@@ -31,15 +32,18 @@
             $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
 
             while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
-
+                echo "<div class='col-1-3'>";
     				echo "<h1>" . $row['title'] . "</h1>";
 
     				echo "<small>" . $row['date'] . "</small>";
 
-    				echo '<img height="300" width="300" src="data:image;base64,'.$row['image'].' ">';
+    				echo '<img class="articleImg" src="data:image;base64,'.$row['image'].' ">';
 
-    				echo "<p>" . $row['text'] . "</p>";
+    				echo "<p>" . substr($row['text'],0 , 100) . "..." . "</p>";
 
+
+                    echo "<a href='article.php?article_id=" .$row['article_id'] . "'>Read more</a>";
+                echo "</div>";
 
 
 			}
