@@ -1,28 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Online newspaper - Assignment II</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/simplegrid.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+<?php include_once 'include/head.php'; ?>
+<?php require_once 'connect.php'; ?>
 <body>
-    <?php require_once 'connect.php'; ?>
     <div class="wrapper">
-        <?php   //if(logged_in() === false) {include 'header/not_logged_in.php';} ?>
-        <?php  // if(logged_in() === true) {include 'header/logged_in.php';} ?>
-        <header>
-            <a href="index.html" class="logo">Online newspaper</a>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Front page</a></li>
-                    <li><a href="login.php">Log in</a></li>
-                    <li><a href="register.php">Register</a></li>
-                </ul>
-            </nav>
-        </header>
-        <div class="content">
+        <?php  include 'include/header.php'; ?>
+
         <section class="grid grid-pad">
 
             <?php
@@ -33,7 +14,7 @@
 
             while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
                 echo "<div class='col-1-3'>";
-    				echo "<h1>" . $row['title'] . "</h1>";
+    				echo "<a href='article.php?article_id=" .$row['article_id'] . "'>" . "<h1>" . $row['title'] . "</h1>" . "</a>";
 
     				echo "<small>" . $row['date'] . "</small>";
 
@@ -44,13 +25,11 @@
 
                     echo "<a href='article.php?article_id=" .$row['article_id'] . "'>Read more</a>";
                 echo "</div>";
-
-
 			}
+            // close the connection
+			$result -> close();
              ?>
-
         </section>
-    </div>
     </div>
 </body>
 </html>
