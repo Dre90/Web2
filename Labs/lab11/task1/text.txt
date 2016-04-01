@@ -1,0 +1,10 @@
+PROGRAMMING FOR WEB II
+LAB 11 / TASK 1
+
+Install Laravel 5.2 to your system.
+
+General instructions: https://laravel.com/docs/5.2
+
+Some other pointers:
+
+OSX and XAMPP: https://medium.com/@kunalnagar/install-laravel-5-on-os-x-23f3578386f1 (skip step 4 and what follows)

@@ -1,0 +1,8 @@
+PROGRAMMING FOR WEB II
+LAB 11 / TASK 2
+
+Write a hello world application with Laravel 5.2.
+
+A pointer:
+
+http://blog.enozom.com/laravel5-for-beginners/
