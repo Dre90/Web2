@@ -3,8 +3,8 @@
     <nav>
         <ul>
             <li><a href="index.php">Front page</a></li>
-            <li><a href="login.php">Log in</a></li>
             <li><a href="register.php">Register</a></li>
+            <li><a href="login.php">Log in</a></li>
         </ul>
     </nav>
 </header>

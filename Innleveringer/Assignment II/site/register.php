@@ -1,6 +1,7 @@
 <?php
 include_once 'include/head.php';
 require_once 'connect.php';
+include_once 'functions.php';
 
 $db_server=getDB();
 
@@ -45,17 +46,6 @@ if(isset($_POST['submit'])){
     	$db_server->query($query) or die($db_server->error);
     	$registered = "The user has been registered! You can now <a href='login.php'>log in</a>.";
     }
-}
-
-// sanitize your input
-function get_post($var, $db_server){
-    $var = trim($var);
-	$var = stripslashes($_POST[$var]);
-	$var = htmlentities($var);
-	$var = strip_tags($var);
-	$var = $db_server->real_escape_string($var);
-
-	return $var;
 }
 
 // close the connection

@@ -1,6 +1,7 @@
 <?php
 require_once 'include/head.php';
 require_once 'connect.php';
+include_once 'functions.php';
 
 $db_server=getDB();
 $usernameErr = $passErr = $username =  "";
@@ -43,15 +44,7 @@ if (!isset($_SESSION['isloggedin']) && isset($_POST['login'])) {
 	}
 }
 
-// sanitize your input
-function get_post($var, $db_server) {
-	$var = stripslashes($_POST[$var]);
-	$var = htmlentities($var);
-	$var = strip_tags($var);
-	$var = $db_server -> real_escape_string($var);
 
-	return $var;
-}
 
 // close the connection
 $db_server -> close();
@@ -89,12 +82,10 @@ $db_server -> close();
                 		echo "Wrong username or password!";
 
                     }else{
-                        echo "You are logged in!<br>";
-                        echo "Click <a href='profile.php'>here</a> to see your profile!";
+                        redirect("index.php", false);
                     }
                     ?>
             </div>
-
         </section>
     </div>
 </body>

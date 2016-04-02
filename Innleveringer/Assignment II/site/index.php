@@ -1,5 +1,8 @@
-<?php include_once 'include/head.php'; ?>
-<?php require_once 'connect.php'; ?>
+<?php
+include_once 'include/head.php';
+require_once 'connect.php';
+include_once 'functions.php';
+?>
 <body>
     <div class="wrapper">
         <?php  include 'include/header.php'; ?>

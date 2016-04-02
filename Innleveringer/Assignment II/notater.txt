@@ -27,6 +27,7 @@ articles
   -category_name
 
 
+FLYTTE PHP VALIDATE TIL functions
 
 Sider:
 index.php
@@ -51,7 +52,7 @@ index.php
  login.php
  Sikkerhet/validet
 
- 
+
  profil.php
   - Edit profile
 

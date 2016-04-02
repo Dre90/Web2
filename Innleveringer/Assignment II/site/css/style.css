@@ -1,8 +1,8 @@
 html {font-size: 16px;}
 
 body {
-	font-family: sans-serif;
-    font-weight: 400;
+	font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
   	line-height: 1.45;
   	color: #696a6b;
     margin: 0;
@@ -90,29 +90,26 @@ nav {
 				font-size: 1.55em;
                 color: #696a6b;
 			}
-article {
-    width: 30
-}
 
-.articleImg {
-    width: 100%;
-    height: auto;
-}
+
 
 /*----------Registration Form----------*/
 input {
     width: 100%;
+	font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+	font-size: 1em;
 }
+
 label {
 	font-size: 1.3em;
-
 }
 
 input[type=text], input[type=email], input[type=password] {
-    width: 100%;
     padding: 12px 20px;
     margin: 0 0 12px 0;
     box-sizing: border-box;
+
 }
 
 input[type=button], input[type=submit], input[type=reset] {
@@ -120,7 +117,16 @@ input[type=button], input[type=submit], input[type=reset] {
     border: none;
     color: white;
     padding: 16px 32px;
-    text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
+}
+
+
+article {
+    width: 30
+}
+
+.articleImg {
+    width: 100%;
+    height: auto;
 }
