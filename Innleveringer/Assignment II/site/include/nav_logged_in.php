@@ -19,6 +19,8 @@ if (isset($_POST['logout'])) {
     <nav>
         <ul>
             <li><a href="index.php">Front page</a></li>
+			<li><a href="dashboard.php">Dashboard</a></li>
+			<li><a href="upload.php">Upload article</a></li>
             <li><a href="profile.php">Profile</a></li>
             <li>
                 <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">

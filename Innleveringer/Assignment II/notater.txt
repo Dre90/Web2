@@ -46,7 +46,12 @@ index.php
   - Re password
   - first name
   - last name
+ Sikkerhet/validet
 
+ login.php
+ Sikkerhet/validet
+
+ 
  profil.php
   - Edit profile
 
