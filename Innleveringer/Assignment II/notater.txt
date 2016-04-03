@@ -40,6 +40,10 @@ index.php
  - Rating
  - Boolean search
 
+ Artikkel
+  - Breadcrums
+    - forside - cat - artikkel
+
  registrer.php
   - Username
   - Mail
