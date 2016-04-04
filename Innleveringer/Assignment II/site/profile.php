@@ -153,8 +153,8 @@ $db_server -> close();
 				<p id="error">
 
                 </p>
+<?php echo ini_get('session.gc_maxlifetime'); ?>
 
-				
             </div>
 
         </section>

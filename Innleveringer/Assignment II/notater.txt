@@ -44,6 +44,9 @@ index.php
   - Breadcrums
     - forside - cat - artikkel
 
+category
+ - Må fikses når index er ferdig formatert
+
  registrer.php
   - Username
   - Mail

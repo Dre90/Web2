@@ -1,0 +1,14 @@
+Dear Dag Roger,
+
+Your work is overall good.
+
+Error management: What if I upload a wrong file?
+
+You don't have to handle all errors but can create a custom warning error page or a generic error handling mechanism.
+
+I got this starnge message when I upload customer_test.csv
+
+Ola Norman was added too the system.Ola Norman was added too the system.Ola Norman was added too the system.Ola Norman was added too the system.Ola Normanalready existsOla Normanalready existsOla Normanalready existsOla Norman was added too the system.Ola Norman was added too the system.Ola Normanalready exists
+
+Best,
+Ahmet
