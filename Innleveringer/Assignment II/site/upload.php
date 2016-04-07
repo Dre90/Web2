@@ -75,7 +75,7 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
 	                       <input type="text" name="title">
                         <label for="category">Choose a category</label><span class="error"> <?php echo $categoryErr;?></span>
                             <select name="category">
-                                "<option value=''>Choose a category</option>"
+                                <option value=''>Choose a category</option>
                                 <?php
                                    //Fills out category list
                                     $query = "SELECT * FROM category";
@@ -103,7 +103,7 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
 				<p id="error">
 
                 </p>
-				
+
             </div>
 
         </section>
