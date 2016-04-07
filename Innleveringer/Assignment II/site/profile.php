@@ -60,7 +60,6 @@ if(isset($_POST['submit'])){
 				  WHERE user_id='$user_id'";
 
 		$db_server->query($query) or die($db_server->error);
-
 		$msg .= "Your information has been updatet <br>";
     }
 }
@@ -153,7 +152,6 @@ $db_server -> close();
 				<p id="error">
 
                 </p>
-<?php echo ini_get('session.gc_maxlifetime'); ?>
 
             </div>
 

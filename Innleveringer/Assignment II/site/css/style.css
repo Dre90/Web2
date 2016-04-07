@@ -108,6 +108,12 @@ nav {
 	width: 75%
 }
 
+.sort-select { width: 50%;}
+
+.sort-botton {
+	width: 40%;
+}
+
 
 
 /*---------- Forms----------*/

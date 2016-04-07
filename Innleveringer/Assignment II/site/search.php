@@ -17,6 +17,13 @@ if(isset($_POST['sort'])) {
         redirect("index.php", false);
 }
 
+if(isset($_POST['search_button'])) {
+    if (!empty($_POST["search"])) {
+
+            $search = get_post('search', $db_server);
+
+        }
+}
 
 ?>
 <body>
@@ -26,7 +33,7 @@ if(isset($_POST['sort'])) {
         <section class="grid grid-pad">
             <div class="grid grid-pad">
                 <div class="col-8-12">
-                    <form method="get" action="login.php" >
+                    <form method="post" action="login.php" >
                             <input type="text" name="search" placeholder="Search" class="search-field">
                             <input type="submit" name="search_button" value="Search" class="search-botton">
                     </form>
