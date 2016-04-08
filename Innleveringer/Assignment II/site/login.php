@@ -29,8 +29,8 @@ if (!isset($_SESSION['isloggedin']) && isset($_POST['login'])) {
 
 			// regenerate the session id
 			session_regenerate_id();
-			// set session parameters
 
+			// set session parameters
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['user_type'] = $row['user_type'];
 			$_SESSION['username'] = $username;
@@ -38,6 +38,7 @@ if (!isset($_SESSION['isloggedin']) && isset($_POST['login'])) {
 			$_SESSION['firstname'] = $row['firstname'];
 			$_SESSION['lastname'] = $row['lastname'];
 			$_SESSION['isloggedin'] = TRUE;
+            $_SESSION['last_activity'] = time();
 			$_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
 			$_SESSION['ua'] = $_SERVER['HTTP_USER_AGENT'];
 		}

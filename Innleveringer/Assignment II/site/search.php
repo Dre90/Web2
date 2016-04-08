@@ -9,21 +9,23 @@ $sort = $_COOKIE["sort"];
 
 
 
-if(isset($_POST['sort'])) {
+$search = "$_GET[search]";
+$searchArray = explode(" ", $search);
+$arrlength = count($searchArray);
 
-        $cookie_name = "sort";
-        $cookie_value = $_POST["sort"];
-        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-        redirect("index.php", false);
-}
+$searchString = $where = "";
+$msg = "No results";
 
-if(isset($_POST['search_button'])) {
-    if (!empty($_POST["search"])) {
+   $x = 0;
+   foreach($searchArray as $element) {
+        $where .= " a.title LIKE '%" . $searchArray[$x] . "%' OR " . "a.text LIKE '%" . $searchArray[$x] . "%'";
+        if ($x == $arrlength - 1) {
 
-            $search = get_post('search', $db_server);
-
+        } else {
+            $where .= " OR " ;
         }
-}
+            $x++;
+    }
 
 ?>
 <body>
@@ -33,44 +35,35 @@ if(isset($_POST['search_button'])) {
         <section class="grid grid-pad">
             <div class="grid grid-pad">
                 <div class="col-8-12">
-                    <form method="post" action="login.php" >
-                            <input type="text" name="search" placeholder="Search" class="search-field">
-                            <input type="submit" name="search_button" value="Search" class="search-botton">
-                    </form>
-                </div>
-
-                <!-- chronological order UP and down -->
-                <div class="col-4-12">
-                    <form method="post" action="index.php" >
-                        <select name="sort" class="sort-select">
-                            <option value=''>Sort on</option>
-                            <option value='date'>Chronological order</option>
-                            <option value='rating'>Popularity</option>
-                        </select>
-                        <input type="submit" name="sort_button" value="Sort" class="sort-botton">
-                    </form>
-
+                    <h2>
+                        Search results
+                    </h2>
 
                 </div>
-
             </div>
             <?php
             // fetch all the orders
-            if ($sort == "") {
-                $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_name, a.image, a.author, a.rating, c.category_id, c.category_name
-                FROM articles as a
-                INNER JOIN category as c
-                ON a.category=c.category_id
-                ORDER BY date DESC";
-            } else {
-                $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_name, a.image, a.author, a.rating, c.category_id, c.category_name
-                FROM articles as a
-                INNER JOIN category as c
-                ON a.category=c.category_id
-                ORDER BY $sort DESC";
-            }
 
+                $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_name, a.image, a.author, a.rating, c.category_id, c.category_name
+                FROM articles as a
+                INNER JOIN category as c
+                ON a.category=c.category_id
+                WHERE $where";
+
+// WHERE $where
             $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
+            $resultCount = count($result);
+
+            // echo $resultCount;
+            // print_r($result);
+            if ($result-> num_rows == 0) {
+
+                echo "<div class='col-12-12'>";
+                    echo "<p>". $msg ."</p>";
+                echo "</div>";
+            } else {
+                # code...
+
 
             while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
                 echo "<div class='col-6-12 newsArticle'>";
@@ -91,6 +84,7 @@ if(isset($_POST['search_button'])) {
                     echo "<footer><i class='fa fa-heart fa-lg'></i> Like</footer>";
                 echo "</div>";
 			}
+            }
             // close the connection
 			$result -> close();
              ?>

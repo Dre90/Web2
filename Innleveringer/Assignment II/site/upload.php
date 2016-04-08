@@ -58,6 +58,7 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
             if($result)
             {
                 $msg .= "The article has been uploaded";
+				$_SESSION['last_activity'] = time();
             }
         }
     }

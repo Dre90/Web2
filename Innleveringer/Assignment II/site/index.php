@@ -18,6 +18,9 @@ if(isset($_POST['sort'])) {
 }
 
 
+
+
+
 ?>
 <body>
     <div class="wrapper">
@@ -26,7 +29,7 @@ if(isset($_POST['sort'])) {
         <section class="grid grid-pad">
             <div class="grid grid-pad">
                 <div class="col-8-12">
-                    <form method="get" action="login.php" >
+                    <form method="get" action="search.php" >
                             <input type="text" name="search" placeholder="Search" class="search-field">
                             <input type="submit" name="search_button" value="Search" class="search-botton">
                     </form>
