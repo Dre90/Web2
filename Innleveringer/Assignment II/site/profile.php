@@ -51,7 +51,7 @@ if(isset($_POST['submit'])){
 
 		$db_server->query($query) or die($db_server->error);
 		$msg .= "Your information has been updatet <br>";
-		$_SESSION['last_activity'] = time();
+
     }
 }
 
@@ -92,7 +92,7 @@ if (isset($_POST['updatePass'])) {
 
 			    	$msg .= "Your information has been updatet <br>";
 					$_SESSION['last_activity'] = time();
-					
+
 
 
 			} else {

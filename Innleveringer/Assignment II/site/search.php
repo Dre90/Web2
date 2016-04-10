@@ -44,7 +44,7 @@ $msg = "No results";
             <?php
             // fetch all the orders
 
-                $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_name, a.image, a.author, a.rating, c.category_id, c.category_name
+                $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_path, a.author, a.rating, c.category_id, c.category_name
                 FROM articles as a
                 INNER JOIN category as c
                 ON a.category=c.category_id
@@ -68,7 +68,7 @@ $msg = "No results";
             while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
                 echo "<div class='col-6-12 newsArticle'>";
                     echo "<div class='article-img-container'>";
-                        echo "<a href='article.php?article_id=" .$row['article_id'] . "'>" . '<img class="articleImg" src="data:image;base64,'.$row['image'].' ">' . "</a>";
+                        echo "<a href='article.php?article_id=" .$row['article_id'] . "'>" . '<img class="articleImg" src="'.$row['image_path'].' ">' . "</a>";
                     echo "</div>";
                     echo "<div class='titleBox'>";
                         echo "<a href='category.php?category_id=" .$row['category_id'] . "'>" . "<p class='articleCategory'>" . $row['category_name'] . " "  . "</p>" . "</a>";

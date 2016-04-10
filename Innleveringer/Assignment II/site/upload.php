@@ -83,7 +83,7 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
 				    } else {
 				        $imgMsg .=  "Sorry, there was an error uploading your file. <br>";
 						$registerOk = 0;
-				    }
+				    	}
 				}
 			}
 		}
@@ -112,7 +112,7 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
 	                <form method="post" enctype="multipart/form-data" action="upload.php" >
 	                    <label for="title">Title</label><span class="error"> <?php echo $titleErr;?></span>
 	                       <input type="text" name="title">
-                        <label for="category">Choose a category</label><span class="error"> <?php echo $categoryErr;?></span>
+                        <label for="category">Category</label><span class="error"> <?php echo $categoryErr;?></span>
                             <select name="category">
                                 <option value=''>Choose a category</option>
                                 <?php

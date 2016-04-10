@@ -6,27 +6,29 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
     header('Location: login.php');
 
     $db_server=getDB();
-    $current_article_id ="";
+    $current_article_id = $deletemsg ="";
         if(isset($_POST['delete'])) {
-            $current_article_id = $_POST['deleteForward'];
-
-            $query = "DELETE FROM articles WHERE article_id =  $current_article_id";
-
-
-            $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
-
+            if (isset($_POST['confirm'])) {
+                $current_article_id = $_POST['deleteForward'];
+                $query = "DELETE FROM articles WHERE article_id =  $current_article_id";
+                $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
+            }else {
+                $deletemsg .= "Please check confirm first";
+            }
         }
-
-
-
 ?>
 <body>
     <div class="wrapper">
         <?php  include 'include/header.php'; ?>
-
         <section class="grid grid-pad">
-
-            <h1>Your articles</h1>
+            <div class="grid grid-pad">
+                <div class="col-7-12">
+                <h1>Your articles</h1>
+                </div>
+                <div class="col-5-12">
+                    <h3 class="float-right error"><?php echo $deletemsg ?></h3>
+                </div>
+            </div>
             <table>
                 <?php
                 // fetch all the orders
@@ -51,9 +53,11 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
 
                             echo "<td>";
                                 echo '<form method="post" action="dashboard.php" >';
+                                        echo "<input type='checkbox' name='confirm' value='Confirmed'> Check to confirm";
                                         echo "<input type='text' name='deleteForward' value='$currentaID' class='hide'>";
                                         echo '<input type="submit" name="delete" value="Delete">';
                                 echo '</form>';
+
 
                             echo "</td>";
 

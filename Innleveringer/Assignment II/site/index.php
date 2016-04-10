@@ -10,12 +10,13 @@ $sort = $_COOKIE["sort"];
 
 
 if(isset($_POST['sort'])) {
-
-        $cookie_name = "sort";
-        $cookie_value = $_POST["sort"];
-        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-        redirect("index.php", false);
+    $cookie_name = "sort";
+    $cookie_value = $_POST["sort"];
+    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+    redirect("index.php", false);
 }
+
+
 
 ?>
 <body>
@@ -71,7 +72,10 @@ if(isset($_POST['sort'])) {
                     echo "</div>";
                     echo "<div class='titleBox'>";
                         echo "<a href='category.php?category_id=" .$row['category_id'] . "'>" . "<p class='articleCategory'>" . $row['category_name'] . " "  . "</p>" . "</a>";
-
+                        echo '<form method="post" action="index.php" >';
+                            echo "<input type='text' name='likeID' value='$row['article_id']' class='hide'>";
+                            echo '<input type="submit" name="like" value="Like">';
+                        echo "</form>";
         				echo "<a href='article.php?article_id=" .$row['article_id'] . "'>" . "<h1>" . $row['title'] . "</h1>" . "</a>";
 
 
@@ -83,6 +87,16 @@ if(isset($_POST['sort'])) {
                     echo "<footer><i class='fa fa-heart fa-lg'></i> Like</footer>";
                 echo "</div>";
 			}
+
+            if(isset($_POST['like'])) {
+
+                $query = "UPDATE articles
+                          SET rating='$title'
+                          WHERE article_id = $article_id ";
+
+                $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
+
+            }
             // close the connection
 			$result -> close();
              ?>
