@@ -17,6 +17,10 @@ if(isset($_POST['sort'])) {
         redirect("index.php", false);
 }
 
+
+
+
+
 ?>
 <body>
     <div class="wrapper">
@@ -24,7 +28,7 @@ if(isset($_POST['sort'])) {
 
         <section class="grid grid-pad">
             <div class="grid grid-pad">
-                <div class="col-7-12">
+                <div class="col-8-12">
                     <form method="get" action="search.php" >
                             <input type="text" name="search" placeholder="Search" class="search-field">
                             <input type="submit" name="search_button" value="Search" class="search-botton">
@@ -32,7 +36,7 @@ if(isset($_POST['sort'])) {
                 </div>
 
                 <!-- chronological order UP and down -->
-                <div class="col-5-12">
+                <div class="col-4-12">
                     <form method="post" action="index.php" >
                         <select name="sort" class="sort-select">
                             <option value=''>Sort on</option>
@@ -49,13 +53,13 @@ if(isset($_POST['sort'])) {
             <?php
             // fetch all the orders
             if ($sort == "") {
-                $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_path,  a.author, a.rating, c.category_id, c.category_name
+                $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_name, a.image, a.author, a.rating, c.category_id, c.category_name
                 FROM articles as a
                 INNER JOIN category as c
                 ON a.category=c.category_id
                 ORDER BY date DESC";
             } else {
-                $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_path,  a.author, a.rating, c.category_id, c.category_name
+                $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_name, a.image, a.author, a.rating, c.category_id, c.category_name
                 FROM articles as a
                 INNER JOIN category as c
                 ON a.category=c.category_id
@@ -67,7 +71,7 @@ if(isset($_POST['sort'])) {
             while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
                 echo "<div class='col-6-12 newsArticle'>";
                     echo "<div class='article-img-container'>";
-                        echo "<a href='article.php?article_id=" .$row['article_id'] . "'>" . '<img class="articleImg" src="'.$row['image_path'].' ">' . "</a>";
+                        echo "<a href='article.php?article_id=" .$row['article_id'] . "'>" . '<img class="articleImg" src="data:image;base64,'.$row['image'].' ">' . "</a>";
                     echo "</div>";
                     echo "<div class='titleBox'>";
                         echo "<a href='category.php?category_id=" .$row['category_id'] . "'>" . "<p class='articleCategory'>" . $row['category_name'] . " "  . "</p>" . "</a>";

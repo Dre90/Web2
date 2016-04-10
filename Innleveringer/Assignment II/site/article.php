@@ -9,7 +9,7 @@
             <?php require_once 'connect.php';
             // fetch all the orders
             $db_server=getDB();
-            $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_name, a.image, a.author, a.rating, c.category_id, c.category_name, u.user_id, u.username
+            $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_path, a.author, a.rating, c.category_id, c.category_name, u.user_id, u.username
             FROM articles as a
                 JOIN category as c
                     ON a.category=c.category_id
@@ -22,7 +22,7 @@
                 echo "<div class='col-10-12'>";
                     echo "<h1>" . $row['title'] . "</h1>";
                     echo "<small>" . $row['date'] . "</small>";
-                    echo '<img class="articleImg" src="data:image;base64,'.$row['image'].' ">';
+                    echo '<img class="articleImg" src="'.$row['image_path'].' ">';
                     echo "<p>" . $row['text'] . "</p>";
                     echo "<p class='articleAuthor'>" . $row['username'] . " "  . "</p>";
                 echo "</div>";

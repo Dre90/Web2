@@ -10,17 +10,7 @@ $db_server=getDB();
 //gets the user_id from session
 $user_id = $_SESSION['user_id'];
 
-//Fills out the profile
-$query = "SELECT * FROM users where user_id = $user_id";
-$result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
 
-$profileusername = $profilemail = $profilefirstname = $profilelastname = "";
-while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
-	$profileusername = $row["username"];
-	$profilemail = $row["mail"];
-	$profilefirstname = $row["firstname"];
-	$profilelastname = $row["lastname"];
-}
 
 
 // Update profile
@@ -102,7 +92,7 @@ if (isset($_POST['updatePass'])) {
 
 			    	$msg .= "Your information has been updatet <br>";
 					$_SESSION['last_activity'] = time();
-					//Need ajax to update profile form
+					
 
 
 			} else {
@@ -110,6 +100,18 @@ if (isset($_POST['updatePass'])) {
 			}
 		}
 	}
+}
+
+//Fills out the profile
+$query = "SELECT * FROM users where user_id = $user_id";
+$result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
+
+$profileusername = $profilemail = $profilefirstname = $profilelastname = "";
+while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
+	$profileusername = $row["username"];
+	$profilemail = $row["mail"];
+	$profilefirstname = $row["firstname"];
+	$profilelastname = $row["lastname"];
 }
 
 // close the connection

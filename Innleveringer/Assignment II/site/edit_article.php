@@ -12,7 +12,23 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
     //gets the user_id from session
     $user_id = $_SESSION['user_id'];
 
-    $titleErr = $categoryErr = $textErr = $imgErr = $msg = $imgMsg = $image = "";
+	$article_id = $_GET["editForward"];
+
+	//gets the article
+	$query = "SELECT title, category, text,   FROM article where article_id = $article_id";
+	$result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
+
+	$profileusername = $profilemail = $profilefirstname = $profilelastname = "";
+	while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
+		$profileusername = $row["username"];
+		$profilemail = $row["mail"];
+		$profilefirstname = $row["firstname"];
+		$profilelastname = $row["lastname"];
+	}
+
+
+
+    $titleErr = $categoryErr = $textErr = $imgErr = $msg = "";
     $todaysDate = date("Y-m-d");
     if(isset($_POST['submit']))
     {
@@ -36,60 +52,23 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
         } else {
             $text = get_post('text', $db_server);
         }
-		if (empty($_FILES["fileToUpload"]["name"])) {
-			$imgErr = "Please select an image.";
-			$registerOk = 0;
-		} else {
 
-			if (getimagesize($_FILES['fileToUpload']['tmp_name']) == FALSE) {
-				$imgErr = "Please select an image.";
-				$registerOk = 0;
-			} else {
-				$uploadOk = 1;
-				$target_dir = "article_images/";
-				$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-				$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-				$imagename=date("d-m-Y")."-".time(). "." . $imageFileType;
-				$target_path = $target_dir.$imagename;
+        if(getimagesize($_FILES['image']['tmp_name']) == FALSE)
+        {
+            $imgErr = "Please select an image.";
+            $registerOk = 0;
+        }
+        else
+        {
+            $image= addslashes($_FILES['image']['tmp_name']);
+            $name= addslashes($_FILES['image']['name']);
+            $image= file_get_contents($image);
+            $image= base64_encode($image);
+        }
 
-				if($check !== false) {
-			        $uploadOk = 1;
-			    } else {
-			        $imgMsg .=  "File is not an image. <br>";
-			        $uploadOk = 0;
-			    }
-
-				// Check file size
-				if ($_FILES["fileToUpload"]["size"] > 500000) {
-				    $imgMsg .=  "Sorry, your file is too large. <br>";
-				    $uploadOk = 0;
-				}
-				// Allow certain file formats
-				if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-				&& $imageFileType != "gif" ) {
-				    $imgMsg .=  "Sorry, only JPG, JPEG, PNG & GIF files are allowed. <br>";
-				    $uploadOk = 0;
-				}
-				// Check if $uploadOk is set to 0 by an error
-				if ($uploadOk == 0) {
-				    $imgMsg .=  "Sorry, your file was not uploaded. <br>";
-					$registerOk = 0;
-				// if everything is ok, try to upload file
-				} else {
-				    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_path)) {
-						$image = $target_path;
-						$registerOk = 1;
-				    } else {
-				        $imgMsg .=  "Sorry, there was an error uploading your file. <br>";
-						$registerOk = 0;
-				    }
-				}
-			}
-		}
         if ($registerOk == 1) {
             $todaysDate = date("Y-m-d");
-            $query = "INSERT INTO articles (title, category, date, text, image_path, author) VALUES ('$title', '$category', '$todaysDate', '$text', '$image', $user_id)";
+            $query = "INSERT INTO articles (title, category, date, text, image_name, image, author) VALUES ('$title', '$category', '$todaysDate', '$text', '$name','$image', $user_id)";
 
             $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
             if($result)
@@ -108,8 +87,7 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
 
             <div class='col-8-12'>
 				<h2>Profile</h2>
-				<!-- onsubmit="return validate(this);" -->
-	                <form method="post" enctype="multipart/form-data" action="upload.php" >
+	                <form method="post" enctype="multipart/form-data" action="upload.php" onsubmit="return validate(this);">
 	                    <label for="title">Title</label><span class="error"> <?php echo $titleErr;?></span>
 	                       <input type="text" name="title">
                         <label for="category">Choose a category</label><span class="error"> <?php echo $categoryErr;?></span>
@@ -128,17 +106,14 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
                                     }
                                 ?>
                             </select>
-							<label for="fileToUpload">Image</label><span class="error"> <?php echo $imgErr;?></span>
-								<input type="file" name="fileToUpload" >
-								<?php echo $imgMsg; ?>
-
+                        <label for="image">Image</label><span class="error"> <?php echo $imgErr;?></span>
+                            <input type="file" name="image">
                         <label for="text">Text</label><span class="error"> <?php echo $textErr;?></span>
                             <textarea name="text" ></textarea>
 	                    <input type="submit" name="submit" value="Upload article">
 	                </form>
             </div>
             <div class='col-4-12'>
-
 				<p>
 					<?php echo $msg;?>
 				</p>
