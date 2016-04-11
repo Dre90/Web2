@@ -22,7 +22,15 @@ if(isset($_GET['link'])){
     <nav>
         <ul>
             <li><a href="index.php">Front page</a></li>
-			<li><a href="dashboard.php">Dashboard</a></li>
+			<!-- <li><a href="admin_dashboard.php">Admin dashboard</a></li> -->
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Admin dashboard</a>
+                <div class="dropdown-content">
+                    <a href="admin_dashboard_article.php">Articles</a>
+                    <a href="admin_dashboard_categorys.php">Categorys</a>
+                    <a href="admin_dashboard_users.php">Users</a>
+                </div>
+            </li>
 			<li><a href="upload.php">Upload article</a></li>
             <li><a href="edit_profile.php">Profile</a></li>
             <li><a href="?link=1">Log out</a></li>

@@ -127,7 +127,7 @@ $db_server -> close();
 
 				<h2>Profile</h2>
 				<div class="profile">
-	                <form method="post" action="profile.php" onsubmit="return validate(this);">
+	                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onsubmit="return validate(this);">
 	                    <label for="username">Username</label>    <span class="error"> <?php echo $usernameErr;?></span>
 	                    <input type="text" name="username" value="<?php echo $profileusername;?>">
 	                    <label for="email">E-mail</label><span class="error"> <?php echo $emailErr;?></span>
@@ -140,7 +140,7 @@ $db_server -> close();
 	                </form>
 				</div>
 				<div class="password">
-					<form method="post" action="profile.php" onsubmit="return validate(this);">
+					<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onsubmit="return validate(this);">
 	                    <label for="oldPassword">Old password</label>
 	                    <input type="text" name="oldPassword">
 						<label for="newPassword">New password</label>

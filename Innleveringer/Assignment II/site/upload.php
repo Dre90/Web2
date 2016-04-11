@@ -132,6 +132,7 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
 								<input type="file" name="fileToUpload" >
 								<?php echo $imgMsg; ?>
 
+
                         <label for="text">Text</label><span class="error"> <?php echo $textErr;?></span>
                             <textarea name="text" ></textarea>
 	                    <input type="submit" name="submit" value="Upload article">

@@ -12,10 +12,10 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
     //gets the user_id from session
     $user_id = $_SESSION['user_id'];
 
+	$article_id = $_SESSION['article_id'];
 
-	$article_id = $_GET["editForward"];
-
-	
+    $titleErr = $categoryErr = $textErr = $imgErr = $imgMsg = $msg = $title = $category = $text = $image_path = "";
+	$todaysDate = date("Y-m-d");
 
 	//gets the article
 	$query = "SELECT title, category, text, image_path
@@ -23,7 +23,7 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
 			  WHERE article_id = $article_id";
 	$result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
 
-	$title = $category = $text = $image_path = "";
+
 	while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 		$title = $row["title"];
 		$category = $row["category"];
@@ -32,9 +32,6 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
 	}
 
 
-
-    $titleErr = $categoryErr = $textErr = $imgErr = $msg = "";
-    $todaysDate = date("Y-m-d");
     if(isset($_POST['submit']))
     {
         $registerOk = 1;
@@ -61,7 +58,6 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
 		if (empty($_FILES["fileToUpload"]["name"])) {
 			$image = $image_path;
 		} else {
-
 			if (getimagesize($_FILES['fileToUpload']['tmp_name']) == FALSE) {
 				$imgErr = "Please select an image.";
 				$registerOk = 0;
@@ -156,8 +152,9 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
                             </select>
 							<label>Current image</label>
 								<img src="<?php echo $image_path;?>" alt="" />
-                        <label for="image">Image</label><span class="error"> <?php echo $imgErr;?></span>
-                            <input type="file" name="image">
+                        <label for="fileToUpload">Image</label><span class="error"> <?php echo $imgErr;?></span>
+                            <input type="file" name="fileToUpload" >
+							<?php echo $imgMsg; ?>
                         <label for="text">Text</label><span class="error"> <?php echo $textErr;?></span>
                             <textarea name="text"><?php echo $text;?></textarea>
 	                    <input type="submit" name="submit" value="Save">

@@ -16,7 +16,15 @@ if(isset($_POST['sort'])) {
     redirect("index.php", false);
 }
 
+if(isset($_POST['like'])) {
+    $like_article_id = $_POST['likeID'];
+    $Like_rating = $_POST['rating'] + 1;
+    $query = "UPDATE articles
+              SET rating='$Like_rating'
+              WHERE article_id = $like_article_id ";
 
+    $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
+}
 
 ?>
 <body>
@@ -66,39 +74,36 @@ if(isset($_POST['sort'])) {
             $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
 
             while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
+                $article_id = $row["article_id"];
+                $rating = $row["rating"];
                 echo "<div class='col-6-12 newsArticle'>";
                     echo "<div class='article-img-container'>";
                         echo "<a href='article.php?article_id=" .$row['article_id'] . "'>" . '<img class="articleImg" src="'.$row['image_path'].' ">' . "</a>";
                     echo "</div>";
                     echo "<div class='titleBox'>";
                         echo "<a href='category.php?category_id=" .$row['category_id'] . "'>" . "<p class='articleCategory'>" . $row['category_name'] . " "  . "</p>" . "</a>";
-                        echo '<form method="post" action="index.php" >';
-                            echo "<input type='text' name='likeID' value='$row['article_id']' class='hide'>";
-                            echo '<input type="submit" name="like" value="Like">';
-                        echo "</form>";
-        				echo "<a href='article.php?article_id=" .$row['article_id'] . "'>" . "<h1>" . $row['title'] . "</h1>" . "</a>";
 
+        				echo "<a href='article.php?article_id=" .$row['article_id'] . "'>" . "<h1>" . $row['title'] . "</h1>" . "</a>";
 
                     echo "</div>";
 
-
     				echo "<p>" . substr($row['text'],0 , 100) . "..." . "</p>";
-
-                    echo "<footer><i class='fa fa-heart fa-lg'></i> Like</footer>";
+                    echo "<footer>";
+                        echo '<form method="post" action="index.php" >';
+                            echo "<input type='text' name='likeID' value='$article_id' class='hide'>";
+                            echo "<input type='text' name='rating' value='$rating' class='hide'>";
+                            echo '<button type="submit" name="like" class="btn btn-like"><i class="fa fa-heart fa-lg"></i> Like</button>';
+                        echo "</form>";
+                        echo "<p>";
+                        echo $rating . " likes";
+                        echo "</p>";
+                    echo "</footer>";
                 echo "</div>";
 			}
 
-            if(isset($_POST['like'])) {
 
-                $query = "UPDATE articles
-                          SET rating='$title'
-                          WHERE article_id = $article_id ";
-
-                $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
-
-            }
             // close the connection
-			$result -> close();
+			$db_server -> close();
              ?>
         </section>
     </div>
