@@ -31,14 +31,13 @@ FLYTTE PHP VALIDATE TIL functions
 
 Sider:
 index.php
- - News artikkler
-  - Tittel
-  - Bilde
-  - Dato
-  - Ingress
- - Sorting
+ - News artikkler x
+  - Tittel x
+  - Bilde x
+  - Ingress x
+ - Sorting x
  - Rating
- - Boolean search
+ - Boolean search x
 
  Artikkel
   - Breadcrums
@@ -48,25 +47,24 @@ category
  - Må fikses når index er ferdig formatert
 
  registrer.php
-  - Username
-  - Mail
-  - Password
-  - Re password
-  - first name
-  - last name
+  - Username x
+  - Mail x
+  - Password x
+  - first name x
+  - last name x
  Sikkerhet/validet
 
- login.php
+ login.php x
  Sikkerhet/validet
 
 
  profil.php
-  - Edit profile
+  - Edit profile x
 
  upload_news.php
-  - Tittel
-  - Bilde
-  - Text
+  - Tittel x
+  - Bilde x
+  - Text x
 
  user_dashboard.php
   - liste over alle artikkler den brukeren har laget
