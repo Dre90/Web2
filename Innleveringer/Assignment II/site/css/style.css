@@ -23,6 +23,10 @@ h3 {
 	font-size: 1.5em;
 }
 
+h4 {
+	font-size: 1.2em;
+}
+
 a {
 	text-decoration: none;
 	color: #696a6b;
@@ -47,6 +51,10 @@ img {
 
 .float-right {
 	float: right;
+}
+
+.float-left {
+	float: left;
 }
 
 .btn {
@@ -134,16 +142,9 @@ nav {
     position: absolute;
     background-color: #e7fbfe;
     min-width: 160px;
+	width: 221px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	z-index: 100;
-}
-
-.dropdown-content a {
-    /*color: black;*/
-    /*padding: 12px 16px;
-    text-decoration: none;*/
-    /*display: block;
-    text-align: left;*/
 }
 
 .dropdown-content a:hover {background-color: #ccf7fe;}
@@ -234,10 +235,6 @@ select {
 	margin: 0 0 12px 0;
 }
 
-
-
-
-
 .newsArticle{
 	border-top: 1px solid #A9A9A9;
 	height: auto;
@@ -250,6 +247,11 @@ select {
 
 .newsArticle a:hover {
 	text-decoration: underline;
+}
+
+.newsArticle footer {
+	border-top: 1px solid #A9A9A9;
+	padding-top: 10px;
 }
 
 .article-img-container {
@@ -265,38 +267,47 @@ select {
    height: auto;
 }
 
-
-
 .articleDate {
 	margin: 3px 0 7px 0;
-
 }
 
 .articleCategory {
 	margin: 0;
 }
 
-pre {
-	display: block;
-
-       white-space: pre;
+.sidebar {
+	min-height: 450px;
 }
 
 
 .titleBox {
 	background-color: #fff;
-
-	width: 90%;
-	margin: -30px auto 12px;
-	padding: 5px 10px;
-	position: relative;;
-	z-index: 1;
+	padding: 5px 0px;
 
 }
+
+.underTitle {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
 
 /*Dashboard*/
 .hide {
 	display: none;
+}
+.number, .numberDescription {
+	text-align: center;
+}
+.number {
+
+	font-size: 6em;
+	margin: 0;
+
+}
+
+.numberDescription {
+	font-size: 2em;
 }
 
 /*Table styling*/

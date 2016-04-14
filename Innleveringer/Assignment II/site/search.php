@@ -46,7 +46,7 @@ $msg = "No results";
 
                 $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_path, a.author, a.rating, c.category_id, c.category_name
                 FROM articles as a
-                INNER JOIN category as c
+                INNER JOIN categorys as c
                 ON a.category=c.category_id
                 WHERE $where";
 

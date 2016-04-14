@@ -7,12 +7,14 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
     header('Location: login.php');
 
     $db_server=getDB();
-    $current_article_id = $deletemsg ="";
+    $current_article_id = $deletemsg = $deleteImage = "";
         if(isset($_POST['delete'])) {
             if (isset($_POST['confirm'])) {
                 $current_article_id = $_POST['deleteForward'];
+                $deleteImage = $_POST['deleteImage'];
                 $query = "DELETE FROM articles WHERE article_id =  $current_article_id";
                 $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
+                unlink($deleteImage);
             }else {
                 $deletemsg .= "Please check confirm first";
             }
@@ -40,18 +42,40 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
                 </div>
             </div>
             <table>
+
                 <?php
+                echo "<tr>";
+                    echo "<td>";
+                                echo "<h3>Title</h3>";
+                    echo "</td>";
+                    echo "<td>";
+                                echo "<h3>Likes</h3>";
+                    echo "</td>";
+                    echo "<td>";
+                                echo "<h3>Edit category</h3>";
+                    echo "</td>";
+                    echo "<td>";
+                                echo "<h3>Delete category</h3>";
+                    echo "</td>";
+
+                echo "</tr>";
                 // fetch all the orders
 
                 $user_id = $_SESSION['user_id'];
-                $query = "SELECT * FROM articles where author = $user_id ORDER BY date DESC";
+                $query = "SELECT * FROM articles WHERE author = $user_id ORDER BY date DESC";
                 $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
                     while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
                         $article_id = $row["article_id"];
+                        $title = $row["title"];
+                        $rating = $row["rating"];
+                        $image_path = $row["image_path"];
                         echo "<tr>";
 
                             echo "<td>";
-            				            echo "<a href='article.php?article_id=" .$row['article_id'] . "'>". "<h3>" . $row['title'] . "</h3>" . "</a>";
+            				            echo "<a href='article.php?article_id=" . $article_id . "'>". "<h4>" . $title . "</h4>" . "</a>";
+                            echo "</td>";
+                            echo "<td>";
+            				            echo "<h3>" . $rating . "</h3>";
                             echo "</td>";
 
                             echo "<td>";
@@ -65,6 +89,7 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
                                 echo '<form method="post" action="dashboard.php" >';
                                         echo "<input type='checkbox' name='confirm' value='Confirmed'> Check to confirm";
                                         echo "<input type='text' name='deleteForward' value='$article_id' class='hide'>";
+                                        echo "<input type='text' name='deleteImage' value='$image_path' class='hide'>";
                                         echo '<input type="submit" name="delete" value="Delete">';
                                 echo '</form>';
 

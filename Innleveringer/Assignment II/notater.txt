@@ -1,3 +1,11 @@
+Validering
+Feilsøking
+Read me
+
+
+
+
+
 Database
 sql bruker
 admin bruker

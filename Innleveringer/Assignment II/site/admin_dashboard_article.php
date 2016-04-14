@@ -7,12 +7,14 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
     header('Location: login.php');
 
     $db_server=getDB();
-    $current_article_id = $deletemsg ="";
+    $current_article_id = $deletemsg = $deleteImage = "";
         if(isset($_POST['delete'])) {
             if (isset($_POST['confirm'])) {
                 $current_article_id = $_POST['deleteForward'];
+                $deleteImage = $_POST['deleteImage'];
                 $query = "DELETE FROM articles WHERE article_id =  $current_article_id";
                 $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
+                unlink($deleteImage);
             }else {
                 $deletemsg .= "Please check confirm first";
             }
@@ -43,34 +45,62 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
             <table>
                 <?php
                 echo "<tr>";
-                    echo "<th colspan='3'>";
+                    echo "<th colspan='4'>";
                     echo "<h2>Your articles</h2>";
                     echo "</th>";
+                echo "</tr>";
+                echo "<tr>";
+                    echo "<td>";
+                                echo "<h3>Title</h3>";
+                    echo "</td>";
+                    echo "<td>";
+                                echo "<h3>Category</h3>";
+                    echo "</td>";
+                    echo "<td>";
+                                echo "<h3>Edit category</h3>";
+                    echo "</td>";
+                    echo "<td>";
+                                echo "<h3>Delete category</h3>";
+                    echo "</td>";
+
                 echo "</tr>";
                 // fetch all the orders
 
                 $user_id = $_SESSION['user_id'];
-                $query = "SELECT * FROM articles where author = $user_id ORDER BY date DESC";
+                $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_path,  a.author, a.rating, c.category_id, c.category_name
+                FROM articles as a
+                INNER JOIN categorys as c
+                ON a.category=c.category_id
+                WHERE author = $user_id
+                ORDER BY a.date DESC";
                 $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
                     while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
                         $article_id = $row["article_id"];
+                        $title = $row['title'];
+                        $category_id = $row['category_id'];
+                        $category = $row['category_name'];
+                        $image_path = $row["image_path"];
                         echo "<tr>";
 
                             echo "<td>";
-            				            echo "<a href='article.php?article_id=" .$row['article_id'] . "'>". "<h3>" . $row['title'] . "</h3>" . "</a>";
+            				            echo "<a href='article.php?article_id=" . $article_id . "'>". "<p>" . $title . "</p>" . "</a>";
+                            echo "</td>";
+                            echo "<td>";
+                                        echo "<a href='category.php?category_id=" . $category_id . "'>"."<p>" . $category . "</p>". "</a>";
                             echo "</td>";
 
                             echo "<td>";
-                                echo '<form method="post" action="htmlspecialchars($_SERVER["PHP_SELF"])" >';
+                                echo '<form method="post" action="admin_dashboard_article.php" >';
                                     echo "<input type='text' name='editForward' value='$article_id' class='hide'>";
                                         echo '<input type="submit" name="edit" value="Edit">';
                                 echo '</form>';
                             echo "</td>";
 
                             echo "<td>";
-                                echo '<form method="post" action="htmlspecialchars($_SERVER["PHP_SELF"])" >';
+                                echo '<form method="post" action="admin_dashboard_article.php" >';
                                         echo "<input type='checkbox' name='confirm' value='Confirmed'> Check to confirm";
                                         echo "<input type='text' name='deleteForward' value='$article_id' class='hide'>";
+                                        echo "<input type='text' name='deleteImage' value='$image_path' class='hide'>";
                                         echo '<input type="submit" name="delete" value="Delete">';
                                 echo '</form>';
 
@@ -84,19 +114,44 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
         			}
 
                     echo "<tr>";
-                        echo "<th colspan='3'>";
+                        echo "<th colspan='4'>";
                         echo "<h2>All articles</h2>";
                         echo "</th>";
                     echo "</tr>";
+                    echo "<tr>";
+                        echo "<td>";
+                                    echo "<h3>Title</h3>";
+                        echo "</td>";
+                        echo "<td>";
+                                    echo "<h3>Category</h3>";
+                        echo "</td>";
+                        echo "<td>";
+                                    echo "<h3>Edit category</h3>";
+                        echo "</td>";
+                        echo "<td>";
+                                    echo "<h3>Delete category</h3>";
+                        echo "</td>";
 
-                    $query = "SELECT * FROM articles ORDER BY date DESC";
+                    echo "</tr>";
+
+                    $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_path,  a.author, a.rating, c.category_id, c.category_name
+                    FROM articles as a
+                    INNER JOIN categorys as c
+                    ON a.category=c.category_id
+                    ORDER BY a.date DESC";
                     $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
                         while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
                             $article_id = $row["article_id"];
+                            $title = $row['title'];
+                            $category_id = $row['category_id'];
+                            $category = $row['category_name'];
                             echo "<tr>";
 
                                 echo "<td>";
-                				            echo "<a href='article.php?article_id=" .$row['article_id'] . "'>". "<h3>" . $row['title'] . "</h3>" . "</a>";
+                				            echo "<a href='article.php?article_id=" . $article_id . "'>". "<p>" . $title . "</p>" . "</a>";
+                                echo "</td>";
+                                echo "<td>";
+                				            echo "<a href='category.php?category_id=" . $category_id . "'>"."<p>" . $category . "</p>". "</a>";
                                 echo "</td>";
 
                                 echo "<td>";

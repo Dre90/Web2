@@ -60,13 +60,13 @@ if(isset($_POST['like'])) {
             if ($sort == "") {
                 $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_path,  a.author, a.rating, c.category_id, c.category_name
                 FROM articles as a
-                INNER JOIN category as c
+                INNER JOIN categorys as c
                 ON a.category=c.category_id
                 ORDER BY date DESC";
             } else {
                 $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_path,  a.author, a.rating, c.category_id, c.category_name
                 FROM articles as a
-                INNER JOIN category as c
+                INNER JOIN categorys as c
                 ON a.category=c.category_id
                 ORDER BY $sort DESC";
             }
@@ -87,7 +87,7 @@ if(isset($_POST['like'])) {
 
                     echo "</div>";
 
-    				echo "<p>" . substr($row['text'],0 , 100) . "..." . "</p>";
+    				echo "<p>" . substr($row['text'],0 , 150) . ".." . "</p>";
                     echo "<footer>";
                         echo '<form method="post" action="index.php" >';
                             echo "<input type='text' name='likeID' value='$article_id' class='hide'>";

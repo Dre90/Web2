@@ -10,9 +10,6 @@ $db_server=getDB();
 //gets the user_id from session
 $user_id = $_SESSION['user_id'];
 
-
-
-
 // Update profile
 $usernameErr = $emailErr = $passErr = $firstnameErr = $lastnameErr = "";
 $username = $mail = $pass = $firstname = $lastname = $registered = $msg = "";
@@ -57,7 +54,6 @@ if(isset($_POST['submit'])){
 
 // Update password
 $passOK = 1;
-
 if (isset($_POST['updatePass'])) {
 
     if (empty($_POST["oldPassword"])) {
@@ -78,7 +74,7 @@ if (isset($_POST['updatePass'])) {
     }
 
 	if ($passOK == 1) {
-		$result = $db_server -> query("SELECT user_id, user_type, username, mail, password, firstname, lastname FROM users WHERE username='$username'");
+		$result = $db_server -> query("SELECT user_id, user_type, username, mail, password, firstname, lastname FROM users WHERE user_id='$user_id'");
 
 		if ($result -> num_rows != 0) {
 			$row = $result -> fetch_array(MYSQLI_ASSOC);
@@ -90,11 +86,7 @@ if (isset($_POST['updatePass'])) {
 
 			    	$db_server->query($query) or die($db_server->error);
 
-			    	$msg .= "Your information has been updatet <br>";
-					$_SESSION['last_activity'] = time();
-
-
-
+			    	$msg .= "Your password has been updatet <br>";
 			} else {
 				$msg .= "Old password do not match the saved password <br>";
 			}
@@ -127,7 +119,7 @@ $db_server -> close();
 
 				<h2>Profile</h2>
 				<div class="profile">
-	                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onsubmit="return validate(this);">
+	                <form method="post" action="edit_profile.php">
 	                    <label for="username">Username</label>    <span class="error"> <?php echo $usernameErr;?></span>
 	                    <input type="text" name="username" value="<?php echo $profileusername;?>">
 	                    <label for="email">E-mail</label><span class="error"> <?php echo $emailErr;?></span>
@@ -140,7 +132,7 @@ $db_server -> close();
 	                </form>
 				</div>
 				<div class="password">
-					<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onsubmit="return validate(this);">
+					<form method="post" action="edit_profile.php">
 	                    <label for="oldPassword">Old password</label>
 	                    <input type="text" name="oldPassword">
 						<label for="newPassword">New password</label>
@@ -152,6 +144,7 @@ $db_server -> close();
             <div class='col-4-12'>
 				<p>
 					<?php echo $msg;?>
+
 				</p>
 				<p id="error">
 

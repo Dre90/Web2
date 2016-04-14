@@ -117,7 +117,7 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
                                 <option value=''>Choose a category</option>
                                 <?php
                                    //Fills out category list
-                                    $query = "SELECT * FROM category";
+                                    $query = "SELECT * FROM categorys";
                                     $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
 
                                     $category_id = $category_name = "";
