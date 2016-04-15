@@ -4,7 +4,8 @@ require_once 'connect.php';
 include_once 'functions.php';
 
 $db_server=getDB();
-$usernameErr = $passErr = $username =  "";
+
+$usernameErr = $passErr = $username = $msg = "";
 if (!isset($_SESSION['isloggedin']) && isset($_POST['login'])) {
     if (empty($_POST["username"])) {
         $usernameErr = "Username is required";
@@ -41,12 +42,13 @@ if (!isset($_SESSION['isloggedin']) && isset($_POST['login'])) {
             $_SESSION['last_activity'] = time();
 			$_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
 			$_SESSION['ua'] = $_SERVER['HTTP_USER_AGENT'];
+
+            redirect("index.php", false);
+		} else {
+		    $msg .= "Wrong username or password!";
 		}
 	}
 }
-
-
-
 // close the connection
 $db_server -> close();
 ?>
@@ -59,8 +61,7 @@ $db_server -> close();
             </div>
             <div class='col-6-12'>
                 <h2>Log in</h2>
-                <!-- <h3 class="success"><?php echo $registered;?></h3> -->
-                <form method="post" action="login.php" >
+                <form method="post" action="login.php" onsubmit="return validateLogin(this);">
                     <label for="username">Username</label> <span class="error"><?php echo $usernameErr;?></span>
                         <input type="text" name="username">
 
@@ -75,6 +76,8 @@ $db_server -> close();
                 <p id="error">
 
                 </p>
+                <?php echo $msg ?>
+
                 <?php
                 // if not logged in
                 if(!isset($_SESSION['isloggedin'])){
@@ -91,4 +94,3 @@ $db_server -> close();
     </div>
 </body>
 </html>
-<!-- onsubmit="return validate(this);" -->

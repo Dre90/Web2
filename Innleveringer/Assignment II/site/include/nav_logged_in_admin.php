@@ -1,10 +1,10 @@
 <?php
-require_once 'functions.php';
-// log out
-if(isset($_GET['link'])){
-    $link=$_GET['link'];
-    deleteSession($link);
-}
+    require_once 'functions.php';
+    // log out
+    if(isset($_GET['link'])){
+        $link=$_GET['link'];
+        deleteSession($link);
+    }
  ?>
 <header>
     <a href="index.php" class="logo">Online newspaper</a>

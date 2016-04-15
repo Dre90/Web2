@@ -52,7 +52,7 @@ if (!isset($_SESSION['isloggedin']) OR $_SESSION['ip'] != $_SERVER['REMOTE_ADDR'
                                 echo "<h3>Likes</h3>";
                     echo "</td>";
                     echo "<td>";
-                                echo "<h3>Edit category</h3>";
+                                echo "<h3>Edit</h3>";
                     echo "</td>";
                     echo "<td>";
                                 echo "<h3>Delete category</h3>";

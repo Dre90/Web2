@@ -5,10 +5,11 @@ include_once 'functions.php';
 
 // open the connection
 $db_server=getDB();
+
+// Gets the sort preferens from user
 $sort = $_COOKIE["sort"];
 
-
-
+// Sort
 if(isset($_POST['sort'])) {
     $cookie_name = "sort";
     $cookie_value = $_POST["sort"];
@@ -16,6 +17,7 @@ if(isset($_POST['sort'])) {
     redirect("index.php", false);
 }
 
+// Like
 if(isset($_POST['like'])) {
     $like_article_id = $_POST['likeID'];
     $Like_rating = $_POST['rating'] + 1;
@@ -30,7 +32,6 @@ if(isset($_POST['like'])) {
 <body>
     <div class="wrapper">
         <?php  include 'include/header.php'; ?>
-
         <section class="grid grid-pad">
             <div class="grid grid-pad">
                 <div class="col-7-12">
@@ -39,8 +40,6 @@ if(isset($_POST['like'])) {
                             <input type="submit" name="search_button" value="Search" class="search-botton">
                     </form>
                 </div>
-
-                <!-- chronological order UP and down -->
                 <div class="col-5-12">
                     <form method="post" action="index.php" >
                         <select name="sort" class="sort-select">
@@ -50,61 +49,55 @@ if(isset($_POST['like'])) {
                         </select>
                         <input type="submit" name="sort_button" value="Sort" class="sort-botton">
                     </form>
-
-
                 </div>
-
             </div>
             <?php
-            // fetch all the orders
-            if ($sort == "") {
-                $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_path,  a.author, a.rating, c.category_id, c.category_name
-                FROM articles as a
-                INNER JOIN categorys as c
-                ON a.category=c.category_id
-                ORDER BY date DESC";
-            } else {
-                $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_path,  a.author, a.rating, c.category_id, c.category_name
-                FROM articles as a
-                INNER JOIN categorys as c
-                ON a.category=c.category_id
-                ORDER BY $sort DESC";
-            }
+                // fetch all the articles and category names
+                if ($sort == "") {
+                    $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_path,  a.author, a.rating, c.category_id, c.category_name
+                    FROM articles as a
+                    INNER JOIN categorys as c
+                    ON a.category=c.category_id
+                    ORDER BY date DESC";
+                } else {
+                    $query = "SELECT a.article_id, a.title, a.date, a.category, a.text, a.image_path,  a.author, a.rating, c.category_id, c.category_name
+                    FROM articles as a
+                    INNER JOIN categorys as c
+                    ON a.category=c.category_id
+                    ORDER BY $sort DESC";
+                }
 
-            $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
+                $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
 
-            while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
-                $article_id = $row["article_id"];
-                $rating = $row["rating"];
-                echo "<div class='col-6-12 newsArticle'>";
-                    echo "<div class='article-img-container'>";
-                        echo "<a href='article.php?article_id=" .$row['article_id'] . "'>" . '<img class="articleImg" src="'.$row['image_path'].' ">' . "</a>";
+                while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
+                    $article_id = $row["article_id"];
+                    $rating = $row["rating"];
+
+                    echo "<div class='col-6-12 newsArticle'>";
+                        echo "<div class='article-img-container'>";
+                            echo "<a href='article.php?article_id=" .$row['article_id'] . "'>" . '<img class="articleImg" src="'.$row['image_path'].' ">' . "</a>";
+                        echo "</div>";
+                        echo "<div class='titleBox'>";
+                            echo "<a href='category.php?category_id=" .$row['category_id'] . "'>" . "<p class='articleCategory'>" . $row['category_name'] . " "  . "</p>" . "</a>";
+
+            				echo "<a href='article.php?article_id=" .$row['article_id'] . "'>" . "<h1>" . $row['title'] . "</h1>" . "</a>";
+                        echo "</div>";
+
+        				echo "<p>" . substr($row['text'],0 , 150) . ".." . "</p>";
+                        echo "<footer>";
+                            echo '<form method="post" action="index.php" >';
+                                echo "<input type='text' name='likeID' value='$article_id' class='hide'>";
+                                echo "<input type='text' name='rating' value='$rating' class='hide'>";
+                                echo '<button type="submit" name="like" class="btn btn-like"><i class="fa fa-heart fa-lg"></i> Like</button>';
+                                echo "<span>" . $rating . " likes" . "</span>";
+                            echo "</form>";
+                        echo "</footer>";
                     echo "</div>";
-                    echo "<div class='titleBox'>";
-                        echo "<a href='category.php?category_id=" .$row['category_id'] . "'>" . "<p class='articleCategory'>" . $row['category_name'] . " "  . "</p>" . "</a>";
-
-        				echo "<a href='article.php?article_id=" .$row['article_id'] . "'>" . "<h1>" . $row['title'] . "</h1>" . "</a>";
-
-                    echo "</div>";
-
-    				echo "<p>" . substr($row['text'],0 , 150) . ".." . "</p>";
-                    echo "<footer>";
-                        echo '<form method="post" action="index.php" >';
-                            echo "<input type='text' name='likeID' value='$article_id' class='hide'>";
-                            echo "<input type='text' name='rating' value='$rating' class='hide'>";
-                            echo '<button type="submit" name="like" class="btn btn-like"><i class="fa fa-heart fa-lg"></i> Like</button>';
-                        echo "</form>";
-                        echo "<p>";
-                        echo $rating . " likes";
-                        echo "</p>";
-                    echo "</footer>";
-                echo "</div>";
-			}
-
-
-            // close the connection
-			$db_server -> close();
-             ?>
+    			}
+                
+                // close the connection
+    			$db_server -> close();
+            ?>
         </section>
     </div>
 </body>

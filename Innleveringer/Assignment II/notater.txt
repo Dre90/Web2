@@ -2,6 +2,8 @@ Validering
 Feilsøking
 Read me
 
+• take security measures against XSS and SQL injection,
+
 
 
 

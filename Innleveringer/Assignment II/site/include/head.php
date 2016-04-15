@@ -1,21 +1,22 @@
 <?php
-session_start();
+    session_start();
 
+    // Auto log out after 60 min
+    if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 3600)) {
+        // last request was more than 60 minutes ago
+        session_unset();     // unset $_SESSION variable for the run-time
+        session_destroy();   // destroy session data in storage
+    }
 
-if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 1800)) {
-    // last request was more than 30 minutes ago
-    session_unset();     // unset $_SESSION variable for the run-time
-    session_destroy();   // destroy session data in storage
-
-}
-
-$_SESSION['last_activity'] = time();
-    ?>
+    // updates last_activity
+    $_SESSION['last_activity'] = time();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Online newspaper - Assignment II</title>
+
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/simplegrid.css">
     <link rel="stylesheet" href="css/style.css">
