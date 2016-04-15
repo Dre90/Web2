@@ -4,6 +4,12 @@ Read me
 
 • take security measures against XSS and SQL injection,
 
+likes på artikkel siden. sidebar
+ingen artliker skriv det..
+link til den opplastede artikkelen
+
+gjør om tilbakemelding
+
 
 
 

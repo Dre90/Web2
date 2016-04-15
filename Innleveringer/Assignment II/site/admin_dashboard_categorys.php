@@ -39,8 +39,8 @@
         if(isset($_POST['addCategory'])) {
             $category = $_POST['addCategoryInput'];
             // create table
-            $query = "INSERT INTO categorys(category_name)
-            		  VALUES($category)";
+            $query = "INSERT INTO categorys (category_name)
+            		  VALUES ('$category')";
             $db_server->query($query) or die('Query failed5:' . $db_server->error);
         }
 ?>

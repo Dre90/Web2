@@ -31,9 +31,9 @@ a {
 	color: #696a6b;
 }
 
-a:hover {
-	color: #505050;
-}
+	a:hover {
+		color: #505050;
+	}
 
 .success {
 	color: #13d131;
@@ -63,23 +63,16 @@ img {
 	font-size: 1.2em;
 	text-align: left;
 	padding: 0;
-
 	background-color: #fff;
-
-	 border: none;
-	 cursor: pointer;
-	 color: #696a6b;
+	border: none;
+	cursor: pointer;
+	color: #696a6b;
 }
 
-.btn-like {
-	margin-bottom: 10px;
+.btn-like {margin-bottom: 10px;}
 
+.btn-like:hover{color: #000;}
 
-}
-
-.btn-like:hover{
-	color: #000;
-}
 /*----------Wrapper----------*/
 .wrapper {
 	width: 100%;
@@ -103,7 +96,6 @@ header {
     line-height: 70px;
     margin-left: 10px;
 }
-
 
 /*----------Navigasjon----------*/
 
@@ -132,45 +124,32 @@ nav {
                 color: #696a6b;
 			}
 
-			li.dropdown {
-    display: inline-block;
-}
+			li.dropdown {display: inline-block;}
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #e7fbfe;
-    min-width: 160px;
-	width: 221px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	z-index: 100;
-}
+			.dropdown-content {
+			    display: none;
+			    position: absolute;
+			    background-color: #e7fbfe;
+			    min-width: 160px;
+				width: 221px;
+			    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				z-index: 100;
+			}
 
-.dropdown-content a:hover {background-color: #ccf7fe;}
+				.dropdown-content a:hover {background-color: #ccf7fe;}
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
+			.dropdown:hover .dropdown-content {display: block;}
+
 
 /*Sort and search header*/
-
 .search-botton{
 	width: 20%;
 	background-color: #e7fbfe;
 }
 
-.search-field{
-	width: 50%;
+.search-field, .sort-select {width: 50%;}
 
-}
-
-
-.sort-select { width: 50%;}
-
-.sort-botton {
-	width: 40%;
-}
-
+.sort-botton {width: 40%;}
 
 
 /*---------- Forms----------*/
@@ -201,15 +180,9 @@ input[type=checkbox] {
 	padding: 0;
 }
 
+input[type=file] {border: 1px solid #A9A9A9;}
 
-input[type=file] {
-	border: 1px solid #A9A9A9;
-}
-
-label {
-	font-size: 1.3em;
-}
-
+label {font-size: 1.3em;}
 
 input[type=button], input[type=submit], input[type=reset] {
     background-color: #4CAF50;
@@ -234,19 +207,16 @@ select {
 	margin: 0 0 12px 0;
 }
 
+/*Article*/
 .newsArticle{
 	border-top: 1px solid #A9A9A9;
 	height: auto;
 	min-height: 560px;
 }
 
-.newsArticle h1 {
-	font-size: 2em;
-}
+.newsArticle h1 {font-size: 2em;}
 
-.newsArticle a:hover {
-	text-decoration: underline;
-}
+.newsArticle a:hover {text-decoration: underline;}
 
 .newsArticle footer {
 	border-top: 1px solid #A9A9A9;
@@ -261,28 +231,19 @@ select {
 }
 
 .articleImg {
-
 	max-width: 100%;
-   height: auto;
+	height: auto;
 }
 
-.articleDate {
-	margin: 3px 0 7px 0;
-}
+.articleDate {margin: 3px 0 7px 0;}
 
-.articleCategory {
-	margin: 0;
-}
+.articleCategory {margin: 0;}
 
-.sidebar {
-	min-height: 450px;
-}
-
+.sidebar {min-height: 450px;}
 
 .titleBox {
 	background-color: #fff;
 	padding: 5px 0px;
-
 }
 
 .underTitle {
@@ -292,55 +253,37 @@ select {
 
 
 /*Dashboard*/
-.hide {
-	display: none;
-}
-.number, .numberDescription {
-	text-align: center;
-}
-.number {
+.hide {display: none;}
 
+.number, .numberDescription {text-align: center;}
+
+.number {
 	font-size: 6em;
 	margin: 0;
-
 }
 
-.numberDescription {
-	font-size: 2em;
-}
+.numberDescription {font-size: 2em;}
+
 
 /*Table styling*/
 table, th, td {
 	border: 1px solid black;
 	border-collapse: collapse;
 }
-	th, td {
-		padding: 5px 10px;
-	}
+	th, td {padding: 5px 10px;}
 
 	th {
 		padding-top: 20px;
-	}
-
-	th.tableHeader {
-		padding-top: 7px;
-	}
-
-	tr:nth-child(even) {
-		background-color: #eee;
-	}
-
-	tr:nth-child(odd) {
-	   background-color:#fff;
-	}
-
-	th	{
 		background-color: white;
 	}
 
-	table a:hover {
-		text-decoration: underline;
-	}
+	th.tableHeader {padding-top: 7px;}
+
+	tr:nth-child(even) {background-color: #eee;}
+
+	tr:nth-child(odd) {background-color:#fff;}
+
+	table a:hover {text-decoration: underline;}
 
 /*Upload*/
 .imageUpload {
@@ -349,6 +292,4 @@ table, th, td {
 	margin: 25px 0;
 }
 
-.imagesPreview {
-	width: 100%;
-}
+.imagesPreview {width: 100%;}

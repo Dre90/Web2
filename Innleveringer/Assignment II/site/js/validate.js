@@ -63,12 +63,6 @@ function validateUpload(form){
         return err;
     }
 
-    function validate_fileToUpload(fileToUpload){
-        var err = '';
-        if(fileToUpload.trim() === '') err = 'Image can not be empty.<br>';
-        return err;
-    }
-
     function validate_text(text){
         var err = '';
         if(text.trim() === '') err = 'Text can not be empty.<br>';

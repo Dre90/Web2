@@ -17,7 +17,7 @@
                 $deleteImage = $_POST['deleteImage'];
                 $query = "DELETE FROM articles WHERE article_id =  $current_article_id";
                 $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
-                unlink($deleteImage); // Delets the image
+                unlink($deleteImage);
             }else {
                 $deletemsg .= "Please check confirm first";
             }
@@ -137,6 +137,7 @@
                             $title = $row['title'];
                             $category_id = $row['category_id'];
                             $category = $row['category_name'];
+                            $image_path = $row["image_path"];
 
                             echo "<tr>";
                                 echo "<td>";
@@ -152,9 +153,10 @@
                                     echo '</form>';
                                 echo "</td>";
                                 echo "<td>";
-                                    echo '<form method="post" action="dashboard.php" >';
+                                    echo '<form method="post" action="admin_dashboard_article.php" >';
                                         echo "<input type='checkbox' name='confirm' value='Confirmed'> Check to confirm";
                                         echo "<input type='text' name='deleteForward' value='$article_id' class='hide'>";
+                                        echo "<input type='text' name='deleteImage' value='$image_path' class='hide'>";
                                         echo '<input type="submit" name="delete" value="Delete">';
                                     echo '</form>';
                                 echo "</td>";

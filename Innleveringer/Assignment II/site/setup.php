@@ -128,7 +128,7 @@
 	$likes = "10";
 
 	$query = "INSERT INTO articles (title, category, date, text, image_path, author, rating)
-			  VALUES ($title, $category, $todaysDate, $text, $image, $user_id, $likes)";
+			  VALUES ('$title', '$category', '$todaysDate', '$text', '$image', '$user_id', '$likes')";
 	$db_server->query($query) or die('Query failed 4.1: ' . $db_server->error);
 
 	//article 2
@@ -157,7 +157,7 @@
 	$likes = "20";
 
 	$query = "INSERT INTO articles (title, category, date, text, image_path, author, rating)
-			  VALUES ($title, $category, $todaysDate, $text, $image, $user_id, $likes)";
+			  VALUES ('$title', '$category', '$todaysDate', '$text', '$image', '$user_id', '$likes')";
 	$db_server->query($query) or die('Query failed 4.2: ' . $db_server->error);
 
 	//article 3
@@ -179,7 +179,7 @@
 	$likes = "5";
 
 	$query = "INSERT INTO articles (title, category, date, text, image_path, author, rating)
-			  VALUES ($title, $category, $todaysDate, $text, $image, $user_id, $likes)";
+			  VALUES ('$title', '$category', '$todaysDate', '$text', '$image', '$user_id', '$likes')";
 	$db_server->query($query) or die('Query failed 4.3: ' . $db_server->error);
 
 	//article 4
@@ -201,7 +201,7 @@
 	$likes = "2";
 
 	$query = "INSERT INTO articles (title, category, date, text, image_path, author, rating)
-			  VALUES ($title, $category, $todaysDate, $text, $image, $user_id, $likes)";
+			  VALUES ('$title', '$category', '$todaysDate', '$text', '$image', '$user_id', '$likes')";
 	$db_server->query($query) or die('Query failed 4.4: ' . $db_server->error);
 
 	echo "Database and tables has been succesfully created, and some data has been succesfully added!";
