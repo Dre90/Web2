@@ -113,7 +113,7 @@
 	$title = $category = $todaysDate = $text = $image = $user_id = "";
 	$title = "This pig that thinks she is a dog is living her best life";
 	$category = 3;
-	$todaysDate = date("Y-m-d");
+	$todaysDate = "2016-03-10";
 	$text = "Olive the pig has a unique family that does not discriminate.
 
 	Despite her brothers and sisters being of the canine variety, Olive has found her home by their side. It is like Babe come to life.
@@ -124,7 +124,7 @@
 
 	Their adorable lives are being documented on Alissa Instagram account, Abby Love Photography. From the blooming friendship of Olive and Lola, the outrageous outfits and their cheeky run-ins with the goats and chickens, there is not a moment of boredom.";
 	$image = "article_images/pig.jpg";
-	$user_id = "2";
+	$user_id = "3";
 	$likes = "10";
 
 	$query = "INSERT INTO articles (title, category, date, text, image_path, author, rating)
@@ -135,7 +135,7 @@
 	$title = $category = $todaysDate = $text = $image = $user_id = "";
 	$title = "The world is ready for the Model 3. Is Tesla?";
 	$category = 2;
-	$todaysDate = date("Y-m-d");
+	$todaysDate = "2016-01-15";
 	$text = "By attracting over 325,000 pre-orders in just three days, Tesla proved unequivocally that the world is ready for the Model 3.
 
 	But is Tesla ready for the mass-market long-range EV?
@@ -164,7 +164,7 @@
 	$title = $category = $todaysDate = $text = $image = $user_id = "";
 	$title = "Donald Trump masks are yuuuge business for this Mexican retailer";
 	$category = 4;
-	$todaysDate = date("Y-m-d");
+	$todaysDate = "2016-04-05";
 	$text = 'Despite his comments about Mexican immigrants and ideas about how he make the Mexican government pay for "the wall," Donald Trumps GOP front-runner status has managed to be positive for Mexico in at least one way: locally-made masks of his face are selling like hotcakes.
 
 	Caretas REV, a mask-making company in central Mexico, has produced tens of thousands of Trump masks since last fall, CNN Money reported.
@@ -186,7 +186,7 @@
 	$title = $category = $todaysDate = $text = $image = $user_id = "";
 	$title = "Snapchat is now the most popular social network among teens, according to new study";
 	$category = 2;
-	$todaysDate = date("Y-m-d");
+	$todaysDate = "2016-04-10";
 	$text = 'As Snapchat has expanded and added new features over the year, it has steadily climbed the ranks of social media titans. In fact, it is now more popular among its core demographic — teens — than Twitter, Facebook and now even Instagram.
 	The Piper Jaffray study "Taking Stock With Teens" polled about 6,500 U.S. teens to see what they felt was the most important social network, and Snapchat took 28% of votes. Instagram came in close-second with 27%, followed by Twitter and Facebook.
 	The "Taking Stock With Teens" survey, which is done semi-annually, shows Snapchats rise over the past year. In the spring 2015 survey, Instagram was the top social network, with Snapchat coming in fourth behind Twitter and Facebook. In the fall, Snapchat edged out Facebook for third.

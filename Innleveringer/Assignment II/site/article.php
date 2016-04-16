@@ -61,13 +61,14 @@
 
                          echo "<div class='newsArticle sidebar'>";
                              echo "<div class='article-img-container'>";
-                                 echo "<a href='article.php?article_id=" .$row['article_id'] . "'>" . '<img class="articleImg" src="'.$row['image_path'].' ">' . "</a>";
+                                 echo "<a href='article.php?article_id=" .$row['article_id'] . "' class=article_img>" . '<img class="articleImg" src="'.$row['image_path'].' ">' . "</a>";
                              echo "</div>";
                              echo "<div class='titleBox'>";
                  				echo "<a href='article.php?article_id=" .$row['article_id'] . "'>" . "<h1>" . $row['title'] . "</h1>" . "</a>";
                              echo "</div>";
 
              				echo "<p>" . substr($row['text'],0 , 160) . ".." . "</p>";
+                            echo "<span>" . $rating . " likes" . "</span>";
                          echo "</div>";
          			}
                      // close the connection

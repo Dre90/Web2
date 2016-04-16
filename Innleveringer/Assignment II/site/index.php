@@ -1,33 +1,38 @@
 <?php
-include_once 'include/head.php';
-require_once 'connect.php';
-include_once 'functions.php';
+    include_once 'include/head.php';
+    require_once 'connect.php';
+    require_once 'functions.php';
 
-// open the connection
-$db_server=getDB();
+    // open the connection
+    $db_server=getDB();
 
-// Gets the sort preferens from user
-$sort = $_COOKIE["sort"];
+    // Gets the sort preferens from user
+    if (!isset($_COOKIE["sort"])) {
+        $sort = '';
+    } else {
+        $sort = $_COOKIE["sort"];
+    }
 
-// Sort
-if(isset($_POST['sort'])) {
-    $cookie_name = "sort";
-    $cookie_value = $_POST["sort"];
-    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-    redirect("index.php", false);
-}
 
-// Like
-if(isset($_POST['like'])) {
-    $like_article_id = $_POST['likeID'];
-    $Like_rating = $_POST['rating'] + 1;
-    $query = "UPDATE articles
-              SET rating='$Like_rating'
-              WHERE article_id = $like_article_id ";
 
-    $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
-}
+    // Sort
+    if(isset($_POST['sort'])) {
+        $cookie_name = "sort";
+        $cookie_value = $_POST["sort"];
+        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+        redirect("index.php", false);
+    }
 
+    // Like
+    if(isset($_POST['like'])) {
+        $like_article_id = $_POST['likeID'];
+        $Like_rating = $_POST['rating'] + 1;
+        $query = "UPDATE articles
+                  SET rating='$Like_rating'
+                  WHERE article_id = $like_article_id ";
+
+        $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
+    }
 ?>
 <body>
     <div class="wrapper">
@@ -94,7 +99,7 @@ if(isset($_POST['like'])) {
                         echo "</footer>";
                     echo "</div>";
     			}
-                
+
                 // close the connection
     			$db_server -> close();
             ?>

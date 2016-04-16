@@ -62,7 +62,8 @@
 					$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 					$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 					$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-					$imagename=date("d-m-Y")."-".time(). "." . $imageFileType;
+					$randNr = rand(0, 9);
+					$imagename=$randNr . "-" . date("d-m-Y") . "-" . time() . "." . $imageFileType;
 					$target_path = $target_dir.$imagename;
 
 					if($check !== false) {
@@ -73,7 +74,7 @@
 				    }
 
 					// Check file size
-					if ($_FILES["fileToUpload"]["size"] > 500000) {
+					if ($_FILES["fileToUpload"]["size"] > 10000000) {
 					    $imgMsg .=  "Sorry, your file is too large. <br>";
 					    $uploadOk = 0;
 					}
@@ -110,7 +111,7 @@
 	            $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
 	            if($result)
 	            {
-	                $msg .= "The article has been saved";
+	                $msg .= "The article has been updated";
 	            }
 	        }
 	    }
@@ -121,7 +122,7 @@
         <section class="grid grid-pad">
             <div class='col-8-12'>
 				<h2>Profile</h2>
-                <form method="post" enctype="multipart/form-data" action="edit_article.php" onsubmit="return validateUpload(this);">
+                <form method="post" enctype="multipart/form-data" action="edit_article.php" onsubmit="return validateEdit(this);">
                     <label for="title">Title</label><span class="error"> <?php echo $titleErr;?></span>
                        <input type="text" name="title" value="<?php echo $title;?>">
                     <label for="category">Category</label><span class="error"> <?php echo $categoryErr;?></span>
@@ -155,10 +156,10 @@
                 </form>
             </div>
             <div class='col-4-12'>
-				<p>
+				<p class="success">
 					<?php echo $msg;?>
 				</p>
-				<p id="error"></p>
+				<p id="error" class="error"></p>
             </div>
         </section>
     </div>

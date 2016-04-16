@@ -1,6 +1,7 @@
 <?php
     session_start();
 
+    
     // Auto log out after 60 min
     if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 3600)) {
         // last request was more than 60 minutes ago

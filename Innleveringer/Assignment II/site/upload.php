@@ -29,12 +29,7 @@
 	        } else {
 	            $category = get_post('category', $db_server);
 	        }
-	        if (empty($_POST["text"])) {
-	            $textErr = "Text is required";
-	            $registerOk = 0;
-	        } else {
-	            $text = get_post('text', $db_server);
-	        }
+
 			if (empty($_FILES["fileToUpload"]["name"])) {
 				$imgErr = "Please select an image.";
 				$registerOk = 0;
@@ -48,7 +43,8 @@
 					$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 					$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 					$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-					$imagename=date("d-m-Y")."-".time(). "." . $imageFileType;
+					$randNr = rand(0, 9);
+					$imagename=$randNr . "-" . date("d-m-Y") . "-" . time() . "." . $imageFileType;
 					$target_path = $target_dir.$imagename;
 
 					if($check !== false) {
@@ -59,7 +55,7 @@
 				    }
 
 					// Check file size
-					if ($_FILES["fileToUpload"]["size"] > 500000) {
+					if ($_FILES["fileToUpload"]["size"] > 10000000) {
 					    $imgMsg .=  "Sorry, your file is too large. <br>";
 					    $uploadOk = 0;
 					}
@@ -85,6 +81,12 @@
 					}
 				}
 			}
+			if (empty($_POST["text"])) {
+	            $textErr = "Text is required";
+	            $registerOk = 0;
+	        } else {
+	            $text = get_post('text', $db_server);
+	        }
 	        if ($registerOk == 1) {
 	            $todaysDate = date("Y-m-d");
 	            $query = "INSERT INTO articles (title, category, date, text, image_path, author) VALUES ('$title', '$category', '$todaysDate', '$text', '$image', $user_id)";
@@ -92,7 +94,7 @@
 	            $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
 	            if($result)
 	            {
-	                $msg .= "The article has been uploaded";
+	                $msg .= "The article has been uploaded. <br> Go to the front page or your dashboard to see it.";
 					$_SESSION['last_activity'] = time();
 	            }
 	        }
@@ -106,7 +108,7 @@
 				<h2>Profile</h2>
                 <form method="post" enctype="multipart/form-data" action="upload.php" onsubmit="return validateUpload(this);">
                     <label for="title">Title</label><span class="error"> <?php echo $titleErr;?></span>
-                       <input type="text" name="title">
+                       <input type="text" name="title" autofocus>
                     <label for="category">Category</label><span class="error"> <?php echo $categoryErr;?></span>
                         <select name="category">
                             <option value=''>Choose a category</option>
@@ -132,10 +134,10 @@
                 </form>
             </div>
             <div class='col-4-12'>
-				<p>
+				<p class="success">
 					<?php echo $msg;?>
 				</p>
-				<p id="error"></p>
+				<p id="error" class="error"></p>
             </div>
         </section>
     </div>

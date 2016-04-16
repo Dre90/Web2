@@ -1,0 +1,13 @@
+Title: Lorem ipsum about Sports
+Category: Sports
+Image: Articles to upload\loremIpsumSport.jpg
+Text:
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a tempor mi, eu luctus ligula. Fusce non purus sed quam consequat tempus placerat eu dolor. Donec ultrices porta nisl, vitae maximus nunc dapibus ut. Pellentesque non semper dui, vel placerat leo. Aliquam ullamcorper erat libero, eget hendrerit felis pharetra nec. Suspendisse gravida dapibus orci, id consequat sem rutrum nec. Maecenas ut faucibus odio. Vestibulum tincidunt malesuada nisi vel imperdiet. Proin scelerisque vehicula lacus eu suscipit. Maecenas sit amet felis a ligula aliquam lobortis et a odio. Morbi consectetur mauris eget mauris sodales, malesuada vehicula nulla molestie. Proin vitae sem dapibus, aliquam sem vehicula, bibendum justo.
+
+
+
+Title: Lorem ipsum about Watercooler
+Category: Watercooler
+Image: Articles to upload\loremIpsumWatercooler.jpg
+Text:
+Quisque tellus est, interdum at pellentesque a, malesuada a quam. Etiam convallis purus nec risus ullamcorper consequat eu sed eros. Duis lobortis magna ipsum, non tincidunt erat sollicitudin eget. Maecenas augue augue, posuere rutrum ornare quis, semper at diam. Donec ac commodo risus. Morbi venenatis velit ac accumsan convallis. Praesent sit amet augue eget quam faucibus congue. Nulla bibendum justo id augue interdum, ac scelerisque urna tempor.

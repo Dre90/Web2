@@ -45,7 +45,7 @@ if (!isset($_SESSION['isloggedin']) && isset($_POST['login'])) {
 
             redirect("index.php", false);
 		} else {
-		    $msg .= "Wrong username or password!";
+		    
 		}
 	}
 }
@@ -63,7 +63,7 @@ $db_server -> close();
                 <h2>Log in</h2>
                 <form method="post" action="login.php" onsubmit="return validateLogin(this);">
                     <label for="username">Username</label> <span class="error"><?php echo $usernameErr;?></span>
-                        <input type="text" name="username">
+                        <input type="text" name="username" autofocus>
 
                     <label for="password">Password</label> <span class="error"><?php echo $passErr;?></span>
                         <input type="password" name="password">
@@ -73,9 +73,9 @@ $db_server -> close();
 
             </div>
             <div class='col-4-12'>
-                <p id="error">
+                <p id="error" class="error">
 
-                </p>
+
                 <?php echo $msg ?>
 
                 <?php
@@ -89,6 +89,7 @@ $db_server -> close();
                         redirect("index.php", false);
                     }
                     ?>
+                    </p>
             </div>
         </section>
     </div>

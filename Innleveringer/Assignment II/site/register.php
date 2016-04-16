@@ -61,7 +61,7 @@
                 <h3 class="success"><?php echo $registered;?></h3>
                 <form method="post" action="register.php" onsubmit="return validate(this);">
                     <label for="username">Username</label><span class="error"> * <?php echo $usernameErr;?></span>
-                        <input type="text" name="username">
+                        <input type="text" name="username" autofocus>
                     <label for="email">E-mail</label><span class="error"> * <?php echo $emailErr;?></span>
                         <input type="email" name="email">
                     <label for="password">Password</label><span class="error"> * <?php echo $passErr;?></span>
@@ -74,7 +74,7 @@
                 </form>
             </div>
             <div class='col-4-12'>
-                <p id="error"></p>
+                <p id="error" class="error"></p>
             </div>
         </section>
     </div>

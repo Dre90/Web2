@@ -9,52 +9,34 @@ html, body {
 
 p {margin-bottom: 1.3em;}
 
-h1 {
+h1 {font-size: 2.5em;}
 
-  	font-size: 2.5em;
-}
+h2 {font-size: 2em;}
 
-h2 {
-	font-size: 2em;
-}
+h3 {font-size: 1.5em;}
 
-h3 {
-	font-size: 1.5em;
-}
+h4 {font-size: 1.2em;}
 
-h4 {
-	font-size: 1.2em;
-}
-
-a {
-	text-decoration: none;
-	color: #696a6b;
-}
+a {color: #86D7E2;}
 
 	a:hover {
-		color: #505050;
+		color: #fff;
+		background-color: #86D7E2;
+		display: inline-block;
 	}
 
-.success {
-	color: #13d131;
-}
+.success {color: #13d131;}
 
-.error {
-	color: #d11313;
-}
+.error {color: #d11313;}
 
 img {
 	max-width: 100%;
-   height: auto;
+    height: auto;
 }
 
-.float-right {
-	float: right;
-}
+.float-right {float: right;}
 
-.float-left {
-	float: left;
-}
+.float-left {float: left;}
 
 .btn {
 	width: 15%;
@@ -69,9 +51,10 @@ img {
 	color: #696a6b;
 }
 
+
 .btn-like {margin-bottom: 10px;}
 
-.btn-like:hover{color: #000;}
+.btn-like:hover{color: #86D7E2;}
 
 /*----------Wrapper----------*/
 .wrapper {
@@ -79,6 +62,7 @@ img {
 	height: auto;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 20px;
 	background-color: #fff;
 }
 
@@ -87,6 +71,11 @@ header {
 	width: 100%;
 	background-color: #e7fbfe;
 	float: left;
+}
+header a:hover {
+	color: #696a6b;
+	background-color: inherit;
+	display: inline;
 }
 
 .logo {
@@ -165,6 +154,8 @@ textarea {
 
 }
 
+label {font-size: 1.3em;}
+
 input {
     width: 100%;
 	font-family: 'Open Sans', sans-serif;
@@ -175,28 +166,33 @@ input {
     box-sizing: border-box;
 }
 
-input[type=checkbox] {
-	width: auto;
-	padding: 0;
-}
+	input[type=checkbox] {
+		width: auto;
+		padding: 0;
+	}
 
-input[type=file] {border: 1px solid #A9A9A9;}
+	input[type=file] {border: 1px solid #A9A9A9;}
 
-label {font-size: 1.3em;}
+	input[type=button], input[type=submit], input[type=reset] {
+	    /*background-color: #4CAF50;*/
+	    border: none;
+	    color: white;
+	    padding: 16px 32px;
+	    margin: 4px 2px;
+	    cursor: pointer;
+		background-color: #86D7E2;
+		border: 1px solid #86D7E2;
+	}
 
-input[type=button], input[type=submit], input[type=reset] {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
+	input[name=delete] {
+		width: auto;
+		margin-left: 10px;
+	}
 
-input[name=delete] {
-	width: auto;
-	margin-left: 10px;
-}
+	input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+		background-color: #fff;
+		color: #696a6b;
+	}
 
 select {
     width: 100%;
@@ -211,7 +207,7 @@ select {
 .newsArticle{
 	border-top: 1px solid #A9A9A9;
 	height: auto;
-	min-height: 560px;
+	min-height: 550px;
 }
 
 .newsArticle h1 {font-size: 2em;}
@@ -223,17 +219,23 @@ select {
 	padding-top: 10px;
 }
 
-.article-img-container {
-	overflow: hidden;
-	position: relative;
-	margin-top: 10px;
-	max-height: 260px;
-}
+	.article-img-container {
+		overflow: hidden;
+		position: relative;
+		margin-top: 10px;
+		max-height: 260px;
+	}
 
-.articleImg {
-	max-width: 100%;
-	height: auto;
-}
+	.articleImg {
+		max-width: 100%;
+		height: auto;
+	}
+
+	.article_img:hover {
+		color: #696a6b;
+		background-color: #fff;
+		display: inline;
+	}
 
 .articleDate {margin: 3px 0 7px 0;}
 
@@ -249,8 +251,8 @@ select {
 .underTitle {
 	text-align: center;
 	padding-bottom: 10px;
+	padding-top: 5px;
 }
-
 
 /*Dashboard*/
 .hide {display: none;}
@@ -263,7 +265,6 @@ select {
 }
 
 .numberDescription {font-size: 2em;}
-
 
 /*Table styling*/
 table, th, td {

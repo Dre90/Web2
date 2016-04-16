@@ -63,8 +63,40 @@ function validateUpload(form){
         return err;
     }
 
+    function validate_fileToUpload(fileToUpload){
+        var err = '';
+        if(fileToUpload.trim() === '') err = 'Image can not be empty.<br>';
+        return err;
+    }
+
     function validate_text(text){
         var err = '';
         if(text.trim() === '') err = 'Text can not be empty.<br>';
         return err;
     }
+
+    // validate edit form
+    function validateEdit(form){
+        fail = validate_title(form.title.value);
+        fail += validate_category(form.category.value);
+        fail += validate_text(form.text.value);
+        if(fail === ''){ return true; } else { document.getElementById("error").innerHTML = fail ; return false; }
+    }
+
+        function validate_title(title){
+            var err = '';
+            if(title.trim() === '') err = 'Title can not be empty.<br>';
+            return err;
+        }
+
+        function validate_category(category){
+            var err = '';
+            if(category.trim() === '') err = 'Category can not be empty.<br>';
+            return err;
+        }
+
+        function validate_text(text){
+            var err = '';
+            if(text.trim() === '') err = 'Text can not be empty.<br>';
+            return err;
+        }

@@ -1,12 +1,12 @@
-Validering
-Feilsøking
+Validering x
+Feilsøking x
 Read me
 
-• take security measures against XSS and SQL injection,
+• take security measures against XSS and SQL injection, x
 
-likes på artikkel siden. sidebar
-ingen artliker skriv det..
-link til den opplastede artikkelen
+likes på artikkel siden. sidebar x
+ingen artliker skriv det.. x
+link til den opplastede artikkelen x
 
 gjør om tilbakemelding
 

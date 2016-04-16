@@ -135,10 +135,10 @@
 				</div>
             </div>
             <div class='col-4-12'>
-				<p>
+				<p class="success">
 					<?php echo $msg;?>
 				</p>
-				<p id="error"></p>
+				<p id="error" class="error"></p>
             </div>
         </section>
     </div>
