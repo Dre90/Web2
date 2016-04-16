@@ -113,7 +113,7 @@
 	$title = $category = $todaysDate = $text = $image = $user_id = "";
 	$title = "This pig that thinks she is a dog is living her best life";
 	$category = 3;
-	$todaysDate = "2016-03-10";
+	$todaysDate = "2016-04-16";
 	$text = "Olive the pig has a unique family that does not discriminate.
 
 	Despite her brothers and sisters being of the canine variety, Olive has found her home by their side. It is like Babe come to life.
@@ -184,7 +184,7 @@
 
 	//article 4
 	$title = $category = $todaysDate = $text = $image = $user_id = "";
-	$title = "Snapchat is now the most popular social network among teens, according to new study";
+	$title = "Snapchat is now the most popular social network among teens";
 	$category = 2;
 	$todaysDate = "2016-04-10";
 	$text = 'As Snapchat has expanded and added new features over the year, it has steadily climbed the ranks of social media titans. In fact, it is now more popular among its core demographic — teens — than Twitter, Facebook and now even Instagram.

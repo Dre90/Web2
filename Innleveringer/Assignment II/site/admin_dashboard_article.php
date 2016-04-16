@@ -10,7 +10,7 @@
         $db_server=getDB();
 
         // Delete
-        $current_article_id = $deletemsg = $deleteImage = "";
+        $current_article_id = $deletemsg = $deleteImage = $msg = "";
         if(isset($_POST['delete'])) {
             if (isset($_POST['confirm'])) {
                 $current_article_id = $_POST['deleteForward'];
@@ -18,6 +18,7 @@
                 $query = "DELETE FROM articles WHERE article_id =  $current_article_id";
                 $result = $db_server -> query($query) or die('Query failed:' . $db_server -> error);
                 unlink($deleteImage);
+                $msg .= "Article deleted";
             }else {
                 $deletemsg .= "Please check confirm first";
             }
@@ -42,7 +43,7 @@
                     <h1>Admin dashboard - Articles</h1>
                 </div>
                 <div class="col-5-12">
-                    <h3 class="float-right error"><?php echo $deletemsg ?></h3>
+                    <h3 class="float-right error"><?php echo $deletemsg; echo $msg; ?></h3>
                 </div>
             </div>
             <table>

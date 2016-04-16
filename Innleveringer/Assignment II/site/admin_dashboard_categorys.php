@@ -10,7 +10,7 @@
         $db_server=getDB();
 
         // Delete
-        $current_category_id = $deletemsg ="";
+        $current_category_id = $deletemsg = $msg = "";
         if(isset($_POST['delete'])) {
             if (isset($_POST['confirm'])) {
                 $current_category_id = $_POST['deleteForward'];
@@ -30,6 +30,7 @@
                 } catch (Exception $e) {
                     echo $e->getMessage();
                 }
+                $msg .= "Category deleted";
             }else {
                 $deletemsg .= "Please check confirm first";
             }
@@ -53,7 +54,7 @@
                     <h1>Admin dashboard - Categorys</h1>
                 </div>
                 <div class="col-6-12">
-                    <h3 class="float-left error"><?php echo $deletemsg ?></h3>
+                    <h3 class="float-left error"><?php echo $deletemsg; echo $msg; ?></h3>
                 </div>
             </div>
             <div class="grid grid-pad">

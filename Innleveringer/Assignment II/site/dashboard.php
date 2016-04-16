@@ -39,14 +39,11 @@
             <div class="grid grid-pad">
                 <div class="col-7-12">
                     <h1>Your articles</h1>
-
                 </div>
                 <div class="col-5-12">
                     <h3 class="float-right error"><?php echo $deletemsg ?></h3>
                 </div>
-
             </div>
-
             <table>
                 <?php
                     echo "<tr>";
