@@ -1,0 +1,5 @@
+Overall, a good implementation. However, if you aim for a higher grade:
+
+- improve look and feel,
+- better error messages (visually)
+- same user can like several times, should only count once even if the user is not logged in.
