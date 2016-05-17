@@ -99,7 +99,6 @@
                             }
                         }
                     }
-                    echo "<br><br>";
                     echo "The account was added to " . $account[0]->get_accountHolder();
                 } else {
                     echo "Sorry, there was an error uploading your file.";
