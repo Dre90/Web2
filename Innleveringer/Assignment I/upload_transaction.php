@@ -33,27 +33,27 @@
             $uploadOk = 1;
             $FileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
-            // Check if file already exists
-            if (file_exists($target_file)) {
-                echo "Sorry, file already exists. ";
+            // Only account.csv files allowed
+            if (basename($_FILES["fileToUpload"]["name"]) != "transaction_deposit.csv" or basename($_FILES["fileToUpload"]["name"]) != "transaction_withdrawal.csv" ) {
+                echo "Sorry, only 'transaction_withdrawal' or 'transaction_deposit' files allowed. <br>";
                 $uploadOk = 0;
             }
 
             // Check file size
             if ($_FILES["fileToUpload"]["size"] > 20000) {
-                echo "Sorry, your file is too large. ";
+                echo "Sorry, your file is too large. <br>";
                 $uploadOk = 0;
             }
 
             // Allow certain file formats
             if($FileType != "csv") {
-                echo "Sorry, only .csv text files are allowed. ";
+                echo "Sorry, only .csv text files are allowed. <br>";
                 $uploadOk = 0;
             }
 
             // Check if $uploadOk is set to 0 by an error
             if ($uploadOk == 0) {
-                echo "Sorry, your file was not uploaded. ";
+                echo "Your file was not uploaded. ";
             // if everything is ok, try to upload file
             } else {
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
@@ -64,9 +64,9 @@
                     $transactionArrayLength = count($transaction);
 
                     for($x = 0; $x < $accountsArrayLength; $x++) {
-                        for($y = 0; $y < $transactionArrayLength; $y++) {
+                        // for($y = 0; $y < $transactionArrayLength; $y++) {
                             //Check if the account exist in the system
-                            if (!$accountsArray[$x]->get_accountNumber() == $transaction[$y]->get_associatedAccount() ) {
+                            if (!$accountsArray[$x]->get_accountNumber() == $transaction[0]->get_associatedAccount() ) {
                                 echo $transaction[0]->get_associatedAccount() ." is not a account in our system.";
                             } else {
                                 $arrlength = count($transactionsArray);
@@ -79,6 +79,15 @@
                                     $transactionsArray[$z]->get_date() . "\n";
                                 }
                                 open_file("data/transactions.csv", $text);
+
+                                /* ---------------------------------------------------------------------------
+                                Deletes the file
+                                ----------------------------------------------------------------------------*/
+                                if( file_exists("uploads/" . basename( $_FILES["fileToUpload"]["name"])) ) {
+                                    $file = "uploads/" . basename( $_FILES["fileToUpload"]["name"]);
+                                    unlink($file);
+                                }
+
                                 //Updates the balance and adds a deposit too the account
                                 if ($accountsArray[$x]->get_accountNumber() == $transaction[0]->get_associatedAccount() && $transaction[0]->get_type() == "deposit" ) {
                                     $balance = $accountsArray[$x]->get_balance() + $transaction[0]->get_value();
@@ -136,7 +145,7 @@
                                     open_file("data/accounts.csv", $text);
                                 }
                             }
-                        }
+                        // }
                     }
                     echo "<br><br>";
                     echo "The transaction was added to account " . $transaction[0]->get_associatedAccount();
@@ -148,13 +157,7 @@
             echo "<br><br>";
             echo "<a href='data.php' class='myButton'>Back</a>";
 
-            /* ---------------------------------------------------------------------------
-            Deletes the file
-            ----------------------------------------------------------------------------*/
-            if( file_exists("uploads/" . basename( $_FILES["fileToUpload"]["name"])) ) {
-                $file = "uploads/" . basename( $_FILES["fileToUpload"]["name"]);
-                unlink($file);
-            }
+
         ?>
     </body>
 </html>

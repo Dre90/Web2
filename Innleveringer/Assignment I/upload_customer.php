@@ -20,26 +20,27 @@
             $uploaded = 3;
             $exists = 0;
 
+            // Only customer.csv files allowed
             if (basename($_FILES["fileToUpload"]["name"]) != "customer.csv") {
-                echo "Sorry, 'customer.csv' files only allowed. ";
+                echo "Sorry, only 'customer.csv' files allowed. <br>";
                 $uploadOk = 0;
             }
 
             // Check file size
             if ($_FILES["fileToUpload"]["size"] > 20000) {
-                echo "Sorry, your file is too large. ";
+                echo "Sorry, your file is too large. <br>";
                 $uploadOk = 0;
             }
 
             // Allow certain file formats
             if($FileType != "csv") {
-                echo "Sorry, only .csv text files are allowed. ";
+                echo "Sorry, only .csv text files are allowed. <br>";
                 $uploadOk = 0;
             }
 
             // Check if $uploadOk is set to 0 by an error
             if ($uploadOk == 0) {
-                echo "Your file was not uploaded. ";
+                echo "Your file was not uploaded. <br>";
             // if everything is ok, try to upload file
             } else {
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
@@ -80,13 +81,21 @@
                         open_file("data/customers.csv", $text);
 
                         $uploaded = 1;
+                        $customer = $customer[0]->get_name() . " ".$customer[0]->get_surname();
+                        /* ---------------------------------------------------------------------------
+                        Deletes the file
+                        ----------------------------------------------------------------------------*/
+                        if( file_exists("uploads/" . basename( $_FILES["fileToUpload"]["name"])) ) {
+                            $file = "uploads/" . basename( $_FILES["fileToUpload"]["name"]);
+                            unlink($file);
+                        }
                     }
 
                 } else {
-                    echo "Sorry, there was an error uploading your file.";
+                    echo "Sorry, there was an error uploading your file. ";
                 }
             }
-            $customer = $customer[0]->get_name() . " ".$customer[0]->get_surname();
+
             if ($uploaded == 1) {
                 echo $customer . " was added too the system.";
             } elseif ($uploaded == 0) {
@@ -96,13 +105,7 @@
             echo "<br><br>";
             echo "<a href='data.php' class='myButton'>Back</a>";
 
-            /* ---------------------------------------------------------------------------
-            Deletes the file
-            ----------------------------------------------------------------------------*/
-            if( file_exists("uploads/" . basename( $_FILES["fileToUpload"]["name"])) ) {
-                $file = "uploads/" . basename( $_FILES["fileToUpload"]["name"]);
-                unlink($file);
-            }
+
         ?>
     </body>
 </html>

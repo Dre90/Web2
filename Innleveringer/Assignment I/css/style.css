@@ -1,7 +1,36 @@
-body {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400
+html, body {
+	font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+	font-size: 15px;
+  	line-height: 1.5;
+  	color: #696a6b;
+    margin: 0;
 }
+
+p {margin-bottom: 1.3em;}
+
+h1 {font-size: 2.2em;}
+
+h2 {font-size: 1.6em;}
+
+h3 {font-size: 1.2em;}
+
+td h3 {
+	text-align: center;
+}
+
+#error {
+    color: #d11313;
+    margin: 15px 0;
+}
+
+/*----------Wrapper----------*/
+.wrapper {
+	width: 100%;
+	height: auto;
+	padding-left: 20px;
+}
+
     /*Table styling*/
     table, th, td {
         border: 1px solid black;

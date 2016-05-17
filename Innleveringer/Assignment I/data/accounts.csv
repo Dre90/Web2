@@ -4,5 +4,4 @@ id,accountHolder,accountNumber,currencyType,balance,withdrawals,deposits
 1,Dag-Roger Eriksen,10003,NOK,62000,1,4
 2,Tove Ugseth,10004,NOK,95000,1,1
 2,Tove Ugseth,10005,NOK,0,0,0
-2,Tove Ugseth,10005,NOK,0,0,0
-2,Tove Ugseth,10005,NOK,0,0,0
+4,Ola Norman,10006,NOK,10000,0,0

@@ -30,56 +30,76 @@
             $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
             $uploadOk = 1;
             $FileType = pathinfo($target_file,PATHINFO_EXTENSION);
+            $uploaded = 3;
+            $exists = 0;
 
-            // Check if file already exists
-            if (file_exists($target_file)) {
-                echo "Sorry, file already exists. ";
+            // Only account.csv files allowed
+            if (basename($_FILES["fileToUpload"]["name"]) != "account.csv") {
+                echo "Sorry, only 'account.csv' files allowed. <br>";
                 $uploadOk = 0;
             }
 
             // Check file size
             if ($_FILES["fileToUpload"]["size"] > 20000) {
-                echo "Sorry, your file is too large. ";
+                echo "Sorry, your file is too large. <br>";
                 $uploadOk = 0;
             }
 
             // Allow certain file formats
             if($FileType != "csv") {
-                echo "Sorry, only .csv text files are allowed. ";
+                echo "Sorry, only .csv text files are allowed. <br>";
                 $uploadOk = 0;
             }
 
             // Check if $uploadOk is set to 0 by an error
             if ($uploadOk == 0) {
-                echo "Sorry, your file was not uploaded. ";
+                echo "Your file was not uploaded. ";
             // if everything is ok, try to upload file
             } else {
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                     $account = get_uploaded_account("uploads/" . basename( $_FILES["fileToUpload"]["name"])); //gets the account
 
-                    array_push($accountsArray, $account[0]); //puts the new account on the end of the accounts array
-
-                    $accountArrayLength = count($account);
-
                     for($x = 0; $x < $customersArrayLength; $x++) {
-                        for($y = 0; $y < $accountArrayLength; $y++) {
-                            //Check if customer exist in the system
-                            if (!$customersArray[$x]->get_id() == $account[$y]->get_id() ) {
-                                echo $account[0]->get_accountHolder() ." is not a customer in our system.";
-                            } else {
-                                $arrlength = count($accountsArray);
-                                $text = "id,accountHolder,accountNumber,currencyType,balance,withdrawals,deposits" . "\n";
-                                for($z = 0; $z < $arrlength; $z++) {
-                                    $text .=  $accountsArray[$z]->get_id() . "," .
-                                    $accountsArray[$z]->get_accountHolder() . "," .
-                                    $accountsArray[$z]->get_accountNumber() . "," .
-                                    $accountsArray[$z]->get_currencyType() . "," .
-                                    $accountsArray[$z]->get_balance() . "," .
-                                    $accountsArray[$z]->get_withdrawals() . "," .
-                                    $accountsArray[$z]->get_deposits() . "\n";
+                        //Check if customer exist in the system
+                        if (!$customersArray[$x]->get_id() == $account[0]->get_id() ) {
+                            echo $account[0]->get_accountHolder() ." is not a customer in our system.";
+                        } else {
+                            for($y = 0; $y < $accountsArrayLength; $y++) {
+                                if ( $accountsArray[$y]->get_accountNumber() == $account[0]->get_accountNumber() ) {
+                                    $exists = 1;
                                 }
-                                open_file("data/accounts.csv", $text);
-                            }
+                             }
+                        }
+                    }
+
+                    if ($exists == 0) {
+                        array_push($accountsArray, $account[0]); //puts the new account on the end of the accounts array
+
+                        $arrlength = count($accountsArray);
+
+                        $text = "id,accountHolder,accountNumber,currencyType,balance,withdrawals,deposits" . "\n";
+                        for($z = 0; $z < $arrlength; $z++) {
+                            $text .=  $accountsArray[$z]->get_id() . "," .
+                            $accountsArray[$z]->get_accountHolder() . "," .
+                            $accountsArray[$z]->get_accountNumber() . "," .
+                            $accountsArray[$z]->get_currencyType() . "," .
+                            $accountsArray[$z]->get_balance() . "," .
+                            $accountsArray[$z]->get_withdrawals() . "," .
+                            $accountsArray[$z]->get_deposits() . "\n";
+                        }
+                        open_file("data/accounts.csv", $text);
+
+                        $uploaded = 1;
+
+                        /* ---------------------------------------------------------------------------
+                        Deletes the file
+                        ----------------------------------------------------------------------------*/
+                        if( file_exists("uploads/" . basename( $_FILES["fileToUpload"]["name"])) ) {
+                            $file = "uploads/" . basename( $_FILES["fileToUpload"]["name"]);
+                            unlink($file);
+                        }
+
+                        for($x = 0; $x < $customersArrayLength; $x++) {
                             //Updates the total assets to the customer
                             if ($customersArray[$x]->get_id() == $account[0]->get_id() ) {
                                 $totalAssets = $customersArray[$x]->get_totalAssets() + $account[0]->get_balance();
@@ -99,7 +119,14 @@
                             }
                         }
                     }
-                    echo "The account was added to " . $account[0]->get_accountHolder();
+
+                    if ($uploaded == 1) {
+                        echo "The account was added to " . $account[0]->get_accountHolder();
+                    }
+                    if ($exists == 1) {
+                        echo "Account with account number " . $account[0]->get_accountNumber() . " already exists.";
+                    }
+
                 } else {
                     echo "Sorry, there was an error uploading your file.";
                 }
@@ -107,13 +134,7 @@
             echo "<br><br>";
             echo "<a href='data.php' class='myButton'>Back</a>";
 
-            /* ---------------------------------------------------------------------------
-            Deletes the file
-            ----------------------------------------------------------------------------*/
-            if( file_exists("uploads/" . basename( $_FILES["fileToUpload"]["name"])) ) {
-                $file = "uploads/" . basename( $_FILES["fileToUpload"]["name"]);
-                unlink($file);
-            }
+
         ?>
     </body>
 </html>
