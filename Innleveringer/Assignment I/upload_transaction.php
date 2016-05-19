@@ -37,11 +37,16 @@
                     $uploadOk = 1;
                     $FileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
+                    $fileName = basename($_FILES["fileToUpload"]["name"]);
+
                     // Only account.csv files allowed
-                    if (basename($_FILES["fileToUpload"]["name"]) != "transaction_deposit.csv" or basename($_FILES["fileToUpload"]["name"]) != "transaction_withdrawal.csv" ) {
-                        echo "Sorry, only 'transaction_withdrawal' or 'transaction_deposit' files allowed. <br>";
+                    if ( $fileName == "transaction_deposit.csv" OR $fileName == "transaction_withdrawal.csv" ) {
+
+                    } else {
+                        echo "Sorry, only 'transaction_withdrawal.csv' or 'transaction_deposit.csv' files allowed. <br>";
                         $uploadOk = 0;
                     }
+
 
                     // Check file size
                     if ($_FILES["fileToUpload"]["size"] > 20000) {

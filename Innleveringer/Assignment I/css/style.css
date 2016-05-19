@@ -16,14 +16,13 @@ h2 {font-size: 1.6em;}
 h3 {font-size: 1.2em;}
 
 
-
 /*Meny*/
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #ccc;
+    background-color: #86D7E2;
 }
 
     li {
@@ -39,12 +38,24 @@ ul {
         }
 
         li a:hover:not(.active) {
-            background-color: #888;
+			background-color: #fff;
+			color: #696a6b;
         }
 
     .active {
-        background-color: #79bbff;
+        background-color: #b1b1b1;
     }
+
+
+	a {
+		color: #86D7E2;
+		text-decoration: none;
+	}
+
+		a:hover:not(.active)  {
+			color: #696a6b;
+			text-decoration: underline;;
+		}
 
 /*----------Wrapper----------*/
 .wrapper {
@@ -84,6 +95,7 @@ table, th, td {
 	tr:nth-child(odd) {
 	   background-color:#fff;
 	}
+
 	td h3 {
 		text-align: center;
 	}
@@ -101,50 +113,76 @@ table, th, td {
 .numbersOuter h1, .number, .numberDescription {text-align: center;}
 
 .number {
-	font-size: 6em;
+	font-size: 5em;
 	margin: 0;
 }
 
-.numberDescription {font-size: 2em;}
+.numberDescription {font-size: 1.8em;}
 
+/*account.php*/
+.AccountHeader {
+	width: 100%;
+	font-size: 1.5em;
+}
 
+.back, .sortDiv{
+	width: 50%;
+	float:left;
+}
+
+.back a {
+	text-decoration: none;
+}
+
+input {
+    width: 100%;
+	font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+	font-size: 1em;
+	padding: 12px 20px;
+    margin: 0 0 12px 0;
+    box-sizing: border-box;
+}
+
+input[type=file] {border: 1px solid #A9A9A9;}
+
+input[type=button], input[type=submit], .myButton{
+	border: none;
+	color: white;
+	padding: 16px 32px;
+	margin: 4px 2px;
+	cursor: pointer;
+	background-color: #86D7E2;
+	border: 1px solid #86D7E2;
+}
+
+input[type=button]:hover, input[type=submit]:hover, .myButton:hover {
+	background-color: #fff;
+	color: #696a6b;
+}
+
+select {
+    width: 55%;
+    padding: 10px 6px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+
+	margin: 0 0 12px 0;
+}
 /*Data.php*/
-#error {
+.error {
     color: #d11313;
     margin: 15px 0;
 }
 
 /*Upload form*/
 .form {
-	padding: 20px 0;
+	padding: 10px 0;
+	margin-bottom: 10px;
 }
 
 .formComment {
-	padding-top: 10px;
+	padding-top: 5px;
 	font-style: italic;
 	color:#aaa;
 }
-
-/*Return button styling*/
-.myButton {
-
-    background-color: #888;
-    -moz-border-radius:6px;
-    -webkit-border-radius:6px;
-    border-radius:6px;
-    border:1px solid #ccc;
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff;
-    padding:10px 24px;
-    text-decoration:none;
-	float: right;
-}
-    .myButton:hover {
-        background-color: #79bbff;
-    }
-    .myButton:active {
-        position:relative;
-        top:1px;
-		background-color: #ccc;
-    }

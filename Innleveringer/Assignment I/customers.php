@@ -47,9 +47,10 @@
             ----------------------------------------------------------------------------*/
             echo "<table>";
                 for($x = 0; $x < $customersArrayLength; $x++) {
+                    $costumerid = $customersArray[$x]->get_id() - 1;
                     echo "<tr>";
                         echo "<th colspan='5'>";
-                            echo "<h2>" . "Information about costumer " . $customersArray[$x]->get_id() . "</h2>";
+                            echo "<h2>" . "Information about costumer  <a href='account.php?customer_id=" . $costumerid . "'>" . $customersArray[$x]->get_name() . " " .  $customersArray[$x]->get_surname() . "</a></h2>";
                         echo "</th>";
                     echo "</tr>";
                     echo "<tr>";

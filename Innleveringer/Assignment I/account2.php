@@ -1,6 +1,15 @@
 <?php
     require_once"include/head.php";
-    $customerNR = isset($_GET['customer_id'])  ? $_GET['customer_id'] : 0;
+
+
+$customerNR = isset($_GET['customer_id']) && !empty( $_GET['id'] ) ? $_GET['customer_id'] : 0;
+
+    // if ($_GET['customer_id'] == null) {
+    //     $customerNR = 0;
+    // } else {
+    //     $customerNR = $_GET['customer_id'];
+    // }
+
 ?>
     <body>
         <ul>
@@ -13,25 +22,18 @@
         </ul>
         <div class="wrapper">
             <div class="center">
-                <div class="AccountHeader">
-                    <div class="back">
-                        <a href="customers.php">&larr; Back to customer list</a>
-                    </div>
-                    <div class="sortDiv">
-
-                        <form action="">
-                            <label for="customers">Sort</label>
-                            <select name="customers" onchange="showCustomer(this.value, <?php echo $customerNR;?>)">
-                                <option value="sort_date_descending">Date descending</option>
-                                <option value="sort_date_ascending">Date ascending</option>
-                                <option value="sort_value_ascending">Value ascending</option>
-                                <option value="sort_value_descending">Value descending</option>
-                            </select>
-                        </form>
-                    </div>
+                <a href="customers.php">Back to customers list</a>
+                <div class="sortDiv">
+                    <h3>Sort</h3>
+                    <form action="">
+                        <select name="customers" onchange="showCustomer(this.value, <?php echo $customerNR;?>)">
+                            <option value="sort_date_descending">Date descending</option>
+                            <option value="sort_date_ascending">Date ascending</option>
+                            <option value="sort_value_ascending">Value ascending</option>
+                            <option value="sort_value_descending">Value descending</option>
+                        </select>
+                    </form>
                 </div>
-
-
 
                 <div id="customer">
                     <?php
@@ -185,7 +187,7 @@
               document.getElementById("customer").innerHTML = xmlhttp.responseText;
             }
           };
-          xmlhttp.open("GET", "customer_with_account.php?sort="+str+"&customer_id="+customerNR, true);
+          xmlhttp.open("GET", "customer_with_account2.php?sort="+str+"&customer_id="+customerNR, true);
           xmlhttp.send();
         }
         }

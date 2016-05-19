@@ -85,7 +85,7 @@
                                 open_file("data/customers.csv", $text);
 
                                 $uploaded = 1;
-                                $customer = $customer[0]->get_name() . " ".$customer[0]->get_surname();
+                                
                                 /* ---------------------------------------------------------------------------
                                 Deletes the file
                                 ----------------------------------------------------------------------------*/
@@ -101,9 +101,9 @@
                     }
 
                     if ($uploaded == 1) {
-                        echo $customer . " was added too the system.";
+                        echo $customer[0]->get_name() . " ".$customer[0]->get_surname() . " was added too the system.";
                     } elseif ($uploaded == 0) {
-                        echo $customer . " already exists";
+                        echo $customer[0]->get_name() . " ".$customer[0]->get_surname() . " already exists";
                     }
 
                     echo "<br><br>";
