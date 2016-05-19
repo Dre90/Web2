@@ -1,12 +1,15 @@
 <?php require_once"include/head.php" ?>
     <body>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="customers.php">Customers</a></li>
-            <li><a class="active" href="account.php">Account</a></li>
-            <li><a href="data.php">Upload data</a></li>
+            <div class="center">
+                <li><a href="index.php">Home</a></li>
+                <li><a href="customers.php">Customers</a></li>
+                <li><a class="active" href="account.php">Account</a></li>
+                <li><a href="data.php">Upload data</a></li>
+            </div>
         </ul>
         <div class="wrapper">
+            <div class="center">
             <?php
                 require 'functions/get_customers_function.php';
                 require 'functions/get_accounts_function.php';
@@ -63,16 +66,16 @@
 
                             echo "<tr>";
                                 echo "<td>";
-                                    echo "Account number";
+                                    echo "<h3>" . "Account number". "</h3>";
                                 echo "</td>";
                                 echo "<td>";
-                                    echo "Number of deposits";
+                                    echo "<h3>" . "Number of deposits". "</h3>";
                                 echo "</td>";
                                 echo "<td>";
-                                    echo "Number of withdrawals";
+                                    echo "<h3>" . "Number of withdrawals". "</h3>";
                                 echo "</td>";
                                 echo "<td>";
-                                    echo "Total Balance";
+                                    echo "<h3>" . "Total Balance". "</h3>";
                                 echo "</td>";
                             echo "</tr>";
 
@@ -93,22 +96,22 @@
 
                             echo "<tr>";
                                 echo "<th colspan='4'>";
-                                echo "<h3>" . "Transactions" . "</h3>";
+                                echo "<h2>" . "Transactions" . "</h2>";
                                 echo "</th>";
                             echo "</tr>";
 
                             echo "<tr>";
                                 echo "<td>";
-                                    echo "Transaction date";
+                                    echo "<h3>" . "Transaction date". "</h3>";
                                 echo "</td>";
                                 echo "<td>";
-                                    echo "Transaction type";
+                                    echo "<h3>" . "Transaction type". "</h3>";
                                 echo "</td>";
                                 echo "<td>";
-                                    echo "Transaction amount";
+                                    echo "<h3>" . "Transaction amount". "</h3>";
                                 echo "</td>";
                                 echo "<td>";
-                                    echo "Currency type";
+                                    echo "<h3>" . "Currency type". "</h3>";
                                 echo "</td>";
                             echo "</tr>";
 
@@ -135,6 +138,7 @@
                     }
                 echo "</table>";
             ?>
+        </div>
     </div>
     </body>
 </html>

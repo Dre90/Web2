@@ -15,99 +15,136 @@ h2 {font-size: 1.6em;}
 
 h3 {font-size: 1.2em;}
 
-td h3 {
-	text-align: center;
+
+
+/*Meny*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ccc;
 }
 
-#error {
-    color: #d11313;
-    margin: 15px 0;
-}
+    li {
+        float: left;
+    }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #888;
+        }
+
+    .active {
+        background-color: #79bbff;
+    }
 
 /*----------Wrapper----------*/
 .wrapper {
 	width: 100%;
 	height: auto;
-	padding-left: 20px;
+	margin: 20px 0 40px 0;
+
+}
+.center{
+	max-width: 800px;
+	margin: 0 auto;
 }
 
-    /*Table styling*/
-    table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
+
+/*Table styling*/
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+	th, td {
+		padding: 5px;
+	}
+
+	th {
+		padding-top: 20px;
+		background-color: white;
+	}
+
+	th.tableHeader {
+		padding-top: 7px;
+	}
+
+	tr:nth-child(even) {
+		background-color: #eee;
+	}
+
+	tr:nth-child(odd) {
+	   background-color:#fff;
+	}
+	td h3 {
+		text-align: center;
+	}
+
+/*Customer.php*/
+.numbersOuter {
+	width: 100%
+}
+
+.numbersInner {
+	width: 50%;
+	float:left;
+}
+
+.numbersOuter h1, .number, .numberDescription {text-align: center;}
+
+.number {
+	font-size: 6em;
+	margin: 0;
+}
+
+.numberDescription {font-size: 2em;}
+
+
+/*Data.php*/
+#error {
+    color: #d11313;
+    margin: 15px 0;
+}
+
+/*Upload form*/
+.form {
+	padding: 20px 0;
+}
+
+.formComment {
+	padding-top: 10px;
+	font-style: italic;
+	color:#aaa;
+}
+
+/*Return button styling*/
+.myButton {
+
+    background-color: #888;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    padding:10px 24px;
+    text-decoration:none;
+	float: right;
+}
+    .myButton:hover {
+        background-color: #79bbff;
     }
-        th, td {
-            padding: 5px;
-        }
-
-        th {
-            padding-top: 20px;
-        }
-
-        th.tableHeader {
-            padding-top: 7px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #eee;
-        }
-
-        tr:nth-child(odd) {
-           background-color:#fff;
-        }
-
-        th	{
-            background-color: white;
-        }
-
-    /*Meny*/
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #ccc;
+    .myButton:active {
+        position:relative;
+        top:1px;
+		background-color: #ccc;
     }
-
-        li {
-            float: left;
-        }
-
-            li a {
-                display: block;
-                color: white;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-            }
-
-            li a:hover:not(.active) {
-                background-color: #888;
-            }
-
-        .active {
-            background-color: #79bbff;
-        }
-
-    /*Return button styling*/
-    .myButton {
-        background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
-        background-color:#79bbff;
-        -moz-border-radius:6px;
-        -webkit-border-radius:6px;
-        border-radius:6px;
-        border:1px solid #84bbf3;
-        display:inline-block;
-        cursor:pointer;
-        color:#ffffff;
-        padding:6px 24px;
-        text-decoration:none;
-    }
-        .myButton:hover {
-            background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
-            background-color:#378de5;
-        }
-        .myButton:active {
-            position:relative;
-            top:1px;
-        }

@@ -1,39 +1,47 @@
-<?php require_once"include/head.php" ?>
+<?php
+    require_once"include/head.php";
+    require 'functions/get_customers_function.php';
+    require 'functions/get_accounts_function.php';
+    require_once 'functions/open_file_function.php';
+
+    /* ---------------------------------------------------------------------------
+    Getting all the customers, accounts and transactions and puts them in arrays
+    ----------------------------------------------------------------------------*/
+    $customersArray = get_customers();
+    $accountArray = get_accounts();
+
+    /* ---------------------------------------------------------------------------
+    Counting the arrays
+    ----------------------------------------------------------------------------*/
+    $customersArrayLength = count($customersArray);
+    $accountArrayLength = count($accountArray);
+
+?>
     <body>
+
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a class="active" href="customers.php">Customers</a></li>
-            <li><a href="account.php">Account</a></li>
-            <li><a href="data.php">Upload data</a></li>
+            <div class="center">
+                <li><a href="index.php">Home</a></li>
+                <li><a class="active" href="customers.php">Customers</a></li>
+                <li><a href="account.php">Account</a></li>
+                <li><a href="data.php">Upload data</a></li>
+            </div>
         </ul>
+    </div>
         <div class="wrapper">
+            <div class="center">
+                <div class='numbersOuter'>
+                    <h1>Number of customers and accounts in the system </h1>
+                    <div class='numbersInner'>
+                        <p class='number'><span class='count'> <?php echo customer::$customerCount; ?> </span> </p>
+                        <p class='numberDescription'> Customers </p>
+                    </div>
+                    <div>
+                        <p class='number'><span class='count'> <?php echo account::$accountCount; ?></span></p>
+                        <p class='numberDescription'> Accounts </p>
+                    </div>
+                </div>
         <?php
-            require 'functions/get_customers_function.php';
-            require 'functions/get_accounts_function.php';
-            require_once 'functions/open_file_function.php';
-
-            /* ---------------------------------------------------------------------------
-            Getting all the customers, accounts and transactions and puts them in arrays
-            ----------------------------------------------------------------------------*/
-            $customersArray = get_customers();
-            $accountArray = get_accounts();
-
-            /* ---------------------------------------------------------------------------
-            Counting the arrays
-            ----------------------------------------------------------------------------*/
-            $customersArrayLength = count($customersArray);
-            $accountArrayLength = count($accountArray);
-
-            /* ---------------------------------------------------------------------------
-            Customers and accounts counts in the system
-            ----------------------------------------------------------------------------*/
-            echo "<br>";
-            echo "Total number of customers in the system: " . customer::$customerCount;
-            echo "<br>";
-            echo "Total number of accounts in the system: " . account::$accountCount;
-            echo "<br>";
-            echo "<br>";
-
             /* ---------------------------------------------------------------------------
             The table
             ----------------------------------------------------------------------------*/
@@ -169,6 +177,20 @@
                     }
                 echo "</table>";
          ?>
+         </div>
      </div>
+     <script>
+         $('.count').each(function () {
+             $(this).prop('Counter',0).animate({
+             Counter: $(this).text()
+         }, {
+             duration: 1000,
+             easing: 'swing',
+             step: function (now) {
+                 $(this).text(Math.ceil(now));
+             }
+             });
+         });
+     </script>
     </body>
 </html>
